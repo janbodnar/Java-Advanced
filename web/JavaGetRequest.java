@@ -8,6 +8,8 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+// HttpURLConnection creates a network connection to an HTTP servlet
+
 public class JavaGetRequest {
 
     public static void main(String[] args) throws MalformedURLException, 
