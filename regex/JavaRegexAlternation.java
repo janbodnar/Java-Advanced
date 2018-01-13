@@ -20,7 +20,7 @@ public class JavaRegexAlternation {
 
             Matcher m = p.matcher(user);
 
-            if (m.find()) {
+            if (m.matches()) {
                 System.out.printf("%s matches%n", user);
             } else {
                 System.out.printf("%s does not match%n", user);
