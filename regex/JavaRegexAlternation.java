@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+// Alternation operator | enables to create a regular expression with several choices. 
+
 public class JavaRegexAlternation {
 
     public static void main(String[] args) {
