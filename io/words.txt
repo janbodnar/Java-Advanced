@@ -1,0 +1,11 @@
+coin
+blue
+mobile
+master
+agriculture
+automatic
+special
+water
+butterfly
+franc
+lovely
