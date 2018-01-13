@@ -32,7 +32,7 @@ public class JavaRegexEmail {
 
             Matcher m = p.matcher(email);
 
-            if (m.find()) {
+            if (m.matches()) {
                 System.out.printf("%s matches%n", email);
             } else {
                 System.out.printf("%s does not match%n", email);
