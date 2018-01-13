@@ -5,6 +5,11 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+// Regular expression - defines a search pattern for strings
+// Pattern - compiled representation of a regular expression
+// Matcher - engine that interprets the pattern and performs 
+//           match operations against an input string. 
+
 public class JavaRegexEx {
 
     public static void main(String[] args) {
