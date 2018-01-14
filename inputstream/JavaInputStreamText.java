@@ -7,6 +7,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
+// InputStream is a source for reading data. A stream 
+// can represent various kinds of sources, including disk files, devices, other programs, and memory arrays. 
+
 public class JavaInputStreamText {
 
     public static void main(String[] args) throws IOException {
