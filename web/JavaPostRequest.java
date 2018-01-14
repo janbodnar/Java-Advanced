@@ -12,6 +12,8 @@ import java.nio.charset.StandardCharsets;
 
 public class JavaPostRequest {
 
+    private static HttpURLConnection con;
+
     public static void main(String[] args) throws MalformedURLException,
             ProtocolException, IOException {
 
@@ -19,32 +21,39 @@ public class JavaPostRequest {
         String urlParameters = "name=Jack&occupation=programmer";
         byte[] postData = urlParameters.getBytes(StandardCharsets.UTF_8);
 
-        URL myurl = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) myurl.openConnection();
+        try {
 
-        con.setDoOutput(true);
-        con.setRequestMethod("POST");
-        con.setRequestProperty("User-Agent", "Java client");
-        con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            URL myurl = new URL(url);
+            con = (HttpURLConnection) myurl.openConnection();
 
-        try (DataOutputStream wr = new DataOutputStream(con.getOutputStream())) {
-            wr.write(postData);
-        }
+            con.setDoOutput(true);
+            con.setRequestMethod("POST");
+            con.setRequestProperty("User-Agent", "Java client");
+            con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
-        StringBuilder content;
-
-        try (BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()))) {
-
-            String line;
-            content = new StringBuilder();
-
-            while ((line = in.readLine()) != null) {
-                content.append(line);
-                content.append(System.lineSeparator());
+            try (DataOutputStream wr = new DataOutputStream(con.getOutputStream())) {
+                wr.write(postData);
             }
-        }
 
-        System.out.println(content.toString());
+            StringBuilder content;
+
+            try (BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()))) {
+
+                String line;
+                content = new StringBuilder();
+
+                while ((line = in.readLine()) != null) {
+                    content.append(line);
+                    content.append(System.lineSeparator());
+                }
+            }
+
+            System.out.println(content.toString());
+
+        } finally {
+            
+            con.disconnect();
+        }
     }
 }
