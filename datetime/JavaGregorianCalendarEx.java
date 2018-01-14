@@ -3,6 +3,8 @@ package com.zetcode;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+// Old API
+
 public class JavaGregorianCalendarEx {
 
     public static void main(String[] args) {
