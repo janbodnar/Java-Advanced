@@ -8,14 +8,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DerbyReadImage {
 
-    public static void main(String[] args) throws SQLException, IOException {
+    public static void main(String[] args) {
 
         Connection con = null;
         PreparedStatement pst = null;
-        FileOutputStream fos = null;
 
         String url = "jdbc:derby://localhost:1527/testdb";
         String user = "app";
@@ -31,25 +32,33 @@ public class DerbyReadImage {
             ResultSet result = pst.executeQuery();
             result.next();
 
-            fos = new FileOutputStream("src/main/resources/sid.jpg");
+            try (FileOutputStream fos = new FileOutputStream("src/main/resources/sid.jpg")) {
 
-            Blob blob = result.getBlob("DATA");
-            int len = (int) blob.length();
+                Blob blob = result.getBlob("DATA");
+                int len = (int) blob.length();
 
-            byte[] buf = blob.getBytes(1, len);
+                byte[] buf = blob.getBytes(1, len);
 
-            fos.write(buf, 0, len);
-
-        } finally {
-
-            if (pst != null) {
-                pst.close();
+                fos.write(buf, 0, len);
             }
 
-            if (con != null) {
-                con.close();
+        } catch (SQLException | IOException ex) {
+            Logger.getLogger(DerbyReadImage.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (pst != null) {
+                    pst.close();
+                }
+
+                if (con != null) {
+                    con.close();
+                }
+
+            } catch (SQLException ex) {
+
+                Logger lgr = Logger.getLogger(DerbyReadImage.class.getName());
+                lgr.log(Level.WARNING, ex.getMessage(), ex);
             }
         }
     }
-
 }
