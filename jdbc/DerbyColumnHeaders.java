@@ -47,12 +47,17 @@ public class DerbyColumnHeaders {
                 System.out.print(fmt2);
                 System.out.println(rs.getString(2));
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(DerbyColumnHeaders.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
 
             try {
+
+                if (rs != null) {
+                    rs.close();
+                }
+
                 if (pst != null) {
                     pst.close();
                 }
