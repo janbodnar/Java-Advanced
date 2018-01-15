@@ -7,10 +7,12 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Formatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DerbyColumnHeaders {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
 
         Connection con = null;
         PreparedStatement pst = null;
@@ -23,7 +25,7 @@ public class DerbyColumnHeaders {
         try {
 
             con = DriverManager.getConnection(url, user, password);
-            
+
             String query = "SELECT NAME, TITLE From AUTHORS, "
                     + "Books WHERE AUTHORS.ID=BOOKS.AUTHOR_ID";
             pst = con.prepareStatement(query);
@@ -45,15 +47,24 @@ public class DerbyColumnHeaders {
                 System.out.print(fmt2);
                 System.out.println(rs.getString(2));
             }
-
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DerbyColumnHeaders.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
 
-            if (pst != null) {
-                pst.close();
-            }
+            try {
+                if (pst != null) {
+                    pst.close();
+                }
 
-            if (con != null) {
-                con.close();
+                if (con != null) {
+                    con.close();
+                }
+
+            } catch (SQLException ex) {
+
+                Logger lgr = Logger.getLogger(DerbyColumnHeaders.class.getName());
+                lgr.log(Level.SEVERE, ex.getMessage(), ex);
             }
         }
     }
