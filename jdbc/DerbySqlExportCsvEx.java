@@ -4,10 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DerbySqlExportCsvEx {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
+        
         Connection con = null;
         Statement st = null;
 
@@ -24,15 +27,26 @@ public class DerbySqlExportCsvEx {
             st = con.createStatement();
             st.execute(sql);
 
+        } catch (SQLException ex) {
+            Logger.getLogger(DerbySqlExportCsvEx.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
 
-            if (st != null) {
-                st.close();
-            }
+            try {
 
-            if (con != null) {
-                con.close();
+                if (st != null) {
+                    st.close();
+                }
+
+                if (con != null) {
+                    con.close();
+                }
+
+            } catch (SQLException ex) {
+
+                Logger lgr = Logger.getLogger(DerbySqlExportCsvEx.class.getName());
+                lgr.log(Level.WARNING, ex.getMessage(), ex);
             }
         }
     }
 }
+
