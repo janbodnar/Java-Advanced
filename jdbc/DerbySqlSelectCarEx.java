@@ -5,10 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DerbySqlSelectCarEx {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
 
         Connection con = null;
         PreparedStatement pst = null;
@@ -17,7 +19,7 @@ public class DerbySqlSelectCarEx {
         String user = "app";
         String password = "app";
 
-        int id = 11;
+        int id = 7;
 
         try {
 
@@ -35,16 +37,26 @@ public class DerbySqlSelectCarEx {
                 System.out.println(rs.getInt(2));
             }
 
+        } catch (SQLException ex) {
+            Logger.getLogger(DerbySqlSelectCarEx.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
 
-            if (pst != null) {
-                pst.close();
-            }
+            try {
+                if (pst != null) {
+                    pst.close();
+                }
 
-            if (con != null) {
-                con.close();
+                if (con != null) {
+                    con.close();
+                }
+
+            } catch (SQLException ex) {
+
+                Logger lgr = Logger.getLogger(DerbySqlSelectCarEx.class.getName());
+                lgr.log(Level.WARNING, ex.getMessage(), ex);
             }
 
         }
     }
 }
+
