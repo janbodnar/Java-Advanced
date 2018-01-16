@@ -1,5 +1,6 @@
 package com.zetcode;
 
+import com.zetcode.utils.DBUtils;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Blob;
@@ -45,20 +46,10 @@ public class DerbyReadImage {
         } catch (SQLException | IOException ex) {
             Logger.getLogger(DerbyReadImage.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            try {
-                if (pst != null) {
-                    pst.close();
-                }
-
-                if (con != null) {
-                    con.close();
-                }
-
-            } catch (SQLException ex) {
-
-                Logger lgr = Logger.getLogger(DerbyReadImage.class.getName());
-                lgr.log(Level.WARNING, ex.getMessage(), ex);
-            }
+   
+            DBUtils.closeStatement(pst);
+            DBUtils.closeConnection(con);
         }
     }
 }
+
