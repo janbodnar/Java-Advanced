@@ -15,6 +15,7 @@ public class DerbySqlSelectCarEx {
 
         Connection con = null;
         PreparedStatement pst = null;
+        ResultSet rs = null;
 
         String url = "jdbc:derby://localhost:1527/testdb";
         String user = "app";
@@ -30,7 +31,7 @@ public class DerbySqlSelectCarEx {
             pst = con.prepareStatement(query);
             pst.setInt(1, id);
 
-            ResultSet rs = pst.executeQuery();
+            rs = pst.executeQuery();
 
             if (rs.next()) {
 
@@ -42,10 +43,12 @@ public class DerbySqlSelectCarEx {
             Logger.getLogger(DerbySqlSelectCarEx.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
 
+            DBUtils.closeResultSet(rs);
             DBUtils.closeStatement(pst);
             DBUtils.closeConnection(con);
         }
     }
 }
+
 
 
