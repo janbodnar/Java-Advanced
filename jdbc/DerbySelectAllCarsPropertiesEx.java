@@ -17,8 +17,10 @@ public class DerbySelectAllCarsPropertiesEx {
     private static Properties getConnectionData()  {
 
         Properties props = new Properties();
+        
+        String fileName = "src/main/resources/db.properties";
 
-        try (FileInputStream in = new FileInputStream("src/main/resources/db.properties")) {
+        try (FileInputStream in = new FileInputStream(fileName)) {
             props.load(in);
         } catch (IOException ex) {
             Logger.getLogger(DerbySelectAllCarsPropertiesEx.class.getName()).log(Level.SEVERE, null, ex);
@@ -59,6 +61,7 @@ public class DerbySelectAllCarsPropertiesEx {
 
         } finally {
 
+            DBUtils.closeResultSet(rs);
             DBUtils.closeStatement(pst);
             DBUtils.closeConnection(con);
         }
