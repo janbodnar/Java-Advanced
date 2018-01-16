@@ -1,5 +1,6 @@
 package com.zetcode;
 
+import com.zetcode.utils.DBUtils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -25,7 +26,9 @@ public class DerbyWriteImage {
 
             con = DriverManager.getConnection(url, user, password);
 
-            File img = new File("src/main/resources/sid.jpg");
+            String fileName = "src/main/resources/sid.jpg";
+            
+            File img = new File(fileName);
 
             try (FileInputStream fin = new FileInputStream(img)) {
 
@@ -39,21 +42,10 @@ public class DerbyWriteImage {
             Logger.getLogger(DerbyWriteImage.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
 
-            try {
-
-                if (pst != null) {
-                    pst.close();
-                }
-
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException ex) {
-
-                Logger lgr = Logger.getLogger(DerbyWriteImage.class.getName());
-                lgr.log(Level.SEVERE, ex.getMessage(), ex);
-            }
+            DBUtils.closeStatement(pst);
+            DBUtils.closeConnection(con);
         }
     }
 }
+
 
