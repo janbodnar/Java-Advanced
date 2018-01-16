@@ -1,5 +1,6 @@
 package com.zetcode;
 
+import com.zetcode.utils.DBUtils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -52,25 +53,10 @@ public class DerbyColumnHeaders {
             Logger.getLogger(DerbyColumnHeaders.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
 
-            try {
-
-                if (rs != null) {
-                    rs.close();
-                }
-
-                if (pst != null) {
-                    pst.close();
-                }
-
-                if (con != null) {
-                    con.close();
-                }
-
-            } catch (SQLException ex) {
-
-                Logger lgr = Logger.getLogger(DerbyColumnHeaders.class.getName());
-                lgr.log(Level.SEVERE, ex.getMessage(), ex);
-            }
+            DBUtils.closeResultSet(rs);
+            DBUtils.closeStatement(pst);
+            DBUtils.closeConnection(con);
         }
     }
 }
+
