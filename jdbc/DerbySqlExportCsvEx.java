@@ -1,5 +1,6 @@
 package com.zetcode;
 
+import com.zetcode.utils.DBUtils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -31,22 +32,10 @@ public class DerbySqlExportCsvEx {
             Logger.getLogger(DerbySqlExportCsvEx.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
 
-            try {
-
-                if (st != null) {
-                    st.close();
-                }
-
-                if (con != null) {
-                    con.close();
-                }
-
-            } catch (SQLException ex) {
-
-                Logger lgr = Logger.getLogger(DerbySqlExportCsvEx.class.getName());
-                lgr.log(Level.WARNING, ex.getMessage(), ex);
-            }
+            DBUtils.closeStatement(st);
+            DBUtils.closeConnection(con);
         }
     }
 }
+
 
