@@ -1,5 +1,6 @@
 package com.zetcode;
 
+import com.zetcode.utils.DBUtils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DerbySelectAllCarsEx {
+public class DerbySelectAllCars {
 
     public static void main(String[] args) {
         
@@ -35,30 +36,14 @@ public class DerbySelectAllCarsEx {
 
         } catch (SQLException ex) {
 
-            Logger lgr = Logger.getLogger(DerbySelectAllCarsEx.class.getName());
+            Logger lgr = Logger.getLogger(DerbySelectAllCars.class.getName());
             lgr.log(Level.SEVERE, ex.getMessage(), ex);
 
         } finally {
 
-            try {
-
-                if (rs != null) {
-                    rs.close();
-                }
-
-                if (pst != null) {
-                    pst.close();
-                }
-
-                if (con != null) {
-                    con.close();
-                }
-
-            } catch (SQLException ex) {
-
-                Logger lgr = Logger.getLogger(DerbySelectAllCarsEx.class.getName());
-                lgr.log(Level.WARNING, ex.getMessage(), ex);
-            }
+            DBUtils.closeResultSet(rs);
+            DBUtils.closeStatement(pst);
+            DBUtils.closeConnection(con);
         }
     }
 }
