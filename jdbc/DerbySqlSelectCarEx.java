@@ -1,5 +1,6 @@
 package com.zetcode;
 
+import com.zetcode.utils.DBUtils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -41,22 +42,10 @@ public class DerbySqlSelectCarEx {
             Logger.getLogger(DerbySqlSelectCarEx.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
 
-            try {
-                if (pst != null) {
-                    pst.close();
-                }
-
-                if (con != null) {
-                    con.close();
-                }
-
-            } catch (SQLException ex) {
-
-                Logger lgr = Logger.getLogger(DerbySqlSelectCarEx.class.getName());
-                lgr.log(Level.WARNING, ex.getMessage(), ex);
-            }
-
+            DBUtils.closeStatement(pst);
+            DBUtils.closeConnection(con);
         }
     }
 }
+
 
