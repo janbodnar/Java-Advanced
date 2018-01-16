@@ -1,5 +1,6 @@
 package com.zetcode;
 
+import com.zetcode.utils.DBUtils;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -13,33 +14,16 @@ import java.util.logging.Logger;
 
 public class DerbySelectAllCarsPropertiesEx {
 
-    private static Properties getConnectionData() {
+    private static Properties getConnectionData()  {
 
         Properties props = new Properties();
-        FileInputStream in = null;
 
-        try {
-
-            in = new FileInputStream("src/main/resources/db.properties");
+        try (FileInputStream in = new FileInputStream("src/main/resources/db.properties")) {
             props.load(in);
-
         } catch (IOException ex) {
-
-            Logger lgr = Logger.getLogger(DerbySelectAllCarsPropertiesEx.class.getName());
-            lgr.log(Level.SEVERE, ex.getMessage(), ex);
-
-        } finally {
-
-            try {
-                if (in != null) {
-                    in.close();
-                }
-            } catch (IOException ex) {
-                Logger lgr = Logger.getLogger(DerbySelectAllCarsPropertiesEx.class.getName());
-                lgr.log(Level.SEVERE, ex.getMessage(), ex);
-            }
+            Logger.getLogger(DerbySelectAllCarsPropertiesEx.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         return props;
     }
 
@@ -48,7 +32,7 @@ public class DerbySelectAllCarsPropertiesEx {
         Connection con = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
-        
+
         Properties props = getConnectionData();
 
         String url = props.getProperty("db.url");
@@ -75,25 +59,9 @@ public class DerbySelectAllCarsPropertiesEx {
 
         } finally {
 
-            try {
-
-                if (rs != null) {
-                    rs.close();
-                }
-
-                if (pst != null) {
-                    pst.close();
-                }
-
-                if (con != null) {
-                    con.close();
-                }
-
-            } catch (SQLException ex) {
-
-                Logger lgr = Logger.getLogger(DerbySelectAllCarsPropertiesEx.class.getName());
-                lgr.log(Level.WARNING, ex.getMessage(), ex);
-            }
+            DBUtils.closeStatement(pst);
+            DBUtils.closeConnection(con);
         }
     }
 }
+
