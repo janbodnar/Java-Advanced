@@ -1,5 +1,6 @@
 package com.zetcode;
 
+import com.zetcode.utils.DBUtils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -37,21 +38,9 @@ public class DerbyNoTransaction {
             lgr.log(Level.SEVERE, ex.getMessage(), ex);
         } finally {
 
-            try {
-
-                if (st != null) {
-                    st.close();
-                }
-
-                if (con != null) {
-                    con.close();
-                }
-
-            } catch (SQLException ex) {
-
-                Logger lgr = Logger.getLogger(DerbyNoTransaction.class.getName());
-                lgr.log(Level.SEVERE, ex.getMessage(), ex);
-            }
+            DBUtils.closeStatement(st);
+            DBUtils.closeConnection(con);
         }
     }    
 }
+
