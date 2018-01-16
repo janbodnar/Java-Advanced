@@ -37,21 +37,8 @@ public class DerbySqlInsertEx {
 
         } finally {
 
-            try {
-
-                if (pst != null) {
-                    pst.close();
-                }
-
-                if (con != null) {
-                    con.close();
-                }
-
-            } catch (SQLException ex) {
-
-                Logger lgr = Logger.getLogger(DerbySqlInsertEx.class.getName());
-                lgr.log(Level.SEVERE, ex.getMessage(), ex);
-            }
+            DBUtils.closeStatement(pst);
+            DBUtils.closeConnection(con);
         }
     }
 }
