@@ -1,5 +1,6 @@
 package com.zetcode;
 
+import com.zetcode.utils.DBUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -39,25 +40,9 @@ public class DerbyDataSourceEx {
 
         } finally {
 
-            try {
-
-                if (rs != null) {
-                    rs.close();
-                }
-
-                if (pst != null) {
-                    pst.close();
-                }
-
-                if (con != null) {
-                    con.close();
-                }
-
-            } catch (SQLException ex) {
-
-                Logger lgr = Logger.getLogger(DerbyDataSourceEx.class.getName());
-                lgr.log(Level.WARNING, ex.getMessage(), ex);
-            }
+            DBUtils.closeResultSet(rs);
+            DBUtils.closeStatement(pst);
+            DBUtils.closeConnection(con);
         }
     }
 
@@ -80,3 +65,4 @@ public class DerbyDataSourceEx {
         return ds;
     }
 }
+
