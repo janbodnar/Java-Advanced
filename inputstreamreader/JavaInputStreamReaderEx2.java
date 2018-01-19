@@ -15,7 +15,7 @@ public class JavaInputStreamReaderEx2 {
 
             System.out.print("Give me a cookie: ");
             
-            while (!(line = bin.readLine()).equals("cookie")) {
+            while (!(("cookie").equals(line = bin.readLine()))) {
                 
                 System.out.println(line);
                 System.out.print("Give me a cookie: ");
