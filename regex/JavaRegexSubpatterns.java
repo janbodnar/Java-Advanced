@@ -14,7 +14,7 @@ public class JavaRegexSubpatterns {
         List<String> words = Arrays.asList("book", "bookshelf", "bookworm",
                 "bookcase", "bookish", "bookkeeper", "booklet", "bookmark");
 
-        Pattern p = Pattern.compile("book(worm|worm|keeper)?");
+        Pattern p = Pattern.compile("book(worm|mark|keeper)?");
 
         for (String word : words) {
 
