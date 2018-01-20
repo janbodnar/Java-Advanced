@@ -1,6 +1,6 @@
 package com.zetcode;
 
-// With () characters we have subpatterns
+// Subpatterns are patterns within patterns. They are created with () characters.
 
 import java.util.Arrays;
 import java.util.List;
