@@ -8,6 +8,7 @@ public class JavaStreamReduceOptional2 {
 
         IntStream.range(1, 10).reduce((x, y) -> x + y).ifPresent(s -> System.out.println(s));
         IntStream.range(1, 10).reduce(Integer::sum).ifPresent(s -> System.out.println(s));
-        IntStream.range(1, 10).reduce(MyUtil::add2Ints).ifPresent(s -> System.out.println(s));
+        IntStream.range(1, 10).reduce(MyUtils::add2Ints).ifPresent(s -> System.out.println(s));
     }
 }
+
