@@ -11,7 +11,7 @@ import org.w3c.dom.traversal.NodeFilter;
 import org.w3c.dom.traversal.NodeIterator;
 import org.xml.sax.SAXException;
 
-public class JavaReadXmlDomText {
+public class JavaXmlDomReadText {
 
     public static void main(String[] args) throws ParserConfigurationException, 
             SAXException, IOException {
