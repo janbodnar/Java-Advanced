@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class DerbyBatchUpdates {
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
 
         Connection con = null;
         Statement st = null;
@@ -44,7 +44,20 @@ public class DerbyBatchUpdates {
             System.out.println("Committed " + counts.length + " updates");
 
         } catch (SQLException ex) {
-            Logger.getLogger(DerbyBatchUpdates.class.getName()).log(Level.SEVERE, null, ex);
+
+            try {
+                if (con != null) {
+                    con.rollback();
+                }
+            } catch (SQLException ex2) {
+
+                Logger lgr = Logger.getLogger(DerbyBatchUpdates.class.getName());
+                lgr.log(Level.FINEST, ex2.getMessage(), ex2);
+            }
+
+            Logger lgr = Logger.getLogger(DerbyBatchUpdates.class.getName());
+            lgr.log(Level.FINEST, ex.getMessage(), ex);
+            
         } finally {
 
             DBUtils.closeStatement(st);
@@ -52,5 +65,3 @@ public class DerbyBatchUpdates {
         }
     }
 }
-
-
