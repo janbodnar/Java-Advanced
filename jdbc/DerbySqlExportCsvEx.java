@@ -30,7 +30,7 @@ public class DerbySqlExportCsvEx {
 
         } catch (SQLException ex) {
             Logger lgr = Logger.getLogger(DerbySqlExportCsvEx.class.getName());
-            lgr.log(Level.FINEST, ex.getMessage(), ex);
+            lgr.log(Level.SEVERE, ex.getMessage(), ex);
         } finally {
 
             DBUtils.closeStatement(st);
