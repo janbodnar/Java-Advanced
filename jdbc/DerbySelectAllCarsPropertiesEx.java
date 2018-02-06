@@ -14,18 +14,19 @@ import java.util.logging.Logger;
 
 public class DerbySelectAllCarsPropertiesEx {
 
-    private static Properties getConnectionData()  {
+    private static Properties getConnectionData() {
 
         Properties props = new Properties();
-        
+
         String fileName = "src/main/resources/db.properties";
 
         try (FileInputStream in = new FileInputStream(fileName)) {
             props.load(in);
         } catch (IOException ex) {
-            Logger.getLogger(DerbySelectAllCarsPropertiesEx.class.getName()).log(Level.SEVERE, null, ex);
+            Logger lgr = Logger.getLogger(DerbySelectAllCarsPropertiesEx.class.getName());
+            lgr.log(Level.SEVERE, ex.getMessage(), ex);
         }
-        
+
         return props;
     }
 
@@ -67,4 +68,5 @@ public class DerbySelectAllCarsPropertiesEx {
         }
     }
 }
+
 
