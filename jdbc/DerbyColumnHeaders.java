@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.Formatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,19 +37,20 @@ public class DerbyColumnHeaders {
             String colname1 = meta.getColumnName(1);
             String colname2 = meta.getColumnName(2);
 
-            Formatter fmt1 = new Formatter();
-            fmt1.format("%-21s%s", colname1, colname2);
-            System.out.println(fmt1);
+            String header = String.format("%-21s%s", colname1, colname2);
+            System.out.println(header);
 
             while (rs.next()) {
-                Formatter fmt2 = new Formatter();
-                fmt2.format("%-21s", rs.getString(1));
-                System.out.print(fmt2);
+
+                String row = String.format("%-21s", rs.getString(1));
+                System.out.print(row);
                 System.out.println(rs.getString(2));
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(DerbyColumnHeaders.class.getName()).log(Level.SEVERE, null, ex);
+            
+            Logger lgr = Logger.getLogger(DerbyColumnHeaders.class.getName());
+            lgr.log(Level.FINEST, ex.getMessage(), ex);
         } finally {
 
             DBUtils.closeResultSet(rs);
@@ -59,4 +59,3 @@ public class DerbyColumnHeaders {
         }
     }
 }
-
