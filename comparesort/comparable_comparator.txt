@@ -1,0 +1,24 @@
+Comparable
+
+- int objOne.compareTo(objTwo)	
+- "I can compare myself with another object"
+- in Java it is used to implement natural ordering of objects 
+- there's a single natural default comparison
+- we must modify the class whose instances you want to sort
+- it's in the same class
+- only one implementation 
+- implemented frequently in the API by: String, Wrapper classes, 
+  Date, Calendar.
+
+Comparator 
+
+- int compare(objOne, objTwo)
+- "I can compare two other objects." 
+- multiple ways of comparing two instances of a type - e.g. we  
+  could compare people by age, name etc.
+- we can provide comparators for classes that we do not control
+- multiple implementations
+- meant to be implemented to sort instances of third-party
+  classes.
+
+http://codecramp.com/java-comparable-vs-comparator/
