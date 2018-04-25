@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.collections4.CollectionUtils;
 
+// Compare lists with Apache Commons library
+
 public class CompareListsApacheCollsEx {
     
     public static void main(String[] args) {
