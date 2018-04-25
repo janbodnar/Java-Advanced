@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-// Compare lists by copying lists, sorting, and transforming to strings
+// Compare lists by sorting and transfering to strings
+// We assume that in-place sorting is OK
 
-public class CompareListsEx3 {
-    
-    public static boolean compareList(List<String> ls1, List<String> ls2) {
+public class CompareListsEx2 {
 
-        return ls1.toString().contentEquals(ls2.toString());
+    public static boolean compareList(List<String> l1, List<String> l2) {
+
+        return l1.toString().contentEquals(l2.toString());
     }
 
     public static void main(String[] args) {
@@ -27,24 +28,23 @@ public class CompareListsEx3 {
         words2.add("pen");
         words2.add("rock");
         words2.add("sky");
-        
-        List<String> copyWords = new ArrayList<>();
-        copyWords.addAll(words);
-        
-        List<String> copyWords2 = new ArrayList<>();
-        copyWords2.addAll(words2);      
-        
-        copyWords.sort(Comparator.naturalOrder());
-        copyWords2.sort(Comparator.naturalOrder());
-        
-        boolean equal = compareList(copyWords, copyWords2);
-        
+
+        words.sort(Comparator.naturalOrder());
+        words2.sort(Comparator.naturalOrder());
+
+        System.out.println(words);
+        System.out.println(words2);
+
+        boolean equal = compareList(words, words2);
+
         if (equal) {
 
             System.out.println("Lists are equal");
         } else {
 
             System.out.println("Lists are not equal");
-        }        
+        }
+
     }
 }
+
