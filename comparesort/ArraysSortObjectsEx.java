@@ -65,7 +65,7 @@ class Card implements Comparable<Card> {
     }
 }
 
-public class ArraysSortObjectsEx2 {
+public class ArraysSortObjectsEx {
     
     public static void main(String[] args) {
         
