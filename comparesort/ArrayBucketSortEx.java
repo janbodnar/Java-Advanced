@@ -8,16 +8,20 @@ public class ArrayBucketSortEx {
 
     static int[] doBucketSort(int[] vals, int max) {
 
-        // Bucket Sort
+        // creates empty bucket and sorted array objects
         int[] bucket = new int[max + 1];
         int[] sorted_vals = new int[vals.length];
 
+        // each value is an index in the bucket having value 1
+        // if there are same values, the index is incremented 
         for (int i = 0; i < vals.length; i++) {
             bucket[vals[i]]++;
         }
 
         int outPos = 0;
 
+        // the bucket elements with non zero values are added
+        // to the sorted_values array
         for (int i = 0; i < bucket.length; i++) {
             for (int j = 0; j < bucket[i]; j++) {
                 sorted_vals[outPos++] = i;
@@ -26,7 +30,8 @@ public class ArrayBucketSortEx {
 
         return sorted_vals;
     }
-
+    
+    // calculates max value
     static int max(int[] vals) {
 
         int max = 0;
