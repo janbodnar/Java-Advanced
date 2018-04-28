@@ -81,6 +81,8 @@ public class ArraysSortObjectsEx {
                 new Card(Card.Values.JACK, Card.Suits.SPADES),
                 new Card(Card.Values.JACK, Card.Suits.DIAMONDS),};
 
+        Arrays.sort(cards);
+        
         for (Card card: cards) {
 
             System.out.println(card);
