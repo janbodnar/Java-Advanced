@@ -46,7 +46,8 @@ public class ConversionsEx {
         double x4 = 32f;
         float x5 = (float) 35.567d;
 
-        
+        byte g = (12) * 3;
+        //byte g2 = 3 * g; 
     }
 
 }
