@@ -15,8 +15,8 @@ public class JavaInstantEx {
         System.out.printf("Unix time: %d%n", timestamp.toEpochMilli());
 
         //Now minus five days
-        Instant minusThree = timestamp.minus(5, ChronoUnit.DAYS);
-        System.out.println("Now minus five days:" + minusThree);
+        Instant minusFive = timestamp.minus(5, ChronoUnit.DAYS);
+        System.out.println("Now minus five days:" + minusFive);
 
         ZonedDateTime atZone = timestamp.atZone(ZoneId.of("GMT"));
         System.out.printf("GMT: %s%n", atZone);
