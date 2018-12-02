@@ -2,7 +2,6 @@ package com.zetcode;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
 
 // Comparing list of objects by multiple object fields
 
@@ -44,7 +43,13 @@ class Person {
 
     @Override
     public String toString() {
-        return "Person{" + "name=" + name + ", age=" + age + ", city=" + city + '}';
+
+        final var sb = new StringBuilder("Person{");
+        sb.append("name='").append(name).append('\'');
+        sb.append(", age=").append(age);
+        sb.append(", city='").append(city).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
 
@@ -52,7 +57,7 @@ public class ListSortMultipleEx {
 
     public static void main(String[] args) {
 
-        List<Person> persons = Arrays.asList(
+        var persons = Arrays.asList(
                 new Person("Peter", 23, "New York"),
                 new Person("Sarah", 13, "Las Vegas"),
                 new Person("Lucy", 33, "Toronto"),
