@@ -10,8 +10,8 @@ public class CompareListsWithHashSetEx {
 
     public static void main(String[] args) {
 
-        List<String> words = new ArrayList<>();
-        List<String> words2 = new ArrayList<>();
+        var words = new ArrayList<String>();
+        var words2 = new ArrayList<String>();
 
         words.add("blue");
         words.add("green");
@@ -21,9 +21,9 @@ public class CompareListsWithHashSetEx {
         words2.add("green");
         words2.add("blue");
         words2.add("red");
-        words2.add("yellow");     
-        
-        
+        words2.add("yellow");
+
+
         boolean equal = listEqualsIgnoreOrder(words, words2);
 
         if (equal) {
@@ -32,13 +32,13 @@ public class CompareListsWithHashSetEx {
             System.out.println("The lists are not equal");
         }
     }
-    
+
     private static <T> boolean listEqualsIgnoreOrder(List<T> l1, List<T> l2) {
-        
+
         if (l1 == null || l2 == null) {
             return l1 == l2;
         }
-             
+
         return new HashSet<>(l1).equals(new HashSet<>(l2));
-    }    
+    }
 }
