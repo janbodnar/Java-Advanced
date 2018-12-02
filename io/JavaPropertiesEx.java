@@ -1,25 +1,26 @@
 package com.zetcode;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
 public class JavaPropertiesEx {
 
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args) throws IOException {
 
-        Properties props = new Properties();
-        FileInputStream fis = new FileInputStream("src/resources/db.properties");
+        var props = new Properties();
 
-        props.load(fis);
+        try (var fis = new FileInputStream("src/resource/db.properties")) {
 
-        String url = props.getProperty("db.url");
-        String user = props.getProperty("db.user");
-        String passwd = props.getProperty("db.passwd");
-        
+            props.load(fis);
+        }
+
+        var url = props.getProperty("db.url");
+        var user = props.getProperty("db.user");
+        var password = props.getProperty("db.password");
+
         System.out.println(url);
         System.out.println(user);
-        System.out.println(passwd);
+        System.out.println(password);
     }
 }
