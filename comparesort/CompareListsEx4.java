@@ -11,8 +11,8 @@ public class CompareListsEx4 {
     public static void main(String[] args) {
 
         // Size & values of elements are same but only order is different
-        List<Long> vals1 = new ArrayList<>(Arrays.asList(65L, 74L, 89L));
-        List<Long> vals2 = new ArrayList<>(Arrays.asList(65L, 89L, 74L));
+        var vals1 = new ArrayList<>(Arrays.asList(65L, 74L, 89L));
+        var vals2 = new ArrayList<>(Arrays.asList(65L, 89L, 74L));
         System.out.printf("Output: %s%n", compareLists(vals1, vals2));
 
         // Values are different
@@ -39,7 +39,7 @@ public class CompareListsEx4 {
     public static boolean compareLists(List<Long> l1, List<Long> l2) {
 
         if (l1 == null && l2 == null) {
-            
+
             return true;
         }
 
@@ -71,7 +71,7 @@ public class CompareListsEx4 {
         } else {
             return false;
         }
-        
+
         return true;
     }
 }
