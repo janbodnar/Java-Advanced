@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 // Compare lists by sorting and transferring to strings
+// We assume that in-place sorting is OK
 
 public class CompareListsEx2 {
 
