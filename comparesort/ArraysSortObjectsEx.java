@@ -40,6 +40,7 @@ class Card implements Comparable<Card> {
     private Values value;
 
     public Card(Values value, Suits suit) {
+
         this.value = value;
         this.suit = suit;
     }
@@ -61,7 +62,8 @@ class Card implements Comparable<Card> {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Card{");
+
+        final var sb = new StringBuilder("Card{");
         sb.append("suit=").append(suit);
         sb.append(", value=").append(value);
         sb.append('}');
@@ -79,11 +81,11 @@ public class ArraysSortObjectsEx {
                 new Card(Card.Values.ACE, Card.Suits.CLUBS),
                 new Card(Card.Values.NINE, Card.Suits.SPADES),
                 new Card(Card.Values.JACK, Card.Suits.SPADES),
-                new Card(Card.Values.JACK, Card.Suits.DIAMONDS),};
+                new Card(Card.Values.JACK, Card.Suits.DIAMONDS)};
 
         Arrays.sort(cards);
-        
-        for (Card card: cards) {
+
+        for (Card card : cards) {
 
             System.out.println(card);
         }
