@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-// Compare lists by sorting and transfering to strings
+// Compare lists by sorting and transferring to strings
 
 public class CompareListsEx2 {
 
@@ -15,25 +15,31 @@ public class CompareListsEx2 {
 
     public static void main(String[] args) {
 
-        List<String> one = new ArrayList<>();
-        List<String> two = new ArrayList<>();
+        var one = new ArrayList<String>();
+        var two = new ArrayList<String>();
 
         one.add("dog");
         one.add("pen");
         one.add("sky");
         one.add("rock");
-        
+
         two.add("dog");
         two.add("pen");
         two.add("rock");
         two.add("sky");
-        
+
         one.sort(Comparator.naturalOrder());
         two.sort(Comparator.naturalOrder());
-        
+
         System.out.println(one);
         System.out.println(two);
 
-        System.out.println("Output: " + compareList(one, two));
+        if (compareList(one, two)) {
+
+            System.out.println("The lists are equal");
+        } else {
+
+            System.out.println("The lists are not equal");
+        }
     }
 }
