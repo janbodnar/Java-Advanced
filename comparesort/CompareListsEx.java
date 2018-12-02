@@ -1,7 +1,6 @@
 package com.zetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,8 +11,8 @@ public class CompareListsEx {
     public static void main(String[] args) {
 
         // Solution one
-        List<String> words = Arrays.asList("dog", "pen", "sky", "rock");
-        List<String> words2 = Arrays.asList("dog", "pen", "sky", "rock");
+        var words = List.of("dog", "pen", "sky", "rock");
+        var words2 = List.of("dog", "pen", "sky", "rock");
 
         // O(n^2)
         boolean equal = (words.size() == words2.size()) && words.containsAll(words2);
@@ -26,15 +25,15 @@ public class CompareListsEx {
         }
 
         // Solution two
-        List<String> listOne = new ArrayList(Arrays.asList("dog", "pen", "sky", "rock"));
-        List<String> listTwo = new ArrayList(Arrays.asList("dog", "pen", "sky", "rock"));
+        var listOne = new ArrayList<>(List.of("dog", "pen", "sky", "rock"));
+        var listTwo = new ArrayList<>(List.of("dog", "pen", "sky", "rock"));
 
         listOne.retainAll(listTwo);
         System.out.println(listOne);
 
         // Solution three
-        List<String> words3 = new ArrayList<>();
-        List<String> words4 = new ArrayList<>();
+        var words3 = new ArrayList<String>();
+        var words4 = new ArrayList<String>();
 
         words3.add("blue");
         words3.add("green");
