@@ -10,19 +10,20 @@ class NextChristmas implements TemporalAdjuster {
     @Override
     public Temporal adjustInto(Temporal temporal) {
 
-        return temporal.with(ChronoField.MONTH_OF_YEAR, 12).with(ChronoField.DAY_OF_MONTH, 25);
+        return temporal.with(ChronoField.MONTH_OF_YEAR, 12)
+                .with(ChronoField.DAY_OF_MONTH, 25);
 
     }
 }
 
-public class JavaCustomTemporalAdjustersEx2 {
+public class JavaCustomTemporalAdjusterEx2 {
 
     public static void main(String[] args) {
 
         var now = LocalDate.now();
         System.out.println("Today: " + now);
 
-        var date2 = now.with(new NextChristmas());
-        System.out.println("Next XMas: " + date2);
+        var xmas = now.with(new NextChristmas());
+        System.out.println("Next XMas: " + xmas);
     }
 }
