@@ -21,7 +21,7 @@ public class JavaTemporalAdjustersEx {
         System.out.printf("last day of month: %s%n", date2);
 
         var date3 = localDate.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
-        System.out.printf("Next monday: %s%n", date3);
+        System.out.printf("next Monday: %s%n", date3);
 
         var date4 = localDate.with(TemporalAdjusters.firstDayOfNextMonth());
         System.out.printf("first day of next month: %s%n", date4);
@@ -31,5 +31,8 @@ public class JavaTemporalAdjustersEx {
 
         var date6 = localDate.with(TemporalAdjusters.firstDayOfYear());
         System.out.printf("first day of year: %s%n", date6);
+
+        var date7 = localDate.with(TemporalAdjusters.lastInMonth(DayOfWeek.SUNDAY));
+        System.out.printf("last Sunday of month: %s%n", date7);
     }
 }
