@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+    <name>Paul Wilson</name>
+    <friend>
+        <name>Lucy New</name>
+        <phone>26345745674</phone>
+    </friend>
+    <friend>
+        <name>John Doe</name>
+        <phone>32452363456</phone>
+    </friend>
+</root>
