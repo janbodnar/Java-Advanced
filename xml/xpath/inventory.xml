@@ -10,6 +10,7 @@
         <isbn>978-1-4842-3347-4</isbn>
         <price>49.99</price>
     </book>
+    
     <book year="2017">
         <title>Python Testing with pytest</title>
         <author>Brian Okken</author>
@@ -17,6 +18,7 @@
         <isbn>978-1-68-050-240-4</isbn>
         <price>43.95</price>
     </book>
+    
     <book year="2018">
         <title>Deep Learning with Python</title>
         <author>Francois Chollet</author>
