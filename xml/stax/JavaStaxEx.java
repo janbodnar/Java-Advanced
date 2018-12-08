@@ -28,11 +28,11 @@ public class JavaStaxEx {
                 case XMLStreamConstants.START_ELEMENT:
 
                     var startElement = event.asStartElement();
-                    var qName = startElement.getName().getLocalPart();
+                    var tagName = startElement.getName().getLocalPart();
 
-                    System.out.println("qName: " + qName);
+                    System.out.println("tag: " + tagName);
 
-                    if (qName.equalsIgnoreCase("user")) {
+                    if (tagName.equalsIgnoreCase("user")) {
 
                         System.out.println("Start Element : user");
 
@@ -40,11 +40,11 @@ public class JavaStaxEx {
                         var id = attributes.next().getValue();
 
                         System.out.println("Id: " + id);
-                    } else if (qName.equalsIgnoreCase("firstname")) {
+                    } else if (tagName.equalsIgnoreCase("firstname")) {
                         bFirstName = true;
-                    } else if (qName.equalsIgnoreCase("lastname")) {
+                    } else if (tagName.equalsIgnoreCase("lastname")) {
                         bLastName = true;
-                    } else if (qName.equalsIgnoreCase("occupation")) {
+                    } else if (tagName.equalsIgnoreCase("occupation")) {
                         bOccupation = true;
                     }
 
