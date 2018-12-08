@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+    <user id="1">
+        <firstname>Robert</firstname>
+        <lastname>Brown</lastname>
+        <occupation>programmer</occupation>
+    </user>
+    <user id="2">
+        <firstname>Pamela</firstname>
+        <lastname>Kyle</lastname>
+        <occupation>writer</occupation>
+    </user>
+    <user id="3">
+        <firstname>Lucy</firstname>
+        <lastname>Smith</lastname>
+        <occupation>teacher</occupation>
+    </user>
+    <user id="4">
+        <firstname>John</firstname>
+        <lastname>Doe</lastname>
+        <occupation>gardener</occupation>
+    </user>
+</users>
