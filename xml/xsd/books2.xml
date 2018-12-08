@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<books xmlns="http://webcode.me/schema/books"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://webcode.me/schema/books http://webcode.me/myschema.xsd">
+
+    <book year="2018">
+        <title>Java Language Features</title>
+        <author>Kishori Sharan</author>
+        <publisher>Apress</publisher>
+        <isbn>978-1-4842-3347-4</isbn>
+        <price>49.99</price>
+    </book>
+
+    <book year="2017">
+        <title>Python Testing with pytest</title>
+        <author>Brian Okken</author>
+        <publisher>The Pragmatic Programmers</publisher>
+        <isbn>978-1-68-050-240-4</isbn>
+        <price>43.95</price>
+    </book>
+
+    <book year="2018">
+        <title>Deep Learning with Python</title>
+        <author>Francois Chollet</author>
+        <publisher>Manning</publisher>
+        <isbn>0553573862</isbn>
+        <price>49.99</price>
+    </book>
+
+    <book year="2017">
+        <title>Laravel Up &amp; Running</title>
+        <author>Matt Stauffer</author>
+        <publisher>O'Reilly</publisher>
+        <isbn>978-1-491-93698-5</isbn>
+        <price>44.99</price>
+    </book>
+
+    <book year="2017">
+        <title>Sams Teach Yourself TCP/IP</title>
+        <author>Joe Casad</author>
+        <publisher>SAMS</publisher>
+        <isbn>978-0-672-33789-5</isbn>
+        <price>39.99</price>
+    </book>
+
+    <book year="2017">
+        <title>Pro Spring 5</title>
+        <author>Iuliana Cosmina</author>
+        <author>Rob Harrop</author>
+        <author>Chris Schaefer</author>
+        <author>Clarence Ho</author>
+        <publisher>Apress</publisher>
+        <isbn>978-1-4842-2807-4</isbn>
+        <price>49.99</price>
+    </book>
+
+    <book year="2018">
+        <title>CSS The Definitive Guide</title>
+        <author>Eric A. Meyer</author>
+        <author>Estelle Weyl</author>
+        <publisher>O'Reilly</publisher>
+        <isbn>978-1-449-39319-9</isbn>
+        <price>69.99</price>
+    </book>
+
+</books>
