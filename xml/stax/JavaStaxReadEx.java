@@ -4,80 +4,85 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 public class JavaStaxReadEx {
 
-    public static void main(String[] args) throws FileNotFoundException, XMLStreamException {
+    public static void main(String[] args) throws IOException, XMLStreamException {
 
         boolean bFirstName = false;
         boolean bLastName = false;
         boolean bOccupation = false;
 
         var factory = XMLInputFactory.newInstance();
-        var fis = new FileInputStream("src/main/resources/users.xml");
-        var eventReader = factory.createXMLEventReader(fis, StandardCharsets.UTF_8.name());
 
-        while (eventReader.hasNext()) {
+        try(var fis = new FileInputStream("src/main/resources/users.xml")) {
 
-            var event = eventReader.nextEvent();
+            var eventReader = factory.createXMLEventReader(fis, StandardCharsets.UTF_8.name());
 
-            switch (event.getEventType()) {
+            while (eventReader.hasNext()) {
 
-                case XMLStreamConstants.START_ELEMENT:
+                var event = eventReader.nextEvent();
 
-                    var startElement = event.asStartElement();
-                    var tagName = startElement.getName().getLocalPart();
+                switch (event.getEventType()) {
 
-                    System.out.println("tag: " + tagName);
+                    case XMLStreamConstants.START_ELEMENT:
 
-                    if (tagName.equalsIgnoreCase("user")) {
+                        var startElement = event.asStartElement();
+                        var tagName = startElement.getName().getLocalPart();
 
-                        System.out.println("Start Element : user");
+                        System.out.println("tag: " + tagName);
 
-                        var attributes = startElement.getAttributes();
-                        var id = attributes.next().getValue();
+                        if (tagName.equalsIgnoreCase("user")) {
 
-                        System.out.println("Id: " + id);
-                    } else if (tagName.equalsIgnoreCase("firstname")) {
-                        bFirstName = true;
-                    } else if (tagName.equalsIgnoreCase("lastname")) {
-                        bLastName = true;
-                    } else if (tagName.equalsIgnoreCase("occupation")) {
-                        bOccupation = true;
-                    }
+                            System.out.println("Start Element : user");
 
-                    break;
+                            var attributes = startElement.getAttributes();
+                            var id = attributes.next().getValue();
 
-                case XMLStreamConstants.CHARACTERS:
+                            System.out.println("Id: " + id);
+                        } else if (tagName.equalsIgnoreCase("firstname")) {
+                            bFirstName = true;
+                        } else if (tagName.equalsIgnoreCase("lastname")) {
+                            bLastName = true;
+                        } else if (tagName.equalsIgnoreCase("occupation")) {
+                            bOccupation = true;
+                        }
 
-                    var characters = event.asCharacters();
+                        break;
 
-                    if (bFirstName) {
-                        System.out.println("First name: " + characters.getData());
-                        bFirstName = false;
-                    }
-                    if (bLastName) {
-                        System.out.println("Last name: " + characters.getData());
-                        bLastName = false;
-                    }
-                    if (bOccupation) {
-                        System.out.println("Occupation: " + characters.getData());
-                        bOccupation = false;
-                    }
-                    break;
+                    case XMLStreamConstants.CHARACTERS:
 
-                case XMLStreamConstants.END_ELEMENT:
+                        var characters = event.asCharacters();
 
-                    var endElement = event.asEndElement();
+                        if (bFirstName) {
+                            System.out.println("First name: " + characters.getData());
+                            bFirstName = false;
+                        }
+                        if (bLastName) {
+                            System.out.println("Last name: " + characters.getData());
+                            bLastName = false;
+                        }
+                        if (bOccupation) {
+                            System.out.println("Occupation: " + characters.getData());
+                            bOccupation = false;
+                        }
+                        break;
 
-                    if (endElement.getName().getLocalPart().equalsIgnoreCase("user")) {
-                        System.out.println("End element : user");
-                        System.out.println();
-                    }
-                    break;
+                    case XMLStreamConstants.END_ELEMENT:
+
+                        var endElement = event.asEndElement();
+
+                        if (endElement.getName().getLocalPart().equalsIgnoreCase("user")) {
+                            System.out.println("End element : user");
+                            System.out.println();
+                        }
+                        break;
+                }
             }
+
+            eventReader.close();
         }
     }
 }
