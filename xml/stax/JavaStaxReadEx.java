@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+// TODO add new nationality parameter to read
+
 public class JavaStaxReadEx {
 
     public static void main(String[] args) throws IOException, XMLStreamException {
