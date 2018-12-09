@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<students>
+
+    <student>
+        <firstName>John</firstName>
+        <lastName>Doe</lastName>
+        <exam>
+            <subject>Math</subject>
+            <grade>D</grade>
+        </exam>
+    </student>
+
+    <student>
+        <firstName>Jack</firstName>
+        <lastName>Smith</lastName>
+        <exam>
+            <subject>Math</subject>
+            <grade>A</grade>
+        </exam>
+        <exam>
+            <subject>Biology</subject>
+            <grade>A</grade>
+        </exam>
+        <exam>
+            <subject>Literature</subject>
+            <grade>B</grade>
+        </exam>
+    </student>
+
+</students>
