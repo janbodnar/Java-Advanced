@@ -8,6 +8,8 @@ import java.io.File;
 
 public class JavaXmlTransformEx {
 
+    // Program arguments: stylesheet.xslt input.xml output.html
+    
     public static void main(String[] args) throws TransformerException {
 
         var xslt = new StreamSource(new File(args[0]));
