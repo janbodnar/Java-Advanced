@@ -1,7 +1,8 @@
      
 In the nginx configuration file, we need to allow CORS
 
-```location / {
+```
+location / {
         # Simple requests
         if ($request_method ~* "(GET|POST)") {
            add_header "Access-Control-Allow-Origin"  *;
@@ -10,7 +11,8 @@ In the nginx configuration file, we need to allow CORS
         # First attempt to serve request as file, then
         # as directory, then fall back to displaying a 404.
         try_files $uri $uri/ =404;
-}```
+}
+```
 
 XMLHttpRequest API provides client functionality for transferring data between 
 a client and a server. It allows an easy way to retrieve data from a URL without 
