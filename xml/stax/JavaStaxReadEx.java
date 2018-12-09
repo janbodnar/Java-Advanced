@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.nio.charset.StandardCharsets;
 
-public class JavaStaxEx {
+public class JavaStaxReadEx {
 
     public static void main(String[] args) throws FileNotFoundException, XMLStreamException {
 
