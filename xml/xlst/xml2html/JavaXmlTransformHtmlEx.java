@@ -6,9 +6,9 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 
-public class JavaXmlTransformEx {
+public class JavaXmlTransformHtmlEx {
 
-    // Program arguments: stylesheet.xslt input.xml output.html
+    // Program arguments: stylesheet.xsl input.xml output.html
     
     public static void main(String[] args) throws TransformerException {
 
