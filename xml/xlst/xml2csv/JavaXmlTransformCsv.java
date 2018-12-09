@@ -10,6 +10,7 @@ import java.io.File;
 public class JavaXmlTransformCsv {
 
     // Program arguments stylesheet.csl users.xml users.csv
+    // TODO add nationality element
 
     public static void main(String[] args) throws TransformerException {
 
