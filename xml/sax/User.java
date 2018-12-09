@@ -1,7 +1,7 @@
 package com.zetcode;
 
 public class User {
-    
+
     private String firstName;
     private String lastName;
     private String occupation;
@@ -32,6 +32,13 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "firstName=" + firstName + ", lastName=" + lastName + ", occupation=" + occupation + '}';
+
+        final var sb = new StringBuilder("User{");
+        sb.append("firstName='").append(firstName).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
+        sb.append(", occupation='").append(occupation).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
+
