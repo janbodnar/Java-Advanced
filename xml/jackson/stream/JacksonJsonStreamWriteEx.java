@@ -6,7 +6,7 @@ import com.fasterxml.jackson.core.JsonFactory;
 import java.io.File;
 import java.io.IOException;
 
-public class JacksonJsonStreamEx {
+public class JacksonJsonStreamWriteEx {
 
     public static void main(String[] args) throws IOException {
 
