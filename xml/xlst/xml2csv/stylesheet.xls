@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:xls="http://www.w3.org/1999/XSL/Transform">
+
+    <xls:output method="text"/>
+    <xsl:template match="/users">
+
+        <xsl:for-each select="user">
+            <xsl:value-of select="@id"/>, <xsl:value-of select="firstname"/>, <xsl:value-of select="lastname"/>, <xsl:value-of select="occupation"/>
+            <xsl:text>&#xa;</xsl:text>
+        </xsl:for-each>
+
+    </xsl:template>
+
+</xsl:stylesheet>
