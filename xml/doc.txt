@@ -1,0 +1,188 @@
+XML 
+ 
+ 
+Extensible Markup Language (XML) is a popular human-readable and machine-readable 
+markup language. The design goals of XML emphasize simplicity, generality, and usability 
+across the Internet. It is a textual data format with strong support via Unicode for 
+different human languages. Originally designed for large-scale electronic publishing, 
+XML is widely used in the exchange of a large variety of data among software components, 
+systems, and enterprices.
+
+XML is an industry standard developed by World Wide Web Consortium (W3C). It is
+not tied to any programming language or software vendor. XML is extensible,
+platform-independent, and supports internationalization. 
+
+
+******************************************************************************
+
+Well-formed and valid XML
+
+For an application to accept an XML document, it must be both well formed and
+valid. These terms are defined in the XML 1.0 Recommendation, with XML Schema
+extending the meaning of valid.
+
+To be well formed, an XML document must follow these rules:
+
+ -   The document must have exactly one root element.
+ -   Every element is either self closing (like <br />) or has a closing tag.
+ -   Elements are nested properly (i.e., <p><em></p></em> is not allowed).
+ -   The document has no angle brackets that are not part of tags. Characters <, >, 
+     and & outside of tags are replaced by &lt;, &gt;, and &amp;.
+  -  Attribute values are quoted.
+
+
+To be valid, a document must be well formed, it must have an associated DTD or
+schema, and it must comply with that DTD or schema. Ensuring a document is well
+formed is easy. In this article, we focus on ensuring our documents are valid.
+
+
+******************************************************************************
+
+Java XML API groups
+
+
+JAXP (Java API for XML Processing) is a rather outdated umbrella term covering
+the various low-level XML APIs in JavaSE, such as DOM, SAX and StAX.
+
+JAXB (Java Architecture for XML Binding) is a specific API (the stuff under
+javax.xml.bind) that uses annotations to bind XML documents to a java object
+model.
+
+****************************
+
+SAX
+
+SAX (Simple API for XML) is an event-driven algorithm for parsing XML documents.
+SAX is an alternative to the Document Object Model (DOM). Where the DOM reads
+the whole document to operate on XML, SAX parsers read XML node by node, issuing
+parsing events while making a step through the input stream. SAX processes
+documents state-independently (the handling of an element does not depend on the
+elements that came before). SAX parsers are read-only.
+
+SAX parsers are faster and require less memory. On the other hand, DOM is easier
+to use and there are tasks, such as sorting elements, rearranging elements or
+looking up elements, that are faster with DOM. 
+
+DOM
+
+Document Object Model (DOM) is a standard tree structure, where each node
+contains one of the components from an XML structure. Element nodes and text
+nodes are the two most common types of nodes. With DOM functions we can create
+nodes, remove nodes, change their contents, and traverse the node hierarchy. 
+
+
+StAX
+
+StAX was designed as a median between these two opposites. In the StAX metaphor,
+the programmatic entry point is a cursor that represents a point within the
+document. The application moves the cursor forward - 'pulling' the information
+from the parser as it needs. This is different from an event based API - such as
+SAX - which 'pushes' data to the application - requiring the application to
+maintain state between events as necessary to keep track of location within the
+document. 
+
+StAX has no schema validation. It has support for XML writing.
+
+JAXB
+
+The Java Architecture for XML Binding (JAXB) provides an API and tools that
+automate the mapping between XML documents and Java objects. JAXB allows to
+unmarshal XML content into a Java representation, access and update the Java
+representation, and marshal the Java representation of the XML content into XML
+content. 
+
+****************************
+
+XML namespace
+
+XML Namespaces provide a method to avoid element name conflicts.
+XML namespaces are used for providing uniquely named elements and attributes 
+in an XML document. They are defined in a W3C recommendation. 
+An XML instance may contain element or attribute names from more 
+than one XML vocabulary. If each vocabulary is given a namespace, 
+the ambiguity between identically named elements or attributes can be resolved. 
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="books"/>
+
+</xs:schema>
+
+**********************************
+
+XSL 
+
+XSL which stands for EXtensible Stylesheet Language. 
+It is similar to XML as CSS is to HTML.
+
+Parts of XSL:
+
+    XSLT − used to transform XML documents into various other types of documents.
+    XPath − used to navigate XML documents
+    XSL-FO − used to format XML documents
+
+
+XPath 
+
+XPath (XML Path Language) is a query language for selecting nodes from an XML document. 
+In addition, XPath may be used to compute values (e.g., strings, numbers, or Boolean values) 
+from the content of an XML document. XPath was defined by the World Wide Web Consortium (W3C).
+
+Selecting nodes in XPath
+
+nodename	Selects all nodes with the name "nodename"
+/	        Selects from the root node
+//      	Selects nodes in the document from the current node that match the 
+            selection no matter where they are
+.	        Selects the current node
+..	        Selects the parent of the current node
+@	        Selects attributes
+
+
+**********************************************************************
+
+XLS-FO 
+
+XSL-FO (XSL Formatting Objects) is a markup language for XML document formatting that 
+is most often used to generate PDF files. XSL-FO is part of XSL (Extensible Stylesheet Language), 
+a set of W3C technologies designed for the transformation and formatting of XML data. 
+The other parts of XSL are XSLT and XPath.
+
+
+Apache™ FOP (Formatting Objects Processor) is a print formatter driven by 
+XSL formatting objects (XSL-FO) and an output independent formatter. 
+It is a Java application that reads a formatting object (FO) tree and renders 
+the resulting pages to a specified output. FOP uses the standard XSL-FO file format
+ as input, lays the content out into pages, then renders it to the requested output.
+
+xsi vs xsd 
+https://stackoverflow.com/questions/41035128/what-is-the-difference-between-xsd-and-xsi
+
+xls-fo 
+
+https://stackoverflow.com/questions/13693118/what-is-wrong-with-my-xsl-fo-code
+https://stackoverflow.com/questions/212577/how-do-you-create-a-pdf-from-xml-in-java/41049405
+https://github.com/bzdgn/apache-fop-example/blob/master/src/main/resources/template.xsl
+https://netjs.blogspot.com/2015/07/how-to-create-pdf-from-xml-using-apache-fop.html
+
+
+*******************************************************
+
+Jackson
+
+Jackson started as a high-performance JSON processor for Java. Over the years it
+developed into a suite of data-processing tools for Java (and the JVM
+platform), including the flagship streaming JSON parser / generator library,
+matching data-binding library (POJOs to and from JSON) and additional data
+format modules to process data encoded in Avro, BSON, CBOR, CSV, Smile, (Java)
+Properties, Protobuf, XML or YAML
+
+Jackson has three core modules:
+
+
+-  Streaming (docs) ("jackson-core") defines low-level streaming API, and includes 
+       JSON-specific implementations
+-  Annotations (docs) ("jackson-annotations") contains standard Jackson annotations
+-  Databind (docs) ("jackson-databind") implements data-binding (and object serialization) 
+       support on streaming package; it depends both on streaming and annotations packages
+
