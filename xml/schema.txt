@@ -1,0 +1,471 @@
+XML Schema
+
+
+XML Schema is an XML-based language used to create XML-based languages and data
+models. An XML schema defines element and attribute names for a class of XML
+documents. The schema also specifies the structure that those documents must
+adhere to and the type of content that each element can hold.
+
+XML documents that attempt to adhere to an XML schema are said to be instances
+of that schema. If they correctly adhere to the schema, then they are valid
+instances. This is not the same as being well formed. A well-formed XML document
+follows all the syntax rules of XML, but it does not necessarily adhere to any
+particular schema. So, an XML document can be well formed without being valid,
+but it cannot be valid unless it is well formed.
+
+An XML schema describes the structure of an XML instance document by defining
+what each element must or may contain. An element is limited by its type. For
+example, an element of complex type can contain child elements and attributes,
+whereas a simple-type element can only contain text.
+
+Schema example
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Author">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="FirstName" type="xs:string" />
+        <xs:element name="LastName" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+
+Valid XML document 
+
+<?xml version="1.0"?>
+
+<Author xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="schema.xsd">
+
+    <FirstName>Peter</FirstName>
+    <LastName>Novak</LastName>
+
+</Author>
+
+
+An XML schema is an XML document and must follow all the syntax
+rules of any other XML document; that is, it must be well formed. XML schemas
+also have to follow the rules defined in the "Schema of schemas," which defines,
+among other things, the structure of and element and attribute names in an XML
+schema.
+
+Schema authors can define their own types or use the built-in types. 
+
+The following is a high-level overview of Schema types.
+
+ -   Elements can be of simple type or complex type.
+ -   Simple type elements can only contain text. They can not have child elements or attributes.
+ -   All the built-in types are simple types (e.g, xs:string).
+ -   Schema authors can derive simple types by restricting another simple type. For example, 
+        an email type could be derived by limiting a string to a specific pattern.
+ -   Simple types can be atomic (e.g, strings and integers) or non-atomic (e.g, lists).
+ -   Complex-type elements can contain child elements and attributes as well as text.
+ -   By default, complex-type elements have complex content, meaning that they have child elements.
+ -   Complex-type elements can be limited to having simple content, meaning they only 
+        ontain text. They are different from simple type elements in that they have attributes.
+ -   Complex types can be limited to having no content, meaning they are empty, but they 
+        may have attributes.
+ -   Complex types may have mixed content - a combination of text and child elements.
+
+
+Schema Overview
+
+-    Elements
+-    Cardinality
+-    Simple Types
+-    Complex Types
+-    Compositors
+-    Reuse
+-    Attributes
+-    Mixed Element Content
+
+
+*** Elements ***
+
+Elements are the main building block of any XML document; they contain the data
+and determine the structure of the document. An element can be defined within an
+XML Schema (XSD) as follows:
+
+<xs:element name="x" type="y"/>
+
+An element definition within the XSD must have a name property; this is the name
+that will appear in the XML document. The type property provides the description
+of what can be contained within the element when it appears in the XML document.
+There are a number of predefined types, such as xs:string, xs:integer,
+xs:boolean or xs:date (see the XSD standard for a complete list). You also can
+create a user-defined type by using the <xs:simpleType> and <xs:complexType>
+tags.
+
+<xs:element name="published" type="xs:date"/>  ->  <published>2002-09-24</published>
+<xs:element name="address" type="xs:string"/>  ->  <address>Baker Street 200</address>
+<xs:element name="OrderID" type="xs:int"/>     ->  <OrderID>34635367</OrderID>
+
+-default- attribute value is used if no value is specified; -fixed- is set to only one 
+possible value.
+
+
+*** Cardinality ***
+
+Cardinality
+
+Cardinality specifies how many times an element can appear in the document.
+It is specified using the -minOccurs- and -maxOccurs- attributes. In this way,
+an element can be mandatory, optional, or appear many times. minOccurs can be
+assigned any non-negative integer value (for example: 0, 1, 2, 3... and so
+forth), and maxOccurs can be assigned any non-negative integer value or the
+string constant "unbounded", meaning no maximum.
+
+The default values for minOccurs and maxOccurs is 1. So, if both the minOccurs
+and maxOccurs attributes are absent, as in all the previous examples, the
+element must appear once and once only.
+
+
+*** Simple types ***
+
+Simple-type elements have no children or attributes. There are two types of
+simple type elements: built-in and derived elements.
+
+For example, the Name element below is a simple-type element; whereas the Person 
+and HomePage elements are not.
+
+<?xml version="1.0"?>
+<Person>
+	<Name>Mark Twain</Name>
+	<HomePage URL="http://www.marktwain.com"/>
+</Person>
+
+* Built-in simple types *
+
+Built-in simple data types: string, boolean, decimal, float, double, duration
+        dateTime, time, date ...
+
+Derived built-in simple data types: ID, Name, Language ...
+
+<?xml version="1.0" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Author">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="FirstName" type="xs:string"/>
+				<xs:element name="LastName" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
+
+The FirstName and LastName elements are simple types. They are not explicitly 
+defined as simple type elements. Instead, the type is defined
+with the type attribute. Because the value (string in both cases) is a simple
+type, the elements themselves are simple-type elements. 
+
+
+* Derived simple types *
+
+A schema author can derive a new simple type using the <xs:simpleType> element.
+This simple type can then be used in the same way that built-in simple types
+are. Simple types are derived by restricting built-in simple types or other 
+user-derived simple types
+
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:simpleType name="Password">
+		<xs:restriction base="xs:string">
+			<xs:length value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="User">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="password" type="Password"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
+
+Simple types can be derived by applying one or more of the following facets:
+
+- length
+- minLength
+- maxLength
+- pattern
+- enumeration
+- whiteSpace
+- minInclusive
+- minExclusive
+- maxInclusive
+- maxExclusive
+- totalDigits
+- fractionDigits
+
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:simpleType name="Password">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="6"/>
+			<xs:maxLength value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="User">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PW" type="Password"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
+
+
+Patterns are specified using the xs:pattern element and regular expressions.
+
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name="username">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Za-z\s]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="user" type="username"/>
+
+</xs:schema>
+
+In the schema, we restrict name to alphabetic characters and spaces.
+
+
+An enumeration is a derived type that lists possible values that an 
+element can contain.
+
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:simpleType name="JobTitle">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Sales Manager"/>
+			<xs:enumeration value="Salesperson"/>
+			<xs:enumeration value="Receptionist"/>
+			<xs:enumeration value="Developer"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+    <element name="jobtitle" type="JobTitle"/>
+
+</xs:schema>
+
+White space handling
+
+White spaces are controlled with xs:whiteSpace element. It can take 
+the following values:
+
+ - preserve - whitespace is not normalized. That is to say, it is kept as is.
+ - replace - all tabs, line feeds, and carriage returns are replaced by single spaces.
+ - collapse - all tabs, line feeds, and carriage returns are replaced by single 
+   spaces and then all groups of single spaces are replaced with one single space. 
+   All leading and trailing spaces are then removed (i.e, trimmed).
+
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:simpleType name="Password">
+		<xs:restriction base="xs:string">
+			<xs:length value="8"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="password" type="Password"/>
+
+</xs:schema>
+
+Now the spaces are stripped from the password content.
+
+Lists
+
+Lists are non-atomic types. List types are sequences of atomic types separated
+by whitespace; you can have a list of integers or a list of dates. Lists should
+not be confused with enumerations. Enumerations provide optional values for an
+element. Lists represent one or more values within an element.
+
+
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:simpleType name="DateList">
+        <xs:list itemType="xs:date"/>
+    </xs:simpleType>
+
+    <xs:element name="dates" type="DateList"/>
+
+</xs:schema>
+
+Unions
+
+Union types are groupings of types, essentially allowing for the value of an
+element to be of more than one type. 
+
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:simpleType name="RunningRace">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="100 meters"/>
+			<xs:enumeration value="10 kilometers"/>
+			<xs:enumeration value="440 yards"/>
+			<xs:enumeration value="10 miles"/>
+			<xs:enumeration value="Marathon"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Gymnastics">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Vault"/>
+			<xs:enumeration value="Floor"/>
+			<xs:enumeration value="Rings"/>
+			<xs:enumeration value="Beam"/>
+			<xs:enumeration value="Uneven Bars"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Event">
+		<xs:union memberTypes="RunningRace Gymnastics"/>
+	</xs:simpleType>
+	<xs:element name="Program">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Event" type="Event"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
+
+
+When an element declaration is a child of the xs:schema element, the declared
+element is global. Global elements can be referenced by other element
+declarations, allowing for element reuse.
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="FirstName" type="xs:string"/>
+	<xs:element name="LastName" type="xs:string"/>
+	<xs:element name="Author">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="FirstName"/>
+				<xs:element ref="LastName"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
+
+
+*** Complex types ***
+
+Complex-type elements have attributes, child elements, or some combination of the two.
+Complex types are specified with xs:complexType.
+
+Content Models
+
+Content models are used to indicate the structure and order in which child
+elements can appear within their parent element. Content models are made up of
+model groups. The three types of model groups are listed below.
+
+- xs:sequence - the elements must appear in the order specified.
+- xs:all - the elements must appear, but order is not important.
+- xs:choice - only one of the elements can appear.
+
+
+*** Attributes ***
+
+Attributes
+
+An attribute provides extra information within an element. Attributes are
+defined within an XSD as follows, having name and type properties.
+
+An Attribute can appear 0 or 1 times within a given element in the XML document.
+Attributes are either optional or mandatory (by default, they are optional). The
+use property in the XSD definition specifies whether the attribute is
+optional or mandatory.
+
+<xs:attribute name="ID" type="xs:string"/>
+<xs:attribute name="ID" type="xs:string" use="optional"/>
+
+These two definitions are equal.
+
+
+Extensions
+
+The complexContent element defines extensions or restrictions on a complex type
+that contains mixed content or elements only.
+
+<xs:element name="employee" type="fullpersoninfo"/>
+
+<xs:complexType name="personinfo">
+  <xs:sequence>
+    <xs:element name="firstname" type="xs:string"/>
+    <xs:element name="lastname" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="fullpersoninfo">
+  <xs:complexContent>
+    <xs:extension base="personinfo">
+      <xs:sequence>
+        <xs:element name="address" type="xs:string"/>
+        <xs:element name="city" type="xs:string"/>
+        <xs:element name="country" type="xs:string"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType> 
+
+********************************************************************
+
+XML namespaces
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+Basically this statement says that within the html element all child elements
+belong to XHTML, unless they are explicitly part of another namespace. 
+
+
+XML namespaces have two purposes:
+
+- Clearly identify a markup language and its version. 
+- Allow to mix two or more languages in a single document.
+
+The targetNamespace declares a namespace for other xml and xsd documents 
+to refer to this schema. 
+
+elementFormDefault="qualified" is used to control the usage of namespaces in XML
+instance documents (.xml file), rather than namespaces in the schema document
+itself (.xsd file).
+
+By specifying elementFormDefault="qualified" we enforce namespace declaration to
+be used in documents validated with this schema.
+
+Important to note with elementFormDefault is that it applies to locally defined
+elements, typically named elements inside a complexType block, as opposed to
+global elements defined on the top-level of the schema. With
+elementFormDefault="qualified" you can address local elements in the schema from
+within the xml document using the schema's target namespace as the document's
+default namespace.
+
+<?xml version="1.0"?>
+  <html:html xmlns:html='http://www.w3.org/1999/xhtml'>
+  <html:head>
+    <html:title>Frobnostication</html:title>
+  </html:head>
+  <html:body>
+    <html:p>
+      Moved to<html:a href='http://frob.example.com'>here.</html:a>
+    </html:p>
+  </html:body>
+</html:html>
+
+<?xml version="1.0"?>
+<!-- both namespace prefixes are available throughout the XML fragment -->
+<bk:book xmlns:bk='urn:loc.gov:books'
+         xmlns:isbn='urn:ISBN:0-395-36341-6'>
+    <bk:title>Cheaper by the Dozen</bk:title>
+    <isbn:number>1568491379</isbn:number>
+</bk:book>
+
+
+"C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.181-1\bin\xjc.exe" -d src -p "com.zetcode" test.xsd
