@@ -27,6 +27,7 @@ public class JavaJsonpJsonParserSimpleEx {
             // starting object
             if (event == JsonParser.Event.START_OBJECT) {
 
+                // looping over object attributes
                 while (parser.hasNext()) {
 
                     event = parser.next();
@@ -45,7 +46,6 @@ public class JavaJsonpJsonParserSimpleEx {
 
                             case "occupation":
                                 parser.next();
-
 
                                 System.out.printf("Occupation: %s%n", parser.getString());
                                 break;
