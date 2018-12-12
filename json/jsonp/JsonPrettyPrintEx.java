@@ -6,7 +6,7 @@ import java.io.StringWriter;
 import java.time.LocalDate;
 import java.util.HashMap;
 
-public class JavaJsonpPrettyPrintEx {
+public class JsonPrettyPrintEx {
 
     public static void main(String[] args) {
 
