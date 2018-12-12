@@ -3,7 +3,7 @@ package com.zetcode;
 import javax.json.Json;
 import java.time.LocalDate;
 
-public class JavaJsonpObjectBuilderEx {
+public class JsonObjectBuilderEx {
 
     public static void main(String[] args) {
 
