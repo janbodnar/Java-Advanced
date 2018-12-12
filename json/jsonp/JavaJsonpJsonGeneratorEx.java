@@ -54,8 +54,8 @@ public class JavaJsonpJsonGeneratorEx {
         var born3 = LocalDate.of(1995, 4, 7);
         var u3 = new User("Lucy Black", "accountant", born3);
 
-        var born4 = LocalDate.of(1972, 8, 30);
-        var u4 = new User("John Doe", "gardener", born4);
+        var born4 = LocalDate.of(1977, 10, 31);
+        var u4 = new User("William Bean", "pilot", born4);
 
         return List.of(u1, u2, u3, u4);
     }
