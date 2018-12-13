@@ -1,0 +1,22 @@
+[
+  {
+    "name": "John Doe",
+    "occupation": "gardener",
+    "born": "1992-03-02"
+  },
+  {
+    "name": "Brian Flemming",
+    "occupation": "teacher",
+    "born": "1967-11-22"
+  },
+  {
+    "name": "Lucy Black",
+    "occupation": "accountant",
+    "born": "1995-04-07"
+  },
+  {
+    "name": "William Bean",
+    "occupation": "pilot",
+    "born": "1977-10-31"
+  }
+]
