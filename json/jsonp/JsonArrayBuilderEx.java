@@ -25,7 +25,8 @@ public class JsonArrayBuilderEx {
             ab.add(ob);
         });
 
-
+        var jsonArray = ab.build();
+        
         var config = new HashMap<String, Boolean>();
         config.put(JsonGenerator.PRETTY_PRINTING, true);
 
@@ -34,7 +35,7 @@ public class JsonArrayBuilderEx {
 
         try (var jsonWriter = jwf.createWriter(sw)) {
 
-            jsonWriter.writeArray(ab.build());
+            jsonWriter.writeArray(jsonArray);
 
             System.out.println(sw);
         }
