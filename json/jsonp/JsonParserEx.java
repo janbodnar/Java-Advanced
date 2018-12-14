@@ -5,7 +5,7 @@ import javax.json.stream.JsonParser;
 import java.io.IOException;
 import java.net.URL;
 
-public class JavaJsonpJsonParserEx {
+public class JsonParserEx {
 
     public static void main(String[] args) throws IOException {
 
