@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 
-public class JavaJsonpJsonGeneratorEx {
+public class JsonGeneratorEx {
 
     public static void main(String[] args) throws IOException {
 
