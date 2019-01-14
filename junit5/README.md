@@ -1,4 +1,4 @@
-For the examples, we need the ~junit-jupiter-engine~ and a current version of ~maven-surefire-plugin~.
+For the examples, we need the `junit-jupiter-engine` and a current version of `maven-surefire-plugin`.
 
 Jupiter
 
