@@ -1,4 +1,4 @@
-For the examples, we need the `junit-jupiter-engine` and a current version of `maven-surefire-plugin`.
+For the examples, we need the `junit-jupiter-engine`, `junit-jupiter-params`, and a current version of `maven-surefire-plugin`.
 
 Jupiter
 
@@ -6,6 +6,13 @@ Jupiter
 <dependency>
     <groupId>org.junit.jupiter</groupId>
     <artifactId>junit-jupiter-engine</artifactId>
+    <version>5.3.2</version>
+    <scope>test</scope>
+</dependency>
+
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-params</artifactId>
     <version>5.3.2</version>
     <scope>test</scope>
 </dependency>
