@@ -10,7 +10,7 @@ public class ProcessBuilderEx {
 
         var processBuilder = new ProcessBuilder();
 
-        processBuilder.command("cmd.exe", "/c", "ping -n 3 google.com");
+        processBuilder.command("cal", "2019", "-m 2");
 
         var process = processBuilder.start();
 
@@ -22,8 +22,13 @@ public class ProcessBuilderEx {
             System.out.println(line);
         }
 
-        int exitCode = process.waitFor();
-        System.out.println("\nExited with code : " + exitCode);
-
     }
 }
+
+   February 2019      
+Su Mo Tu We Th Fr Sa  
+                1  2  
+ 3  4  5  6  7  8  9  
+10 11 12 13 14 15 16  
+17 18 19 20 21 22 23  
+24 25 26 27 28        
