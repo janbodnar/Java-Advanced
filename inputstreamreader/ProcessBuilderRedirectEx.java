@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+// This program works with redirecting the error stream
+// It runs a Linux command
+
 public class ProcessBuilderRedirectEx {
 
     public static void main(String[] args) throws IOException {
