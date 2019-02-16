@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
-public class FilesListEx2 {
+public class FilesListDirectories {
 
     public static void main(String[] args) throws IOException {
 
