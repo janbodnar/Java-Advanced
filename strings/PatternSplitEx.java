@@ -3,7 +3,7 @@ package com.zetcode;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class PatternCompileEx {
+public class PatternSplitEx {
 
     public static void main(String[] args) {
 
