@@ -16,7 +16,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 
 // The application loads customers from the CSV file and 
-// generate emails using Freemaker template engine
+// generates emails using Freemaker template engine
 
 public class Application {
 
