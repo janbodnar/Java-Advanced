@@ -1,0 +1,3 @@
+[ {"name":"Audi","model":"2012","price":22000,"colours":["gray","red","white"]},
+ {"name":"Skoda","model":"2016","price":14000,"colours":["black","gray","white"]},
+ {"name":"Volvo","model":"2010","price":19500,"colours":["black","silver","beige"]} ]
