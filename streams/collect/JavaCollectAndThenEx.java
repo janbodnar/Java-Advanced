@@ -13,7 +13,6 @@ public class JavaCollectAndThenEx {
 
         var avgPrice = vals.stream().collect(Collectors.collectingAndThen(
                 Collectors.averagingInt(Integer::intValue),
-                //avg -> new DecimalFormat("0.00").format(avg))
                 avg -> {
                     var nf = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
                     return nf.format(avg);
