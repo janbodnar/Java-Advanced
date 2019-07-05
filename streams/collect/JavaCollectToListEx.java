@@ -3,7 +3,7 @@ package com.zetcode;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class JavaCollectSimpleEx {
+public class JavaCollectToListEx {
 
     public static void main(String[] args) {
 
