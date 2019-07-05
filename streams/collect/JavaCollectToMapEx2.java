@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+// creating an ASCII table from a sequence of characters
 public class JavaCollectToMapEx2 {
 
     public static void main(String[] args) {
