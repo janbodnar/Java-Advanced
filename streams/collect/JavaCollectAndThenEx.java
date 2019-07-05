@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
+// calculate an average price and then 
+// format it
 public class JavaCollectAndThenEx {
 
     public static void main(String[] args) {
