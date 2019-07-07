@@ -20,22 +20,21 @@ public class WhoisClientEx {
 
         try (var socket = new Socket(whoisServer, port)) {
 
-            var os = socket.getOutputStream();
-            var writer = new PrintWriter(os, true);
-            writer.println(domainName);
+            try (var writer = new PrintWriter(socket.getOutputStream(), true)) {
 
-            var is = socket.getInputStream();
+                writer.println(domainName);
 
-            try (var reader = new BufferedReader(new InputStreamReader(is))) {
+                try (var reader = new BufferedReader(
+                        new InputStreamReader(socket.getInputStream()))) {
 
-                String line;
+                    String line;
 
-                while ((line = reader.readLine()) != null) {
+                    while ((line = reader.readLine()) != null) {
 
-                    System.out.println(line);
+                        System.out.println(line);
+                    }
                 }
             }
-
         } catch (UnknownHostException ex) {
 
             System.out.println("Server not found: " + ex.getMessage());
