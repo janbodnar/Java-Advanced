@@ -14,7 +14,7 @@ public class SocketHeadRequest {
         var hostname = "webcode.me";
         int port = 80;
 
-        try (Socket socket = new Socket(hostname, port)) {
+        try (var socket = new Socket(hostname, port)) {
 
             try (var writer = new PrintWriter(socket.getOutputStream(), true)) {
 
