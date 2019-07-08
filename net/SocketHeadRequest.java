@@ -18,7 +18,7 @@ public class SocketHeadRequest {
 
             try (var writer = new PrintWriter(socket.getOutputStream(), true)) {
 
-                writer.println("HEAD " + "/" + " HTTP/1.1");
+                writer.println("HEAD / HTTP/1.1");
                 writer.println("Host: " + hostname);
                 writer.println("User-Agent: Console Http Client");
                 writer.println("Accept: text/html");
