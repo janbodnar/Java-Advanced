@@ -6,6 +6,8 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 // DatagramSocket provides network communication via UDP protocol
+// The Quote of the Day (QOTD) service is a member of the Internet protocol
+// suite, defined in RFC 865
 
 public class DatagramSocketEx {
 
