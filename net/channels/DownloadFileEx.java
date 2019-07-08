@@ -7,27 +7,18 @@ import java.nio.channels.Channels;
 
 public class DownloadFileEx {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        var remoteFile = "http://webcode.me/favicon.ico";
+        var remoteFileName = "http://webcode.me/favicon.ico";
         var localFileName = "favicon.ico";
 
-        try {
+        var myUrl = new URL(remoteFileName);
 
-            var myUrl = new URL(remoteFile);
+        try (var rbc = Channels.newChannel(myUrl.openStream())) {
+            try (var fos = new FileOutputStream(localFileName)) {
 
-            try (var rbc = Channels.newChannel(myUrl.openStream())) {
-                try (var fos = new FileOutputStream(localFileName)) {
-
-                    fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-                }
+                fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
             }
-
-        } catch (IOException e) {
-
-            System.out.println("I/O error: " + e.getMessage());
         }
     }
 }
-
-
