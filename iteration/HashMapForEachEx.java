@@ -2,7 +2,7 @@ package com.zetcode;
 
 import java.util.Map;
 
-public class HashmapForEachEx {
+public class HashMapForEachEx {
 
     public static void main(String[] args) {
 
