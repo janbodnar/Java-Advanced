@@ -10,6 +10,6 @@ public class ForEachEx {
 
         var items = List.of("coin", "ball", "lamp", "spoon");
 
-        items.stream().forEach(System.out::println);
+        items.forEach(System.out::println);
     }
 }
