@@ -6,7 +6,7 @@ import java.util.List;
 // calls to the hasNext() and next() methods are not explicit, but they 
 // still take place behind the scenes. 
 
-public class JavaEnhancedForLoopEx {
+public class EnhancedForLoopEx {
 
     public static void main(String[] args) {
 
