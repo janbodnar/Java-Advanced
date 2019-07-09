@@ -4,7 +4,7 @@ import java.util.List;
 
 // Java 8 introduced the forEach() method
 
-public class JavaForEachEx {
+public class ForEachEx {
 
     public static void main(String[] args) {
 
