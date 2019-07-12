@@ -3,6 +3,9 @@ package com.zetcode;
 import java.util.Optional;
 import java.util.function.Function;
 
+// if the result is already an Optional flatMap
+// does not wrap it within an additional Optional
+
 public class OptionalMapOf {
 
     public static void main(String[] args) {
