@@ -4,24 +4,21 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 
 // HttpURLConnection creates a network connection to an HTTP servlet
 
 public class JavaGetRequest {
-    
+
     private static HttpURLConnection con;
 
-    public static void main(String[] args) throws MalformedURLException,
-            ProtocolException, IOException {
+    public static void main(String[] args) throws IOException {
 
-        String url = "http://www.something.com";
+        var url = "http://webcode.me";
 
         try {
 
-            URL myurl = new URL(url);
+            var myurl = new URL(url);
             con = (HttpURLConnection) myurl.openConnection();
 
             con.setRequestMethod("GET");
@@ -35,6 +32,7 @@ public class JavaGetRequest {
                 content = new StringBuilder();
 
                 while ((line = in.readLine()) != null) {
+
                     content.append(line);
                     content.append(System.lineSeparator());
                 }
@@ -43,7 +41,7 @@ public class JavaGetRequest {
             System.out.println(content.toString());
 
         } finally {
-            
+
             con.disconnect();
         }
     }
