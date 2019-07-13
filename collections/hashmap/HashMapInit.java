@@ -5,7 +5,7 @@ import java.util.Map;
 import static java.util.Map.entry;
 
 // factory initialization methods since Java 9
-public class HashMapLiteralInit {
+public class HashMapInit {
 
     public static void main(String[] args) {
 
