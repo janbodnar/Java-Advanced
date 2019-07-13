@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 // up to Java 8
-public class HashMapLiteralInit2 {
+public class HashMapInit2 {
 
     public static void main(String[] args) {
 
