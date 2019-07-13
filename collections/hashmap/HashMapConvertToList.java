@@ -17,8 +17,12 @@ public class HashMapConvertToList {
         );
 
         Set<Map.Entry<String, String>> entries = colours.entrySet();
+        System.out.println(entries);
+
         List<Map.Entry<String, String>> mylist = new ArrayList<>(entries);
-        
+
+        mylist.add(Map.entry("LightSalmon", "#FFA07A"));
         System.out.println(mylist);
+        System.out.println(entries);
     }
 }
