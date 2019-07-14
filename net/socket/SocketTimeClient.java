@@ -3,13 +3,14 @@ package com.zetcode;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
+// time servers come and go; we might need to 
+// find a functioning server on https://www.ntppool.org/en/
 public class SocketTimeClient {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        var hostname = "2.europe.pool.ntp.org";
+        var hostname = "3.se.pool.ntp.org";
         int port = 13;
 
         try (var socket = new Socket(hostname, port)) {
@@ -20,19 +21,12 @@ public class SocketTimeClient {
                 var output = new StringBuilder();
 
                 while ((character = reader.read()) != -1) {
+
                     output.append((char) character);
                 }
 
                 System.out.println(output);
             }
-
-        } catch (UnknownHostException ex) {
-
-            System.out.println("Server not found: " + ex.getMessage());
-
-        } catch (IOException ex) {
-
-            System.out.println("I/O error: " + ex.getMessage());
         }
     }
 }
