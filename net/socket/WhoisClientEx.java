@@ -5,16 +5,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 // probing whois.iana.org might give the right
 // whois server
 
 public class WhoisClientEx {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        var domainName = "webcode.me";
+        var domainName = "example.com";
         var whoisServer = "whois.nic.me";
         int port = 43;
 
@@ -35,13 +34,6 @@ public class WhoisClientEx {
                     }
                 }
             }
-        } catch (UnknownHostException ex) {
-
-            System.out.println("Server not found: " + ex.getMessage());
-
-        } catch (IOException ex) {
-
-            System.out.println("I/O error: " + ex.getMessage());
         }
     }
 }
