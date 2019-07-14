@@ -7,6 +7,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
+// the client must send a bye command to
+// inform the server to close the connection
 public class ReverseClient {
 
     public static void main(String[] args) throws IOException {
