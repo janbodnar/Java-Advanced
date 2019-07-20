@@ -9,7 +9,7 @@ public class MongoReadGreaterThan {
 
     public static void main(String[] args) {
 
-        try( var mongoClient = MongoClients.create("mongodb://localhost:27017")) {
+        try (var mongoClient = MongoClients.create("mongodb://localhost:27017")) {
 
             var database = mongoClient.getDatabase("testdb");
 
