@@ -5,6 +5,8 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 
+import java.util.function.Consumer;
+
 public class MongoReadGreaterThan {
 
     public static void main(String[] args) {
@@ -18,20 +20,8 @@ public class MongoReadGreaterThan {
             var query = new BasicDBObject("price",
                     new BasicDBObject("$gt", 30000));
 
-            try (var cursor = collection.find(query).iterator()) {
-
-                while (cursor.hasNext()) {
-                    System.out.println(cursor.next().toJson());
-                }
-            }
-
-// This is deprecated
-//            collection.find(query).forEach(new Block<Document>() {
-//                @Override
-//                public void apply(final Document document) {
-//                    System.out.println(document.toJson());
-//                }
-//            });
+            collection.find(query).forEach((Consumer<Document>) doc
+                    -> System.out.println(doc.toJson()));
         }
     }
 }
