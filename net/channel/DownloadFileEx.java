@@ -15,10 +15,14 @@ public class DownloadFileEx {
         var myUrl = new URL(remoteFileName);
 
         try (var rbc = Channels.newChannel(myUrl.openStream())) {
-            try (var fos = new FileOutputStream(localFileName)) {
 
-                fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+            try (var fos = new FileOutputStream(localFileName);
+                 var fch = fos.getChannel()) {
+
+                fch.transferFrom(rbc, 0, Long.MAX_VALUE);
             }
         }
     }
 }
+
+
