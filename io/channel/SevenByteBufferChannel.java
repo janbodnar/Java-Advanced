@@ -10,7 +10,7 @@ public class SevenByteBufferChannel {
 
     public static void main(String[] args) throws IOException {
 
-        var srcFile = Paths.get("src/resources/data1.txt");
+        var srcFile = Paths.get("src/resources/data.txt");
         var destFile = Paths.get("src/resources/data2.txt");
 
         try (var src = Channels.newChannel(Files.newInputStream(srcFile))) {
@@ -21,9 +21,14 @@ public class SevenByteBufferChannel {
 
                 while (src.read(buf) != -1) {
 
-                    // flips the buffer from read to write (and vice versa)
+                    // flips the buffer from read to write 
                     buf.flip();
-                    dest.write(buf);
+
+                    while (buf.hasRemaining()) {
+
+                        dest.write(buf);
+                    }
+
                     buf.clear();
                 }
             }
