@@ -1,18 +1,21 @@
 package com.zetcode;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class SevenByteBufferChannel {
 
     public static void main(String[] args) throws IOException {
 
-        try (var src = Channels.newChannel(new FileInputStream("src/resources/data1.txt"))) {
+        var srcFile = Paths.get("src/resources/data1.txt");
+        var destFile = Paths.get("src/resources/data2.txt");
 
-            try (var dest = Channels.newChannel(new FileOutputStream("src/resources/data2.txt"))) {
+        try (var src = Channels.newChannel(Files.newInputStream(srcFile))) {
+
+            try (var dest = Channels.newChannel(Files.newOutputStream(destFile))) {
 
                 var buf = ByteBuffer.allocate(7);
 
