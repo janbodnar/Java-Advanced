@@ -16,12 +16,12 @@ public class DownloadImage {
         try (var is = url.openStream();
              var fos = new FileOutputStream(destinationFile)) {
 
-            byte[] b = new byte[1024];
+            byte[] buf = new byte[1024];
             int noOfBytes;
 
-            while ((noOfBytes = is.read(b)) != -1) {
+            while ((noOfBytes = is.read(buf)) != -1) {
 
-                fos.write(b, 0, noOfBytes);
+                fos.write(buf, 0, noOfBytes);
             }
         }
     }
