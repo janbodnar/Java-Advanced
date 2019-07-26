@@ -14,7 +14,7 @@ public class InitArray4 {
 
         int[] b = new int[10];
 
-        Arrays.setAll(b, e -> e++);
+        Arrays.setAll(b, idx -> idx);
 
         System.out.println(Arrays.toString(b));
     }
