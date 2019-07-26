@@ -8,7 +8,7 @@ public class DownloadImage {
 
     public static void main(String[] args) throws IOException {
 
-        var imageUrl = "http://webcode.me/favicon.ico";
+        var imageUrl = "http://example.com/favicon.ico";
         var destinationFile = "favicon.ico";
 
         var url = new URL(imageUrl);
