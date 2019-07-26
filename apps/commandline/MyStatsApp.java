@@ -1,13 +1,6 @@
 package com.zetcode;
 
-import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -17,12 +10,17 @@ import org.apache.commons.cli.ParseException;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.stat.StatUtils;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+
 
 /**
  * MyStatsApp is a simple console application which computes
  * basic statistics of a series of data values. The application takes
  * a file of data as its single argument.
- * 
+ *
  * @author janbodnar
  */
 public class MyStatsApp {
@@ -38,7 +36,7 @@ public class MyStatsApp {
 
         if (line.hasOption("filename")) {
 
-            System.out.println(line.getOptionValue("filename"));
+//            System.out.println(line.getOptionValue("filename"));
             String fileName = line.getOptionValue("filename");
 
             double[] data = readData(fileName);
@@ -52,7 +50,7 @@ public class MyStatsApp {
     /**
      * Parses application arguments
      *
-     * @param args
+     * @param args application arguments
      * @return <code>CommandLine</code> which represents a list of application
      * arguments.
      */
@@ -68,7 +66,8 @@ public class MyStatsApp {
 
         } catch (ParseException ex) {
 
-            System.err.println(ex);
+            System.err.println("Failed to parse command line arguments");
+            System.err.println(ex.toString());
             printAppHelp();
 
             System.exit(1);
@@ -80,16 +79,16 @@ public class MyStatsApp {
     /**
      * Reads application data from a file
      *
-     * @param fileName
+     * @param fileName file of application data
      * @return array of double values
      */
     private double[] readData(String fileName) {
 
-        List<Double> data = new ArrayList();
+        var data = new ArrayList<Double>();
         double[] mydata = null;
 
-        try (Reader reader = Files.newBufferedReader(Paths.get(fileName));
-                CSVReader csvReader = new CSVReaderBuilder(reader).build()) {
+        try (var reader = Files.newBufferedReader(Paths.get(fileName));
+             var csvReader = new CSVReaderBuilder(reader).build()) {
 
             String[] nextLine;
 
@@ -101,11 +100,12 @@ public class MyStatsApp {
                 }
             }
 
-            mydata = ArrayUtils.toPrimitive(data.toArray(new Double[data.size()]));
+            mydata = ArrayUtils.toPrimitive(data.toArray(new Double[0]));
 
         } catch (IOException ex) {
 
-            System.err.println(ex);
+            System.err.println("Failed to read file");
+            System.err.println(ex.toString());
             System.exit(1);
         }
 
@@ -119,7 +119,7 @@ public class MyStatsApp {
      */
     private Options getOptions() {
 
-        Options options = new Options();
+        var options = new Options();
 
         options.addOption("f", "filename", true, "file name to load data from");
         return options;
@@ -132,7 +132,7 @@ public class MyStatsApp {
 
         Options options = getOptions();
 
-        HelpFormatter formatter = new HelpFormatter();
+        var formatter = new HelpFormatter();
         formatter.printHelp("JavaStatsEx", options, true);
     }
 
