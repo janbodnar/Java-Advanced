@@ -36,7 +36,7 @@ public class MyStatsApp {
 
         if (line.hasOption("filename")) {
 
-//            System.out.println(line.getOptionValue("filename"));
+            System.out.println(line.getOptionValue("filename"));
             String fileName = line.getOptionValue("filename");
 
             double[] data = readData(fileName);
