@@ -7,4 +7,4 @@
 Java properties are standard configuration files. The resources are usually placed
 into `src/resources` or `src/main/resources`.
 
-`RandomAccessFile` - RandomAccessFile allows to directly manipulate the contents of a file
+`RandomAccessFile` - allows to directly manipulate the contents of a file
