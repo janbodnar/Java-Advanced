@@ -3,6 +3,7 @@ package com.zetcode;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class FileReaderEx {
 
@@ -10,7 +11,8 @@ public class FileReaderEx {
 
         var fileName = "src/resources/thermopylae.txt";
 
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+        try (BufferedReader br = new BufferedReader(
+                new FileReader(fileName, StandardCharsets.UTF_8))) {
 
             var sb = new StringBuilder();
 
