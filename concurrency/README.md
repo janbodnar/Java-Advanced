@@ -1,4 +1,14 @@
 *Concurrency*  - tasks run in overlapping time periods. Not necessarily at the same instant. For example, 
-multitasking on a single-core machine.
+multitasking (time-slicing) on a single-core machine.
 
 *Parallelism*  - tasks literally run at the same time, e.g., on a multicore processor.
+
+Process vs Thread
+
+A process is an instance of a program running on a computer. A thread is a dispatchable unit of work
+within a process.
+
+Threads (of the same process) run in a shared memory space, while processes run in separate memory spaces.
+A thread is a light-weight process, but a process is a heavy-weight process.
+
+https://i.stack.imgur.com/NVNge.jpg
