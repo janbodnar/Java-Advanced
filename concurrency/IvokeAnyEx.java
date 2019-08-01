@@ -6,7 +6,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class CallableEx2 {
+public class IvokeAnyEx {
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
 
