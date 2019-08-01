@@ -27,9 +27,6 @@ public class DirWatcherThreadEx implements Runnable {
         return (WatchEvent<T>) event;
     }
 
-    /**
-     * Creates a WatchService and registers the given directory
-     */
     public DirWatcherThreadEx(Path dir) throws IOException {
         this.dir = dir;
         this.watcher = FileSystems.getDefault().newWatchService();
