@@ -53,7 +53,7 @@ public class SynchronizedMessages {
         var w2 = new Worker("New mail received", snd);
         var w3 = new Worker("Notes taken", snd);
 
-        // start two threads
+        // start three threads
         w1.start();
         w2.start();
         w3.start();
