@@ -3,7 +3,11 @@ package com.zetcode;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
@@ -11,16 +15,13 @@ public class CallableEx {
 
     private static class RandomTask implements Callable<Integer> {
 
-        private static int nth = 0;
-        private final int id = ++nth;
-
         @Override
         public Integer call() {
 
             int value = new Random().nextInt(1000);
 
             try {
-                System.out.printf("task %d started computing...%n", id);
+                System.out.printf("task %s started computing...%n", Thread.currentThread().getName());
                 MILLISECONDS.sleep(value);
 
             } catch (InterruptedException e) {
@@ -28,7 +29,7 @@ public class CallableEx {
                 e.printStackTrace();
             }
 
-            System.out.printf("task %d is returning value: %d%n", id, value);
+            System.out.printf("task %s is returning value: %d%n", Thread.currentThread().getName(), value);
             return value;
         }
     }
