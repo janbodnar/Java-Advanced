@@ -9,6 +9,7 @@ A process is an instance of a program running on a computer. A thread is a dispa
 within a process.
 
 Threads (of the same process) run in a shared memory space, while processes run in separate memory spaces.
-A thread is a light-weight process, but a process is a heavy-weight process.
+A thread is a light-weight process, but a process is a heavy-weight process. A process is maintained by operating 
+system whereas a thread is maintained by a programmer.
 
 https://i.stack.imgur.com/NVNge.jpg
