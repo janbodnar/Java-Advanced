@@ -16,7 +16,7 @@ import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 import static java.nio.file.StandardWatchEventKinds.ENTRY_DELETE;
 import static java.nio.file.StandardWatchEventKinds.ENTRY_MODIFY;
 
-public class DirWatcherThreadEx implements Runnable {
+public class DirWatcherThread implements Runnable {
 
     private final Path dir;
     private final WatchService watcher;
@@ -27,7 +27,7 @@ public class DirWatcherThreadEx implements Runnable {
         return (WatchEvent<T>) event;
     }
 
-    public DirWatcherThreadEx(Path dir) throws IOException {
+    public DirWatcherThread(Path dir) throws IOException {
         this.dir = dir;
         this.watcher = FileSystems.getDefault().newWatchService();
         this.key = dir.register(watcher, ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY);
@@ -66,7 +66,7 @@ public class DirWatcherThreadEx implements Runnable {
 
         Path dir = Paths.get("C:/Users/Jano/tmp/");
 
-        var watcher = new DirWatcherThreadEx(dir);
+        var watcher = new DirWatcherThread(dir);
 
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Future<?> future = executor.submit(watcher);
