@@ -19,7 +19,7 @@ class Counter {
 
 public class AtomicLongEx {
 
-    public static void main(final String[] arguments) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
 
         final Counter counter = new Counter();
 
