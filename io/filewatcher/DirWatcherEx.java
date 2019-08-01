@@ -9,7 +9,7 @@ import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 
-public class FileWatcherEx {
+public class DirWatcherEx {
 
     public static void main(String[] args) throws IOException {
 
