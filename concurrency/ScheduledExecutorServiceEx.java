@@ -13,6 +13,9 @@ class Task implements Runnable {
     }
 }
 
+// ExecutorService schedules commands to run after a given
+// delay, or to execute periodically.
+
 public class ScheduledExecutorServiceEx {
 
     public static void main(final String[] arguments)  {
