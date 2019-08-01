@@ -78,8 +78,9 @@ public class DirectoryWatcherEx {
     public static void main(String[] args) throws InterruptedException {
 
         Path pathToWatch = FileSystems.getDefault().getPath("C:/Users/Jano/tmp/");
-        DirectoryWatcher dirWatcher = new DirectoryWatcher(pathToWatch);
-        Thread dirWatcherThread = new Thread(dirWatcher);
+        
+        var dirWatcher = new DirectoryWatcher(pathToWatch);
+        var dirWatcherThread = new Thread(dirWatcher);
         dirWatcherThread.start();
 
         // interrupt the program after 10 seconds to stop it.
