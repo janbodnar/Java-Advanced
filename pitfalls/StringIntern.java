@@ -14,7 +14,10 @@ public class StringIntern {
 
         String val1 = "70";
         String val2 = "70";
+        String val3 = "7" + "0";
 
         System.out.println(val1 == val2);
+        System.out.println(val2 == val3);
+        System.out.println(val1 == val3);
     }
 }
