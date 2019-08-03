@@ -15,6 +15,15 @@ public class ListInit {
         words.add("river");
         System.out.println(words);
 
+        var drinks = new ArrayList<String>() {{
+            add("beer");
+            add("lemonade");
+            add("juice");
+            add("coffee");
+            add("tea");
+        }};
+        System.out.println(drinks);
+
         var colours = Arrays.asList("blue", "red", "green", "yellow");
         System.out.println(colours);
 
