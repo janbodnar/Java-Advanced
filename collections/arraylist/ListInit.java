@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ArrayListInit {
+public class ListInit {
 
     public static void main(String[] args) {
 
