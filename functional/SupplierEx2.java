@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 
 // Supplier represents a supplier of results.
 
-public class SupplierEx {
+public class SupplierEx2 {
 
     public static void main(String[] args) {
 
