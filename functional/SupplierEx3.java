@@ -3,7 +3,7 @@ package com.zetcode;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-public class SupplierEx2 {
+public class SupplierEx3 {
 
     public static void main(String[] args) {
 
