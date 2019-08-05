@@ -15,19 +15,12 @@ class Data {
 
 public class PositiveValues {
 
-    private static Validator validator;
-
     public static void main(String[] args) {
 
         var data = new Data();
 
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        validator = factory.getValidator();
-
-        validate(data);
-    }
-
-    private static void validate(Data data) {
+        Validator validator = factory.getValidator();
 
         Set<ConstraintViolation<Data>> cvs = validator.validate(data);
 
