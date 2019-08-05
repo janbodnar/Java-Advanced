@@ -15,12 +15,12 @@ public class JavaLambdaEx {
         // without type declaration
         MathOperation sub = (a, b) -> a - b;
 
-        //with return statement along with curly braces
+        // with return statement along with curly braces
         MathOperation mul = (int a, int b) -> {
             return a * b;
         };
 
-        //without return statement and without curly braces
+        // without return statement and without curly braces
         MathOperation div = (int a, int b) -> a / b;
 
         System.out.println(add.mdo(4, 5));
