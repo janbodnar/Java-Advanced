@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class FunctionEx2 {
+public class FunctionEx3 {
 
     public static void main(String[] args) {
 
