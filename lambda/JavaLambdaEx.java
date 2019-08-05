@@ -1,23 +1,31 @@
 package com.zetcode;
 
+@FunctionalInterface
+interface MathOperation {
+    int mdo(int a, int b);
+}
+
 public class JavaLambdaEx {
 
     public static void main(String[] args) {
 
-        // Anonymous Runnable
-        Runnable r1 = new Runnable() {
+        // with type declaration
+        MathOperation add = (int a, int b) -> a + b;
 
-            @Override
-            public void run() {
-                System.out.println("Runnable one");
-            }
+        // without type declaration
+        MathOperation sub = (a, b) -> a - b;
+
+        //with return statement along with curly braces
+        MathOperation mul = (int a, int b) -> {
+            return a * b;
         };
 
-        // Lambda Runnable
-        Runnable r2 = () -> System.out.println("Runnable two");
+        //without return statement and without curly braces
+        MathOperation div = (int a, int b) -> a / b;
 
-        r1.run();
-        r2.run();
-
+        System.out.println(add.mdo(4, 5));
+        System.out.println(sub.mdo(6, 5));
+        System.out.println(mul.mdo(4, 5));
+        System.out.println(div.mdo(4, 2));
     }
 }
