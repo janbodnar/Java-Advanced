@@ -4,8 +4,10 @@ public class ReverseInteger4 {
 
     public static void main(String[] args) {
 
-        var value = "73203000";
-        var sb = new StringBuilder(value).reverse();
+        int value = 73203000;
+
+        var str = String.valueOf(value);
+        var sb = new StringBuilder(str).reverse();
 
         // removing possible leading zeros
         int i = 0;
