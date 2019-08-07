@@ -1,3 +1,9 @@
+**Mockito**
+
+Mockito is an open source testing framework for Java released under the MIT License. 
+The framework allows the creation of mock objects in automated unit tests. Other 
+Java mocking frameworks include PowerMock and EasyMock.
+
 **SUT** 
 
 System under test (SUT) refers to a system that is being tested for correct operation. 
