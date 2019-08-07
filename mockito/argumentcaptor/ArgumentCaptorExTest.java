@@ -29,7 +29,7 @@ class ArgumentCaptorExTest {
     private ArgumentCaptor<LocalDateTime> captor2;
 
     @Test
-    public void testGetMessage() {
+    void testGetMessage() {
 
         messageService.getMessage("Hello!", LocalDateTime.of(2019, 8, 20, 20, 18));
 
