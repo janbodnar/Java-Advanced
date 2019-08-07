@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
-class ArgumentCaptorExTest {
+class MessageServiceTest {
 
     @Mock
     private MessageService messageService;
