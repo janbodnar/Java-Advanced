@@ -18,7 +18,7 @@ class HelloServiceTest {
     private HelloService helloService;
 
     @Test
-    public void testHelloMessage() {
+    void testHelloMessage() {
 
         when(helloService.getMessage()).thenReturn("Hello!");
         assertEquals(helloService.getMessage(), "Hello!");
