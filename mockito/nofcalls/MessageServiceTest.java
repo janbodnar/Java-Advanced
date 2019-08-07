@@ -11,7 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
-class VerifyNumberOfCallsTest {
+class MessageServiceTest {
 
     @Mock
     private MessageService messageService;
