@@ -34,13 +34,10 @@ to spin up a database or have an online service working just to run those tests.
 
 **Spy**
 
-A Spy wraps an existing object. We can listen in on the conversation between the caller and 
-the real object but retain the original object behavior. Spy delegates method calls to the 
-original object.
+A Spy wraps an existing object. Spy delegates method calls to the original object.
 
 When a class is mocked or stubbed, a test double is created and the original code that exists 
 within the mocked or stubbed object is not executed.
 Spies, on the other hand, will execute the original code from which the Spy was created. 
-A Spy also allows us to modify what the Spy returns and verify cardinality much like Mocks and Stubs.
 
 Spies should be used carefully and occasionally, for example when dealing with legacy code.
