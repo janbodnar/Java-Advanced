@@ -11,11 +11,11 @@ System under test (SUT) refers to a system that is being tested for correct oper
 **Mocking**
 
 Mocking is a replica or imitation of something. Mocking is used in unit testing. Mock objects are 
-simulated objects that mimic the behavior of real objects in controlled ways
+simulated objects that mimic the behavior of real objects in controlled ways. 
 A tested object may have dependencies on other complex objects. To isolate the behavior of 
 the object we want to test we replace the other objects by mocks that simulate the behavior 
-of the real objects. So in simple words, mocking is creating objects that simulate the behavior 
-of real objects.
+of the real objects. Mock objects never call real methods. Simply put, mocking is creating objects 
+that simulate the behavior of real objects.
 
 
 **Stub**
@@ -30,3 +30,17 @@ Stubs are using in mocking as well. We supply stub methods instead of the normal
 return fixed results and then ensure that the code does the right thing with them. 
 This isolates testing to the code we are trying to test. For instance,  we do not need 
 to spin up a database or have an online service working just to run those tests.
+
+
+**Spy**
+
+A Spy wraps an existing object. We can listen in on the conversation between the caller and 
+the real object but retain the original object behavior. Spy delegates method calls to the 
+original object.
+
+When a class is mocked or stubbed, a test double is created and the original code that exists 
+within the mocked or stubbed object is not executed.
+Spies, on the other hand, will execute the original code from which the Spy was created. 
+A Spy also allows us to modify what the Spy returns and verify cardinality much like Mocks and Stubs.
+
+Spies should be used carefully and occasionally, for example when dealing with legacy code.
