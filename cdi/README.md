@@ -1,6 +1,9 @@
 **Contexts and Dependency Injection (CDI)** defines a powerful set of complementary services that help improve the structure 
 of application code. CDI is a Java EE specification.
 
+JBoss Weld is one of the implementations of the CDI specification. 
+https://docs.jboss.org/weld/reference/latest/en-US/html/index.html
+
 The most fundamental services provided by CDI are as follows:
 
 * Contexts: The ability to bind the lifecycle and interactions of stateful components to 
