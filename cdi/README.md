@@ -1,5 +1,5 @@
 **Contexts and Dependency Injection (CDI)** defines a powerful set of complementary services that help improve the structure 
-of application code.
+of application code. CDI is a Java EE specification.
 
 The most fundamental services provided by CDI are as follows:
 
