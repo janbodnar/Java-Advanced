@@ -5,6 +5,7 @@ import com.zetcode.producer.MessageType;
 import com.zetcode.provider.HelloMessageProvider;
 import com.zetcode.provider.TimeMessageProvider;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Produces;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,8 +25,6 @@ public class MessageFactory {
     @Message(MessageType.TIME_MESSAGE)
     public TimeMessageProvider getTimeMessageProvider() {
 
-        loadProperties();
-
         var format = String.valueOf(properties.get("timeFormat"));
 
         var timeMessageProvider = new TimeMessageProvider();
@@ -33,6 +32,7 @@ public class MessageFactory {
         return timeMessageProvider;
     }
 
+    @PostConstruct
     private void loadProperties() {
 
         this.properties = new Properties();
