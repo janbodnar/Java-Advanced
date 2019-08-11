@@ -6,7 +6,7 @@ import io.undertow.server.handlers.resource.ClassPathResourceManager;
 import static io.undertow.Handlers.path;
 import static io.undertow.Handlers.resource;
 
-// src/resources/public/index.html
+// src/main/resources/public/index.html
 
 public class WelcomePage {
 
