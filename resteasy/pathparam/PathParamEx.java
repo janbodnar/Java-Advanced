@@ -9,6 +9,8 @@ import org.jboss.resteasy.plugins.server.undertow.UndertowJaxrsServer;
 import org.jboss.resteasy.spi.ResteasyDeployment;
 import org.jboss.weld.environment.servlet.Listener;
 
+// http://localhost:8080/api/reverse/falcon
+
 public class PathParamEx {
 
     public static void main(String[] args) {
