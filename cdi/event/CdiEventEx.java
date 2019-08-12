@@ -5,7 +5,7 @@ import com.zetcode.board.NotifyBoard;
 
 import javax.enterprise.inject.se.SeContainerInitializer;
 
-public class EventEx {
+public class CdiEventEx {
 
     public static void main(String[] args) {
 
