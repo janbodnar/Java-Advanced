@@ -9,7 +9,7 @@ import org.jboss.resteasy.plugins.server.undertow.UndertowJaxrsServer;
 import org.jboss.resteasy.spi.ResteasyDeployment;
 import org.jboss.weld.environment.servlet.Listener;
 
-public class WebUrl {
+public class WebUrlEx {
 
     public static void main(String[] args) {
 
