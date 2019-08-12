@@ -7,8 +7,8 @@ https://docs.jboss.org/weld/reference/latest/en-US/html/index.html
 *Context* is an isolated environment of a process, such as running an application, handling a HTTP request, 
 handling a HTTP session or handling a conversation. Each of a processes has their own context which is 
 application context, request context, session context and conversation context respectively. Each context 
-internally can only contain object which the scoped is the same as the scope supported by that context 
-(e.g Application context store @ApplicationScoped bean.)
+internally can only contain object with a scope supported by that context 
+(@ApplicationScoped bean in application context, @RequestScoped in request context.)
 
 The most fundamental services provided by CDI are as follows:
 
