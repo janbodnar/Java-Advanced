@@ -22,7 +22,7 @@ public class WebUrlEx {
         deployment.setApplicationClass(AppConfig.class.getName());
         deployment.setInjectorFactoryClass("org.jboss.resteasy.cdi.CdiInjectorFactory");
 
-        deploymentInfo.setClassLoader(WebUrl.class.getClassLoader());
+        deploymentInfo.setClassLoader(WebUrlEx.class.getClassLoader());
         deploymentInfo.setDeploymentName("My Application");
         deploymentInfo.setContextPath("/api");
         deploymentInfo.addListeners(Servlets.listener(Listener.class));
