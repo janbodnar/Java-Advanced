@@ -11,6 +11,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+// resteasy-jackson-provider depencency required 
+// for serialization
+
 @Path("cities")
 public class CityResource {
 
