@@ -5,7 +5,7 @@ JSON data, or plain text.
 
 A generic URL has the following form:
 
-scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]
+`scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]`
 
 The square brackets indicate that the part is optional. A scheme is a way of addressing resources, 
 such as http, ftp, mailto, or file.
