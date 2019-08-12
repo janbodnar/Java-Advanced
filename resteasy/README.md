@@ -6,3 +6,5 @@ RESTEasy also comes with additional features on top of plain JAX-RS functionalit
 *A RESTFul application* follows the REST architectural style, which is used for designing networked applications. 
 RESTful applications generate HTTP requests performing CRUD (Create/Read/Update/Delete) operations on resources. 
 RESTFul applications typically return data in JSON or XML format. 
+
+In our examples, we use Resteasy with Undertow server. We include CDI. 
