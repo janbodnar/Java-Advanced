@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <style>
+    .topmargin {
+        margin-top: 10px;
+    }
+    </style>
+</head>
+<body>
+
+<section class="ui container topmargin">
+
+    <h2>File upload</h2>
+
+    <form class="ui form" action="api/upload" enctype="multipart/form-data" method="post">
+
+        <div class="field">
+            <label for="fName">File name:</label>
+            <input id="fName" type="text" name="fileName">
+        </div>
+
+        <div class="field">
+            <label for="selFile">Choose a file</label>
+            <input id="selFile" type="file" name="selectedFile">
+        </div>
+
+        <button class="ui button" type="submit">Upload</button>
+
+    </form>
+
+</section>
+
+<script>
+    let selFile = document.getElementById('selFile');
+    let fName = document.getElementById('fName');
+
+    selFile.addEventListener('change', writeFileName);
+
+    function writeFileName(event) {
+
+        let inpEl = event.srcElement;
+        let fileName = inpEl.files[0].name;
+
+        console.log(fileName);
+        fName.value = `${fileName}`;
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</body>
+</html>
