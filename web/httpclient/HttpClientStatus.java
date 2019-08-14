@@ -13,6 +13,7 @@ public class HttpClientStatus {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://webcode.me"))
+                .GET() // GET is default
                 .build();
 
         HttpResponse<String> response = client.send(request,
