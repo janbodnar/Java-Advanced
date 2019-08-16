@@ -17,7 +17,7 @@ public class WebsiteStatus {
 
         List<URI> uris = Stream.of(
                 "https://www.google.com/",
-                "https://www.sme.sk/",
+                "https://www.postoj.sk/",
                 "https://www.github.com/"
         ).map(URI::create).collect(toList());
 
