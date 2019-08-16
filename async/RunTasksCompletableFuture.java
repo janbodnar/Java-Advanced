@@ -32,6 +32,8 @@ public class RunTasksCompletableFuture {
 
     public static void main(String[] args) {
 
+        long start = System.nanoTime();
+        
         List<Task> tasks = IntStream.range(0, 10)
                 .mapToObj(i -> new Task(1))
                 .collect(toList());
@@ -40,8 +42,6 @@ public class RunTasksCompletableFuture {
                 tasks.stream()
                         .map(task -> CompletableFuture.supplyAsync(task::doTask))
                         .collect(Collectors.toList());
-
-        long start = System.nanoTime();
 
         List<Integer> result =
                 futures.stream()
