@@ -1,20 +1,20 @@
-*Java HTTP Client* was is used to send request HTTP resources over the network. 
+*Java HTTP Client* is used to send request HTTP resources over the network. 
 It supports HTTP/1.1 and HTTP/2, both synchronous and asynchronous programming models, 
 handles request and response bodies as reactive-streams, and follows the familiar builder pattern.
 It was added in Java 11.
 
 
-* HttpClient: the main entry point of the API. This is the HTTP client that is used to send requests and receive responses. 
-It supports sending requests both synchronously and asynchronously by invoking its methods send and sendAsync, respectively. 
-To create an instance, a Builder is provided. Once created, the instance is immutable.
-*  HttpRequest: encapsulates an HTTP request, including the target URI, the method (GET, POST, etc), headers and other information. 
+* HttpClient: It is the main entry point of the API. The client is used to send requests and receive responses. 
+It supports sending requests both synchronously and asynchronously by calling its methods *send()* and *sendAsync()*, 
+respectively. A *Builder* is provided to create an instance. Once the client is created, the instance is immutable.
+*  HttpRequest: It encapsulates an HTTP request, including the target URI, the method (GET, POST, DELETE), headers and other information. 
 A request is constructed using a builder, is immutable once created, and can be sent multiple times.
-*  HttpRequest.BodyPublisher: if a request has a body (e.g. in POST requests), this is the entity responsible for publishing 
-the body content from a given source, e.g. from a string, a file, etc.
-*  HttpResponse: encapsulates an HTTP response, including headers and a message body, if any. This is what the client 
-receives after sending an HttpRequest.
-* HttpResponse.BodyHandler: a functional interface that accepts some information about the response (status code and headers), 
-and returns a BodySubscriber, which itself handles consuming the response body.
+*  HttpRequest.BodyPublisher: If a request has a body (e.g. in POST requests), this is the entity responsible for publishing 
+the body content from a given source, for instance, from a string or a file.
+*  HttpResponse: It encapsulates an HTTP response, including headers and a message body, if any. This is what the client 
+receives after sending an *HttpRequest*.
+* HttpResponse.BodyHandler: It is a functional interface that accepts some information about the response (status code and headers), 
+and returns a *BodySubscriber*, which itself handles consuming the response body.
 * HttpResponse.BodySubscriber: subscribes for the response body and consumes its bytes into some other form (a string, a file, 
 or some other storage type).
 
