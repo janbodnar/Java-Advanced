@@ -1,6 +1,7 @@
 package com.zetcode;
 
 import com.zetcode.bean.Task;
+import com.zetcode.handler.JsonBodyHandler;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,8 +21,6 @@ class UndertowJsonExTest {
     @Test
     void testPostRequest() throws IOException, InterruptedException {
 
-        final String DATA_RES = "{\"id\":1,\"name\":\"do the dishes\"}";
-
         var task = new Task(1L, "do the dishes");
 
         Jsonb jsonb = JsonbBuilder.create();
@@ -33,7 +32,9 @@ class UndertowJsonExTest {
                 .POST(HttpRequest.BodyPublishers.ofString(jsonb.toJson(task)))
                 .build();
 
-        HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        assertEquals(DATA_RES, response.body());
+        HttpResponse<Task> response = client.send(request,
+                JsonBodyHandler.jsonBodyHandler(jsonb, Task.class));
+
+        assertEquals(task, response.body());
     }
 }
