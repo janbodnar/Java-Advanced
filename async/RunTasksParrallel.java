@@ -26,7 +26,7 @@ class Task {
     }
 }
 
-public class RunTaskParrallel {
+public class RunTasksParrallel {
 
     public static void main(String[] args) {
 
