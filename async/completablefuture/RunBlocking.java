@@ -4,7 +4,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
-public class GetBlocking {
+public class RunBlocking {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
