@@ -4,18 +4,18 @@ handles request and response bodies as reactive-streams, and follows the familia
 It was added in Java 11.
 
 
-* HttpClient: It is the main entry point of the API. The client is used to send requests and receive responses. 
+* **HttpClient**: It is the main entry point of the API. The client is used to send requests and receive responses. 
 It supports sending requests both synchronously and asynchronously by calling its methods *send()* and *sendAsync()*, 
 respectively. A *Builder* is provided to create an instance. Once the client is created, the instance is immutable.
-*  HttpRequest: It encapsulates an HTTP request, including the target URI, the method (GET, POST, DELETE), headers and other information. 
+*  **HttpRequest**: It encapsulates an HTTP request, including the target URI, the method (GET, POST, DELETE), headers and other information. 
 A request is constructed using a builder, is immutable once created, and can be sent multiple times.
-*  HttpRequest.BodyPublisher: If a request has a body (e.g. in POST requests), this is the entity responsible for publishing 
+*  **HttpRequest.BodyPublisher**: If a request has a body (e.g. in POST requests), this is the entity responsible for publishing 
 the body content from a given source, for instance, from a string or a file.
-*  HttpResponse: It encapsulates an HTTP response, including headers and a message body, if any. This is what the client 
+*  **HttpResponse**: It encapsulates an HTTP response, including headers and a message body, if any. This is what the client 
 receives after sending an *HttpRequest*.
-* HttpResponse.BodyHandler: It is a functional interface that accepts some information about the response (status code and headers), 
+* **HttpResponse.BodyHandler**: It is a functional interface that accepts some information about the response (status code and headers), 
 and returns a *BodySubscriber*, which itself handles consuming the response body.
-* HttpResponse.BodySubscriber: subscribes for the response body and consumes its bytes into some other form (a string, a file, 
+* **HttpResponse.BodySubscriber**: subscribes for the response body and consumes its bytes into some other form (a string, a file, 
 or some other storage type).
 
 *BodyPublisher* is a subinterface of *Flow.Publisher*, introduced in Java 9. Similarly, *BodySubscriber* is a subinterface 
