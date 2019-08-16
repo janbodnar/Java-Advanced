@@ -15,7 +15,7 @@ the body content from a given source, for instance, from a string or a file.
 receives after sending an *HttpRequest*.
 * **HttpResponse.BodyHandler**: It is a functional interface that accepts some information about the response (status code and headers), 
 and returns a *BodySubscriber*, which itself handles consuming the response body.
-* **HttpResponse.BodySubscriber**: subscribes for the response body and consumes its bytes into some other form (a string, a file, 
+* **HttpResponse.BodySubscriber**: It subscribes for the response body and consumes its bytes into some other form (a string, a file, 
 or some other storage type).
 
 *BodyPublisher* is a subinterface of *Flow.Publisher*, introduced in Java 9. Similarly, *BodySubscriber* is a subinterface 
