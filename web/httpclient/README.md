@@ -10,7 +10,7 @@ Requests can be sent either synchronously or asynchronously:
 * sendAsync(HttpRequest, BodyHandler) sends the request and receives the response asynchronously. 
 
 The *sendAsync()* method returns immediately with a *CompletableFuture<HttpResponse>*. The *CompletableFuture* 
-completes when the response becomes available. The returned CompletableFuture can be combined in different ways 
+completes when the response becomes available. The returned *CompletableFuture* can be combined in different ways 
 to declare dependencies among several asynchronous tasks.
 
 * **HttpClient**: It is the main entry point of the API. The client is used to send requests and receive responses. 
