@@ -1,0 +1,13 @@
+$myfont: Helvetica, sans-serif;
+$mycolor: SteelBlue;
+$medium-size: 2em;
+
+body {
+  font: $myfont;
+}
+
+.first {
+
+    font-size: $medium-size;
+    color: $mycolor;
+}
