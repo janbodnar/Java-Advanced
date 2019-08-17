@@ -1,5 +1,7 @@
 The example demonstrates how to use SCSS in a Java web application with the `libsass-maven-plugin`.
 
+This is the project structure:
+
 ```
 pom.xml
 src
@@ -24,5 +26,4 @@ src
 │               style.css
 └───test
     └───java
-
 ```
