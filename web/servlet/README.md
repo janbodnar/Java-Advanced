@@ -1,3 +1,8 @@
+The examples are built with `jetty-maven-plugin`. The application is run with `mvn jetty:run`. 
+Maven standard directory layout has the `src/main/webapp` directory, which contains web application 
+resources, such as JavaScript, CSS, HTML files, view templates, and images. 
+
+
 Java WAR
 
 In software engineering, a WAR file (or Web application ARchive) is a 
