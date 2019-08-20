@@ -1,4 +1,4 @@
-The example shows how to control directory listings.
+The example shows how to control directory listings. Navigate to `localhost:8080/about`.
 
 The project structure:
 
@@ -49,4 +49,4 @@ In Tomcat:
     <servlet-name>default</servlet-name>
     <url-pattern>/</url-pattern>
 </servlet-mapping>    
-    ```
+```
