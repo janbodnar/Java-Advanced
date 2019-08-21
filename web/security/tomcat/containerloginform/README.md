@@ -1,4 +1,5 @@
-The example demonstrates how to use container-based login form in Tomcat. 
+The example demonstrates how to use container-based login form in Tomcat. The user is defined
+in `tomcat-users.xml`.
 Need to add SSL support. 
 
 
