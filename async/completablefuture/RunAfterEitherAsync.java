@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
+// runAfterEitherAsync returns a future which runs an async task
+// when either of the supplied futures completes
+
 public class RunAfterEitherAsync {
 
     public static void main(String[] args) throws InterruptedException {
