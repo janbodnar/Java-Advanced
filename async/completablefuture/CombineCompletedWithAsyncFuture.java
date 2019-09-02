@@ -2,6 +2,7 @@ package com.zetcode;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 import java.util.function.BinaryOperator;
 import java.util.function.Supplier;
 
@@ -10,7 +11,7 @@ class NewWord implements Supplier<String> {
     @Override
     public String get() {
         try {
-            Thread.sleep(1000);
+            TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
