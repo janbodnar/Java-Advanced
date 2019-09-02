@@ -13,3 +13,7 @@ Limitations of futures:
 `CompletableFuture` is a tool for asynchronous programming in Java. Asynchronous programming is writing 
 non-blocking code by running a task on a separate thread than the main application thread
 and notifying the main thread about its progress, completion, or failure.
+
+The `runAsync(Runnable runnable)` returns a new `CompletableFuture` that is asynchronously completed by 
+a task running in the `ForkJoinPool.commonPool()` after it runs the given action.
+(It execute tasks in a thread obtained from the global `ForkJoinPool.commonPool()`) 
