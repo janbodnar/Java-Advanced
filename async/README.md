@@ -14,6 +14,9 @@ Limitations of futures:
 non-blocking code by running a task on a separate thread than the main application thread
 and notifying the main thread about its progress, completion, or failure.
 
+Callbacks can be attached to the `CompletableFuture` using `thenApply()`, `thenAccept()` and `thenRun()` 
+methods.
+
 The `CompletableFuture.get()` method is blocking. It waits until the `Future` is completed and returns 
 the result after its completion.
 
