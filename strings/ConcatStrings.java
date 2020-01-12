@@ -1,6 +1,6 @@
 package com.zetcode;
 
-public class ConcatStrings2 {
+public class ConcatStrings {
 
     public static void main(String[] args) {
 
