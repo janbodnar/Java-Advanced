@@ -15,7 +15,7 @@ public class NinetyNineBottles {
             if (i == 1) {
 
                 System.out.printf("%d bottle of beer on the wall, %d bottle of beer.%n", i, i);
-                System.out.printf("Take one down, pass it around, %d bottle of beer on the wall.%n", i - 1);
+                System.out.println("Take one down, pass it around, no bottles of beer on the wall.");
                 System.out.println();
 
             } else {
