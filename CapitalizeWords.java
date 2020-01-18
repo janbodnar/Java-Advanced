@@ -3,6 +3,7 @@ package com.zetcode;
 import java.util.ArrayList;
 import java.util.List;
 
+// latin characters only
 
 public class CapitalizeWords {
 
