@@ -10,7 +10,7 @@ public class JavaRegexGroups {
         String content = "<p>The <code>Pattern</code> is a compiled "
                 + "representation of a regular expression.</p>";
 
-        Pattern p = Pattern.compile("(</?[a-z]*>)");
+        Pattern p = Pattern.compile("(</?[a-z]+>)");
 
         Matcher matcher = p.matcher(content);
 
