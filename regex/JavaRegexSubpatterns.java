@@ -1,17 +1,16 @@
 package com.zetcode;
 
-// Subpatterns are patterns within patterns. They are created with () characters.
-
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+// Subpatterns are patterns within patterns. They are created with () characters.
+
 public class JavaRegexSubpatterns {
 
     public static void main(String[] args) {
-        
-        List<String> words = Arrays.asList("book", "bookshelf", "bookworm",
+
+        List<String> words = List.of("book", "bookshelf", "bookworm",
                 "bookcase", "bookish", "bookkeeper", "booklet", "bookmark");
 
         Pattern p = Pattern.compile("book(worm|mark|keeper)?");
@@ -25,6 +24,6 @@ public class JavaRegexSubpatterns {
             } else {
                 System.out.printf("%s does not match%n", word);
             }
-        }        
+        }
     }
 }
