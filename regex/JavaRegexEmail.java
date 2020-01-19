@@ -1,6 +1,5 @@
 package com.zetcode;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,11 +21,13 @@ import java.util.regex.Pattern;
 public class JavaRegexEmail {
 
     public static void main(String[] args) {
-        
-        List<String> emails = Arrays.asList("luke@gmail.com", 
+
+        List<String> emails = List.of("luke@gmail.com",
                 "andy@yahoocom", "34234sdfa#2345", "f344@gmail.com");
 
-        Pattern p = Pattern.compile("^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\\.[a-zA-Z.]{2,18}$");
+        String regex = "[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\\.[a-zA-Z.]{2,18}";
+
+        Pattern p = Pattern.compile(regex);
 
         for (String email : emails) {
 
@@ -40,3 +41,4 @@ public class JavaRegexEmail {
         }
     }
 }
+
