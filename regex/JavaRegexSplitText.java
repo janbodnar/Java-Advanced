@@ -8,32 +8,32 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class JavaRegexSplitText {
-    
+
     static int sum = 0;
-        
+
     public static void main(String[] args) throws IOException {
-        
-        Path myPath = Paths.get("src/main/resources/data.csv");
-        
+
+        Path myPath = Paths.get("src/resources/data.csv");
+
         List<String> lines = Files.readAllLines(myPath);
-       
+
         String regex = ",";
-        
+
         Pattern p = Pattern.compile(regex);
-        
+
         lines.forEach((line) -> {
-            
+
             String[] parts = p.split(line);
-            
+
             for (String part : parts) {
-                
+
                 String val = part.trim();
-                
-                sum += Integer.valueOf(val);
+
+                sum += Integer.parseInt(val);
             }
-            
+
         });
-        
+
         System.out.printf("Sum of values: %d", sum);
     }
 }
