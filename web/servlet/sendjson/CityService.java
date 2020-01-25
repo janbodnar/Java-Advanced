@@ -7,7 +7,7 @@ import java.util.List;
 
 public class CityService {
 
-    public static List<City> getCities() {
+    public List<City> getCities() {
 
         var cities = new ArrayList<City>();
 
