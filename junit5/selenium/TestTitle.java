@@ -22,7 +22,7 @@ class TestTitle {
     }
 
     @Test
-    public void test() {
+    public void testTitle() {
 
         driver.get("http://webcode.me");
 
