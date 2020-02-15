@@ -15,11 +15,9 @@ continent except Antarctica. By far the most common and widespread species of
 fox is the red fox.""";
 
         Pattern p = Pattern.compile("\\w+");
-
         Matcher matcher = p.matcher(content);
 
         int count = 0;
-
         while (matcher.find()) {
 
             count++;
