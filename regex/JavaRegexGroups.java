@@ -1,5 +1,6 @@
 package com.zetcode;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -7,16 +8,23 @@ public class JavaRegexGroups {
 
     public static void main(String[] args) {
 
-        String content = "<p>The <code>Pattern</code> is a compiled "
-                + "representation of a regular expression.</p>";
+        var sites = List.of("webcode.me", "zetcode.com", "freebsd.org",
+                "netbsd.org");
 
-        Pattern p = Pattern.compile("(</?[a-z]+>)");
+        Pattern p = Pattern.compile("(\\w+)\\.(\\w+)");
 
-        Matcher matcher = p.matcher(content);
+        for (var site: sites)
+        {
+            Matcher matcher = p.matcher(site);
 
-        while (matcher.find()) {
+            while (matcher.find()) {
 
-            System.out.println(matcher.group(1));
+                System.out.println(matcher.group(0));
+                System.out.println(matcher.group(1));
+                System.out.println(matcher.group(2));
+            }
+
+            System.out.println("*****************");
         }
     }
 }
