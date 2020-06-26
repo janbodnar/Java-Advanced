@@ -1,26 +1,26 @@
 package com.zetcode;
 
 import com.opencsv.CSVReader;
-import java.io.FileInputStream;
+import com.opencsv.exceptions.CsvValidationException;
+
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
 public class OpenCSVReadEx {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, CsvValidationException {
 
-        String fileName = "src/main/resources/numbers.csv";
+        var fileName = "src/main/resources/numbers.csv";
 
-        try (FileInputStream fis = new FileInputStream(fileName);
-                InputStreamReader isr = new InputStreamReader(fis, 
-                        StandardCharsets.UTF_8);
-                CSVReader reader = new CSVReader(isr)) {
+        try (var fr = new FileReader(fileName, StandardCharsets.UTF_8);
+             var reader = new CSVReader(fr)) {
+
             String[] nextLine;
 
             while ((nextLine = reader.readNext()) != null) {
 
-                for (String e : nextLine) {
+                for (var e : nextLine) {
                     System.out.format("%s ", e);
                 }
             }
