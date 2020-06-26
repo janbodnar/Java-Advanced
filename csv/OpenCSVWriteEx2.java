@@ -1,6 +1,7 @@
 package com.zetcode;
 
 import com.opencsv.CSVWriter;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -23,11 +24,10 @@ public class OpenCSVWriteEx2 {
 
         String fileName = "src/main/resources/items.csv";
 
-        try (FileOutputStream fos = new FileOutputStream(fileName);
-                OutputStreamWriter osw = new OutputStreamWriter(fos, 
-                        StandardCharsets.UTF_8);
-                CSVWriter writer = new CSVWriter(osw)) {
-            
+        try (var fos = new FileOutputStream(fileName);
+             var osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
+             var writer = new CSVWriter(osw)) {
+
             writer.writeAll(entries);
         }
     }
