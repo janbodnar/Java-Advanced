@@ -1,13 +1,13 @@
--- SQL for the Cars table
+-- SQL for the cars table
 
-CREATE TABLE Cars(Id BIGINT PRIMARY KEY AUTO_INCREMENT, Name VARCHAR(150),
-    Price INTEGER);
-    
-INSERT INTO Cars(Name, Price) VALUES('Audi', 52642);
-INSERT INTO Cars(Name, Price) VALUES('Mercedes', 57127);
-INSERT INTO Cars(Name, Price) VALUES('Skoda', 9000);
-INSERT INTO Cars(Name, Price) VALUES('Volvo', 29000);
-INSERT INTO Cars(Name, Price) VALUES('Bentley', 350000);
-INSERT INTO Cars(Name, Price) VALUES('Citroen', 21000);
-INSERT INTO Cars(Name, Price) VALUES('Hummer', 41400);
-INSERT INTO Cars(Name, Price) VALUES('Volkswagen', 21600);
+CREATE TABLE cars(id BIGINT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255),
+    price INTEGER);
+
+INSERT INTO cars(name, price) VALUES('Audi', 52642);
+INSERT INTO cars(name, price) VALUES('Mercedes', 57127);
+INSERT INTO cars(name, price) VALUES('Skoda', 9000);
+INSERT INTO cars(name, price) VALUES('Volvo', 29000);
+INSERT INTO cars(name, price) VALUES('Bentley', 350000);
+INSERT INTO cars(name, price) VALUES('Citroen', 21000);
+INSERT INTO cars(name, price) VALUES('Hummer', 41400);
+INSERT INTO cars(name, price) VALUES('Volkswagen', 21600);
