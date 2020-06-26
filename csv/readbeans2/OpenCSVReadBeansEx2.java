@@ -22,13 +22,12 @@ public class OpenCSVReadBeansEx2 {
         try (BufferedReader br = Files.newBufferedReader(myPath,
                 StandardCharsets.UTF_8)) {
 
-            ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
+            ColumnPositionMappingStrategy<Car> strategy = new ColumnPositionMappingStrategy<>();
             strategy.setType(Car.class);
             String[] fields = {"id", "name", "price"};
             strategy.setColumnMapping(fields);
 
-            CsvToBean csvToBean = new CsvToBeanBuilder(br)
-                    .withType(Car.class)
+            CsvToBean<Car> csvToBean = new CsvToBeanBuilder<Car>(br)
                     .withMappingStrategy(strategy)
                     .withIgnoreLeadingWhiteSpace(true)
                     .build();
