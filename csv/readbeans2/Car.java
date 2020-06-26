@@ -40,7 +40,7 @@ public class Car {
     @Override
     public String toString() {
 
-        StringBuilder builder = new StringBuilder();
+        var builder = new StringBuilder();
         builder.append("Car{id=").append(id).append(", name=")
                 .append(name).append(", price=").append(price).append("}");
 
