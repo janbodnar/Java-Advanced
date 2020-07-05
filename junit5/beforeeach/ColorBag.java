@@ -1,4 +1,4 @@
-package com.zetcode.com.zetcode.bag;
+package com.zetcode.bag;
 
 import java.util.ArrayList;
 import java.util.HashSet;
