@@ -1,6 +1,6 @@
 package com.zetcode;
 
-import com.zetcode.com.zetcode.bag.ColorBag;
+import com.zetcode.bag.ColorBag;
 
 public class Application {
 
