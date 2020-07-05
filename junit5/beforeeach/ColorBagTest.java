@@ -1,4 +1,4 @@
-package com.zetcode.com.zetcode.bag;
+package com.zetcode.bag;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -7,15 +7,18 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ColorBagTest {
 
-    private ColorBag colorBag = new ColorBag();
+    private ColorBag colorBag;
 
     @BeforeEach
     void setupEach() {
 
+        colorBag = new ColorBag();
         colorBag.add("red");
         colorBag.add("green");
         colorBag.add("yellow");
