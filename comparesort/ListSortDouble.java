@@ -5,8 +5,6 @@ import java.util.Comparator;
 
 // Sorting list of objects by their double fields
 
-record Company(String name, Double rating) {}
-
 public class ListSortDouble {
 
     public static void main(String[] args) {
@@ -24,3 +22,5 @@ public class ListSortDouble {
         companies.forEach(System.out::println);
     }
 }
+
+record Company(String name, Double rating) {}
