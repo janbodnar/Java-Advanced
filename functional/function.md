@@ -72,3 +72,26 @@ void main() {
 }
 ```
 
+## Filter & sum
+
+```java
+import java.util.function.Function;
+import java.util.List;
+
+// Function<List<Integer>, Integer> sumEvens = vals -> vals.stream()
+//         .filter(n -> n % 2 == 0)
+//         .mapToInt(Integer::intValue)
+//         .sum();
+
+Function<List<Integer>, Integer> sumEvens = vals -> vals.stream()
+        .filter(n -> n % 2 == 0)
+        .reduce(0, Integer::sum);
+
+void main() {
+
+    List<Integer> vals = List.of(1, 2, 14, 22, 11, 24, 5, 21, 12, 22);
+
+    Integer res = sumEvens.apply(vals);
+    System.out.println(res);
+}
+```
