@@ -1,6 +1,6 @@
 # Eclipse collections
 
-Run on command line: `java cp "lib\*" Main.java`
+Place the two JARS into the `lib` and run on command line: `java -cp "lib\*" Main.java`
 
 ```java
 import org.eclipse.collections.api.list.MutableList;
