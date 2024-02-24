@@ -49,3 +49,26 @@ void main() {
 }
 ```
 
+## compose vs andThen
+
+The order in which the functions are applied may matter.  
+
+```java
+import java.util.function.Function;
+
+void main() {
+
+    Function<Double, Double> half = a -> a / 2;
+    Function<Double, Double> square = a -> a * a;
+    
+    Function<Double, Double> squareAndThenHalf = square.andThen(half);
+    Double res1 = squareAndThenHalf.apply(3d);  // First squares, then halves
+    
+    System.out.println(res1);
+
+    Function<Double, Double> squareComposeHalf = square.compose(half);
+    Double res2 = squareComposeHalf.apply(3d);  // First halves, then squares
+    System.out.println(res2);
+}
+```
+
