@@ -30,3 +30,22 @@ record User(String name, String occupation, LocalDate dob) {
     }
 }
 ```
+
+## Composition
+
+
+```java
+import java.util.function.Function;
+
+void main() {
+
+    Function<String, String> upperFun = val -> val.toUpperCase();
+    Function<String, String> reverseFun = val -> {
+        return new StringBuilder(val).reverse().toString();
+    };
+
+    var res = upperFun.compose(reverseFun).apply("falcon");
+    System.out.println(res);
+}
+```
+
