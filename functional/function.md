@@ -56,6 +56,23 @@ void main() {
 }
 ```
 
+## Filter 
+
+`Predicate<Integer> isEven = n -> n % 2 == 0;`
+
+```java
+import java.util.function.Function;
+import java.util.List;
+
+Function<Integer, Boolean> isEven = n -> n % 2 == 0; 
+
+void main() {
+
+    var vals = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    vals.stream().filter(isEven::apply).forEach(System.out::println);
+}
+```
+
 ## Composition
 
 
