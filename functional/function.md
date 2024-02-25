@@ -31,6 +31,31 @@ record User(String name, String occupation, LocalDate dob) {
 }
 ```
 
+## Cagegorizing age
+
+```java
+import java.util.function.Function;
+import java.util.function.Consumer;
+import java.util.List;
+
+Function<Integer, String> ageCategory = age -> {
+    return switch (age) {
+        case Integer n when n < 18 && n > 0 -> "minor";
+        case Integer n when n >= 18 && n < 64 -> "adult";
+        case Integer n when n > 64 -> "senior";
+        default -> "n/a";
+    };
+};
+
+Consumer<String> action = msg -> System.out.println(msg);
+
+void main() {
+
+    List<Integer> ages = List.of(11, 18, 17, 19, 21, 55, 86, 99, 43, 65, 63);
+    ages.stream().map(age -> ageCategory.apply(age)).forEach(action);
+}
+```
+
 ## Composition
 
 
