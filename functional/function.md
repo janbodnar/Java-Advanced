@@ -31,7 +31,7 @@ record User(String name, String occupation, LocalDate dob) {
 }
 ```
 
-## Cagegorizing age
+## Categorizing age
 
 ```java
 import java.util.function.Function;
