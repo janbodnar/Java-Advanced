@@ -1,6 +1,6 @@
 # The Function inteface
 
-```
+```java
 package com.zetcode;
 
 import java.util.List;
