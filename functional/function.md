@@ -114,6 +114,28 @@ void main() {
 }
 ```
 
+Three functions
+
+```java
+import java.util.function.Function;
+
+Function<Integer, Integer> fn1 = n -> n + 1;
+Function<Integer, Integer> fn2 = n -> n * 2;
+Function<Integer, Integer> fn3 = n -> n * n;
+
+Function<Integer, Integer> cfn1 = fn1.andThen(fn2).andThen(fn3);
+Function<Integer, Integer> cfn2 = fn1.compose(fn2).compose(fn3);
+
+void main() {
+
+    Integer res = cfn1.apply(10);
+    System.out.println(res);
+
+    Integer res2 = cfn2.apply(10);
+    System.out.println(res2);
+}
+```
+
 ## Filter & sum
 
 ```java
