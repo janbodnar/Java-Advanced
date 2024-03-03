@@ -89,3 +89,30 @@ void main() throws Exception {
 }
 ```
 
+## Download image
+
+```java
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URI;
+
+void main(String[] args) throws IOException {
+
+    var imageUrl = "https://something.com/favicon.ico";
+    var destinationFile = "favicon.ico";
+
+    var url = URI.create(imageUrl).toURL();
+
+    try (var is = url.openStream();
+            var fos = new FileOutputStream(destinationFile)) {
+
+        byte[] buf = new byte[1024];
+        int noOfBytes;
+
+        while ((noOfBytes = is.read(buf)) != -1) {
+
+            fos.write(buf, 0, noOfBytes);
+        }
+    }
+}
+```
