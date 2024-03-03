@@ -137,3 +137,30 @@ void main(String[] args) throws IOException {
 }
 ```
 
+## InputStreamReadr
+
+```java
+import java.net.URL;
+import java.net.URI;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.nio.charset.StandardCharsets;
+
+void main() throws IOException {
+
+    URL url = URI.create("https://webcode.me").toURL();
+
+    try (var isr = new InputStreamReader(url.openStream(), StandardCharsets.UTF_8);
+            var br = new BufferedReader(isr)) {
+
+        String line;
+        while ((line = br.readLine()) != null) {
+
+            System.out.println(line);
+        }
+    }
+}
+```
+
+
