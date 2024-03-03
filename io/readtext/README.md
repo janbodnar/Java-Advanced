@@ -52,16 +52,14 @@ void main() throws IOException {
 
     try (var br = new BufferedReader(new FileReader(fname, StandardCharsets.UTF_8))) {
 
-        var sb = new StringBuilder();
-
         String line;
         while ((line = br.readLine()) != null) {
 
-            sb.append(line);
-            sb.append(System.lineSeparator());
+            System.out.println(line);
         }
 
-        System.out.println(sb);
     }
 }
 ```
+
+
