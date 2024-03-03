@@ -116,3 +116,24 @@ void main(String[] args) throws IOException {
     }
 }
 ```
+
+---
+
+```java
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+void main(String[] args) throws IOException {
+
+    var urlFile = "http://httpbin.org/image/jpeg";
+
+    try (InputStream in = URI.create(urlFile).toURL().openStream()) {
+
+        Files.copy(in, Paths.get("jackal.jpg"));
+    }
+}
+```
+
