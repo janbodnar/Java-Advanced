@@ -1,5 +1,7 @@
 # URI/URL
 
+The `java.net.URI` is old-school code. The `HttpClient` is the modern solution.  
+
 
 ## openStream
 
