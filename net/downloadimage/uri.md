@@ -56,3 +56,36 @@ void main() throws Exception {
     }
 }
 ```
+
+## HEAD request
+
+```java
+import java.net.URL;
+import java.net.URI;
+import java.net.HttpURLConnection;
+import java.util.List;
+import java.util.Map;
+
+void main() throws Exception {
+
+    URL url = URI.create("https://webcode.me").toURL();
+
+    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+    con.setRequestMethod("HEAD");
+    con.connect();
+
+    Map<String, List<String>> fields = con.getHeaderFields();
+
+    fields.forEach((k, vals) -> {
+
+        System.out.println(k);
+
+        for (var e: vals) {
+            System.out.println(e);
+        }
+
+        System.out.println();
+    });
+}
+```
+
