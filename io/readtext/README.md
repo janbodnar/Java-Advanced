@@ -20,6 +20,30 @@ void main() throws IOException {
 }
 ```
 
+## Files.readAllLines
+
+Read all lines into a list.  
+
+```java
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
+void main() throws IOException {
+
+    var fname = "thermopylae.txt";
+
+    List<String> lines = Files.readAllLines(Paths.get(fname), StandardCharsets.UTF_8);
+
+    for (String line : lines) {
+
+        System.out.println(line);
+    }
+}
+```
+
 ## Files.lines
 
 ```java
