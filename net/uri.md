@@ -137,7 +137,7 @@ void main(String[] args) throws IOException {
 }
 ```
 
-## InputStreamReadr
+## InputStreamReader
 
 ```java
 import java.net.URL;
