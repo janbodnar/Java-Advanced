@@ -94,7 +94,7 @@ import java.io.IOException;
 import java.nio.CharBuffer;
 import java.nio.charset.StandardCharsets;
 
-void main(String[] args) {
+void main() {
 
     String fname = "thermopylae.txt";
 
@@ -118,6 +118,29 @@ void main(String[] args) {
         System.out.println(content.toString());
     } catch (IOException e) {
         e.printStackTrace();
+    }
+}
+```
+
+## Scanner 
+
+```java
+
+import java.io.IOException;
+import java.io.File;
+import java.util.Scanner;
+
+void main() throws IOException {
+
+    var fname = "thermopylae.txt";
+
+    try (var scanner = new Scanner(new File(fname))) {
+
+        while (scanner.hasNext()) {
+
+            String line = scanner.nextLine();
+            System.out.println(line);
+        }
     }
 }
 ```
