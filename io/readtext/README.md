@@ -62,4 +62,39 @@ void main() throws IOException {
 }
 ```
 
+## FileReader with CharBuffer
+
+```java
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.CharBuffer;
+import java.nio.charset.StandardCharsets;
+
+void main(String[] args) {
+
+    String fname = "thermopylae.txt";
+
+    try (var reader = new FileReader(fname, StandardCharsets.UTF_8)) {
+        // Create a CharBuffer with a reasonable size (adjust as needed)
+        var buffer = CharBuffer.allocate(1024);
+
+        int charsRead;
+        StringBuilder content = new StringBuilder();
+
+        // Read characters in chunks using read(CharBuffer)
+        while ((charsRead = reader.read(buffer)) != -1) {
+            // Flip the buffer to prepare it for reading
+            buffer.flip();
+            // Append the read characters to the StringBuilder
+            content.append(buffer);
+            // Clear the buffer for the next read
+            buffer.clear();
+        }
+
+        System.out.println(content.toString());
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+```
 
