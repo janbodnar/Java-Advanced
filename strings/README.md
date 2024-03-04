@@ -18,3 +18,41 @@ void main() {
 
 }
 ```
+
+## Bytes and strings
+
+```java
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+
+void main() {
+
+
+    byte[] data = { (byte) 0xc4, (byte) 0x8d, (byte) 0x65, (byte) 0x72,
+            (byte) 0x65, (byte) 0xc5, (byte) 0xa1, (byte) 0xc5, (byte) 0x88, (byte) 0x61 };
+
+    var text = new String(data, StandardCharsets.UTF_8);
+    System.out.println(text);
+
+
+    String str = "čerešňa";
+    byte[] bytes = str.getBytes(StandardCharsets.UTF_8);
+    var hexString = new StringBuilder();
+
+    for (byte b : bytes) {
+
+        String hex = Integer.toHexString(0xff & b);
+        
+        if (hex.length() == 1) {
+            hexString.append('0');
+        }
+
+        hexString.append(STR."0x\{hex}, ");
+    }
+
+    int len = hexString.length();
+    hexString.delete(len-2, len-1); // delete last space and comma
+
+    System.out.println(hexString.toString());
+}
+```
