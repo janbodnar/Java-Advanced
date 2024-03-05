@@ -42,6 +42,24 @@ void main() {
 }
 ```
 
+## Pattern split 
+
+```java
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
+void main() {
+
+    var phoneNumber = "202-555-0154";
+
+    var output = Pattern.compile("-")
+            .splitAsStream(phoneNumber)
+            .collect(Collectors.toList());
+
+    output.forEach(System.out::println);
+}
+```
+
 ## Bytes and strings
 
 ```java
