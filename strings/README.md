@@ -56,6 +56,31 @@ $ java Main.java
                 00000000000000000000000000000
 ```
 
+## Blank
+
+The string is blank if it is empty or contains only white space. 
+
+```java
+import java.util.List;
+
+void main() {
+
+    var data = List.of("sky", "\n\n", "  ", "blue", "\t\t", "", "sky");
+
+    for (int i = 0; i < data.size(); i++) {
+
+        var e = data.get(i);
+
+        if (e.isBlank()) {
+            System.out.printf("element with index %d is blank%n", i);
+        } else {
+
+            System.out.println(data.get(i));
+        }
+    }
+}
+```
+
 ## Upper & lower 
 
 ```java
