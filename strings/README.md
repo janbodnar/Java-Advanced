@@ -104,6 +104,19 @@ void main() {
 }
 ```
 
+## Format numbers 
+
+```java
+void main() {
+
+    System.out.format("%d%n", 12263);
+    System.out.format("%o%n", 12263);
+    System.out.format("%x%n", 12263);
+    System.out.format("%e%n", 0.03452342263);
+    System.out.format("%d%%%n", 45);   
+}
+```
+
 ## Pattern split 
 
 ```java
