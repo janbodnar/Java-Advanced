@@ -60,6 +60,20 @@ void main() {
 }
 ```
 
+--
+
+```java
+import java.util.Arrays;
+
+void main() {
+
+    var input = " wood, falcon\t, sky, forest\n";
+    var output = input.trim().split("\\s*,\\s*");
+
+    Arrays.stream(output).forEach(System.out::println);
+}
+```
+
 ## Bytes and strings
 
 ```java
