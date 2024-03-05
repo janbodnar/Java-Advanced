@@ -173,6 +173,20 @@ void main() {
 }
 ```
 
+## Format flags
+
+```java
+void main() {
+
+    System.out.format("%+d%n", 553);
+    System.out.format("%010d%n", 553);
+    System.out.format("%10d%n", 553);
+    System.out.format("%-10d%n", 553);
+    System.out.format("%d%n", -553);
+    System.out.format("%(d%n", -553); 
+}
+```
+
 ## Bytes and strings
 
 ```java
