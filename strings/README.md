@@ -56,6 +56,30 @@ $ java Main.java
                 00000000000000000000000000000
 ```
 
+## Multi-line strings
+
+They can be expressed with text blocks, which were standardized in Java 15. 
+
+```java
+String lyrics = "I cheated myself\n" +
+        "like I knew I would\n" +
+        "I told ya, I was trouble\n" +
+        "you know that I'm no good";
+
+String lyrics2 = """
+        I cheated myself
+        like I knew I would
+        I told ya, I was trouble
+        you know that I'm no good""";
+
+void main() {
+
+    System.out.println(lyrics);
+    System.out.println("--------------------------");
+    System.out.println(lyrics2);
+}
+```
+
 ## Blank
 
 The string is blank if it is empty or contains only white space. 
