@@ -102,3 +102,78 @@ void main() {
     }
 }
 ```
+
+## Switch expression
+
+```java
+import java.util.List;
+
+enum Day {
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday
+}
+
+boolean isWeekend(Day d) {
+
+    return switch (d) {
+        case Day.Monday, Day.Tuesday, Day.Wednesday, Day.Thursday, Day.Friday -> false;
+        case Day.Saturday, Day.Sunday -> true;
+    };
+}
+
+void main() {
+
+    var days = List.of(Day.Monday, Day.Tuesday, Day.Wednesday, Day.Thursday,
+            Day.Friday, Day.Saturday, Day.Sunday);
+
+    for (var e : days) {
+
+        if (isWeekend(e)) {
+            System.out.print("weekend ");
+        } else {
+            System.out.print("weekday ");
+        }
+    }
+}
+```
+
+
+```java
+import java.util.Random;
+
+void main() {
+
+    Season season = Season.randomSeason();
+
+    String msg = switch (season) {
+
+        case Season.SPRING -> "Spring";
+        case Season.SUMMER -> "Summer";
+        case Season.AUTUMN -> "Autumn";
+        case Season.WINTER -> "Winter";
+    };
+
+    System.out.println(msg);
+}
+
+enum Season {
+    SPRING,
+    SUMMER,
+    AUTUMN,
+    WINTER;
+
+    public static Season randomSeason() {
+        
+        var random = new Random();
+        int ridx = random.nextInt(Season.values().length);
+        return Season.values()[ridx];
+    }
+}
+```
+
+
