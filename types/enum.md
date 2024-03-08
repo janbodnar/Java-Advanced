@@ -179,10 +179,10 @@ enum Season {
 ## Planets 
 
 ```java
-double earthWeight = 63;
-double mass = earthWeight / Planet.EARTH.surfaceGravity();
-
 void main() {
+
+    double earthWeight = 63;
+    double mass = earthWeight / Planet.EARTH.surfaceGravity();
 
     for (Planet p : Planet.values()) {
 
