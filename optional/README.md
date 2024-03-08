@@ -1,5 +1,31 @@
 # Optional 
 
+`Optional` is a container object introduced which is used to represent a value  
+that may or may not be present. An `Optional` object can either contain a  
+non-null value (in which case it is considered present), or it can contain no  
+value at all (in which case it is considered empty).  
+
+The advantages of `Optional`:
+
+- *Null Safety*: Optional forces you to handle the case where the value is  
+  absent, reducing the risk of `NullPointerException`. It provides a clear and  
+  explicit way to signal that a method might not always return a value.  
+
+- *Improved Code Readability*: Optional can help in writing a neat code without   
+  using too many null checks. By using `Optional`, we can specify alternate  
+  values to return or alternate code to run. This makes the code more readable  
+  because the facts which were hidden are now visible to the developer.  
+
+- *Fluent Functional Programming Style*: We can use the `Optional` class to wrap  
+  our data and avoid the classical null checks and some of the try-catch  
+  blocks3. As a result, we’ll be able to chain method calls and have more  
+  fluent, functional code.  
+
+- *API Design*: Optional helps to create clear and robust APIs. It makes it  
+  explicit to the API user that a returned value can be null, and forces them to  
+  handle that case.  
+
+
 
 ## Example 
 
