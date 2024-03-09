@@ -59,3 +59,90 @@ void main() {
 record User(String name, String occupation) {
 }
 ```
+
+## Comparison
+
+```java
+import java.util.Comparator;
+import java.util.List;
+
+void main() {
+
+    var users = List.of(
+            new User("John", "Doe", 1230),
+            new User("Lucy", "Novak", 670),
+            new User("Ben", "Walter", 2050),
+            new User("Robin", "Brown", 2300),
+            new User("Amy", "Doe", 1250),
+            new User("Joe", "Draker", 1190),
+            new User("Janet", "Doe", 980),
+            new User("Albert", "Novak", 1930));
+
+    var sorted = users.stream().sorted(Comparator.comparingInt(User::salary)).toList();
+    System.out.println(sorted);
+}
+
+record User(String fname, String lname, int salary) {
+}
+```
+
+## Comparable
+
+```java
+import java.util.List;
+
+void main() {
+
+    var users = List.of(
+            new User("John", "Doe", 1230),
+            new User("Lucy", "Novak", 670),
+            new User("Ben", "Walter", 2050),
+            new User("Robin", "Brown", 2300),
+            new User("Amy", "Doe", 1250),
+            new User("Joe", "Draker", 1190),
+            new User("Janet", "Doe", 980),
+            new User("Albert", "Novak", 1930));
+
+    var sorted = users.stream().sorted().toList();
+    System.out.println(sorted);
+}
+
+record User(String fname, String lname, int salary) implements Comparable<User> {
+    @Override
+    public int compareTo(User u) {
+        return this.lname.compareTo(u.lname);
+    }
+}
+```
+
+## Filtering
+
+```java
+import java.util.List;
+import java.util.stream.Collectors;
+
+void main() {
+
+    var users = List.of(
+            User.of("John", "Doe", 1230),
+            User.of("Lucy", "Novak", 670),
+            User.of("Ben", "Walter", 2050),
+            User.of("Robin", "Brown", 2300),
+            User.of("Amy", "Doe", 1250),
+            User.of("Joe", "Draker", 1190),
+            User.of("Janet", "Doe", 980),
+            User.of("Albert", "Novak", 1930));
+
+    var filtered = users.stream().filter(e -> e.salary() > 2000)
+            .collect(Collectors.toList());
+    System.out.println(filtered);
+}
+
+record User(String fname, String lname, int salary) {
+    public static User of(String fname, String lname, int salary) {
+        return new User(fname, lname, salary);
+    }
+}
+```
+
+
