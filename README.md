@@ -7,6 +7,24 @@ Available under 2-Clause BSD License https://opensource.org/licenses/BSD-2-Claus
 
 ## VS Code
 
+Extensions:
+
+- Java Platforma Support
+- Trailing
+- vscode-icons
+- Rewrap
+
+
+The project `settings.json`
+
+```json
+{
+    "jdk.runConfig.vmOptions": "--enable-preview --source 22",
+    "jdk.jdkhome": "c:\\Users\\Jano\\.jdks\\jdk22.0.0_36",
+}
+```
+
+
 The `settings.json`
 
 ```json
