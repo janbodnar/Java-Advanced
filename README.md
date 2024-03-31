@@ -31,7 +31,6 @@ The `settings.json`
 {
     "workbench.iconTheme": "vscode-icons",
     "jdk.jdkhome": "c:\\Users\\Jano\\.jdks\\jdk22.0.0_36",
-    "vsicons.dontShowNewVersionMessage": true,
     "editor.stickyScroll.enabled": false,
     "editor.minimap.enabled": false,
 }
