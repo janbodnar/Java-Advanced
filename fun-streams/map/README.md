@@ -3,6 +3,9 @@
 
 ## flatMap
 
+The `flatMap()` operation has the effect of applying a one-to-many transformation to the  
+elements of the stream, and then flattening the resulting elements into a new stream.  
+
 ```java
 
 import java.util.List;
