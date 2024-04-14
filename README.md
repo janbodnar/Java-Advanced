@@ -33,6 +33,7 @@ The `settings.json`
         80
     ],
     "workbench.iconTheme": "vscode-icons",
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
     "jdk.jdkhome": "c:\\Users\\Jano\\.jdks\\jdk22.0.0_36",
     "editor.stickyScroll.enabled": false,
     "editor.minimap.enabled": false,
