@@ -1,6 +1,6 @@
 # The map & flatMap methods 
 
-## map
+## map & array
 
 ```java
 import java.util.Arrays;
@@ -11,6 +11,22 @@ void main() {
     var squares = nums.map(e -> e * e).toArray();
 
     System.out.println(Arrays.toString(squares));
+}
+```
+
+## map & random 
+
+```java
+import java.util.Random;
+import java.util.stream.Stream;
+
+void main() {
+
+    Stream.generate(new Random()::nextDouble)
+        .map(e -> (e * 100))
+        .mapToInt(Double::intValue)
+        .limit(5)
+        .forEach(System.out::println);
 }
 ```
 
