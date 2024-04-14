@@ -1,6 +1,6 @@
-## The reduce operation
+# The reduce operation
 
-# builtins
+## builtins
 
 The `sum` and `count` are built-int reduction operations
 
