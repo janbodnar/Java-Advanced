@@ -30,6 +30,24 @@ void main() {
 }
 ```
 
+## map & strings
+
+```java
+import java.util.stream.Stream;
+
+void main() {
+
+    var words = Stream.of("cardinal", "pen", "coin", "globe");
+    // words.map(e -> capitalize(e)).forEach(System.out::println);
+    words.map(this::capitalize).forEach(System.out::println);
+}
+
+String capitalize(String word) {
+
+    word = word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
+    return word;
+}
+```
 
 ## flatMap
 
