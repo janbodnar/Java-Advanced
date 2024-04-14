@@ -203,6 +203,31 @@ void main() {
 }
 ```
 
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;    
+import java.util.Optional;    
+
+void main() {
+
+    List<String> words = new ArrayList<>();
+    words.add("sky"); 
+    words.add(null); 
+    words.add("rock"); 
+    words.add("atom"); 
+
+    var res4 = getRandomElement(words);
+    res4.ifPresentOrElse((e) -> {System.out.println(e.toUpperCase());}, () -> {System.out.println("N/A");});
+}
+
+
+
+public <T> Optional<T> getRandomElement(List<T> list) {
+    Collections.shuffle(list);
+    return Optional.ofNullable(list.get(0));
+}
+```
 
 ```java
 import java.util.Optional;
