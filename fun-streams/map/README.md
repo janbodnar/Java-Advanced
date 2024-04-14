@@ -1,5 +1,19 @@
 # The map & flatMap methods 
 
+## map
+
+```java
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
+void main() {
+    var nums = IntStream.of(1, 2, 3, 4, 5, 6, 7, 8);
+    var squares = nums.map(e -> e * e).toArray();
+
+    System.out.println(Arrays.toString(squares));
+}
+```
+
 
 ## flatMap
 
