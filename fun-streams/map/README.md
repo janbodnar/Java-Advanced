@@ -49,6 +49,30 @@ String capitalize(String word) {
 }
 ```
 
+## map & CSV
+
+```java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.stream.Collectors;
+
+
+void main() throws IOException {
+
+    var lines = Files.readAllLines(Path.of("numbers.csv"));
+    var vals = lines.stream().map(line -> Arrays.asList(line.split(",")))
+        .flatMap(Collection::stream)
+        .map(String::trim) 
+        .mapToInt(Integer::valueOf)
+        .boxed().collect(Collectors.toList());
+
+    System.out.println(vals);
+}
+```
+
 ## flatMap
 
 The `flatMap()` operation has the effect of applying a one-to-many transformation to the  
