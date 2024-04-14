@@ -73,6 +73,32 @@ void main() throws IOException {
 }
 ```
 
+## map with record
+
+```java
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+record User(String name, String occupation) {}
+
+void main() {
+
+    var users = List.of(new User("Peter", "programmer"),
+            new User("Jane", "accountant"), new User("Robert", "teacher"),
+            new User("Milan", "programmer"), new User("Jane", "designer"));
+
+    var userNames = users.stream().map(user -> user.name()).sorted()
+            .collect(Collectors.toList());
+    System.out.println(userNames);
+
+    var occupations = users.stream().map(user -> user.occupation())
+            .sorted(Comparator.reverseOrder()).distinct().collect(Collectors.toList());
+
+    System.out.println(occupations);
+}
+```
+
 ## flatMap
 
 The `flatMap()` operation has the effect of applying a one-to-many transformation to the  
