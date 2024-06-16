@@ -34,7 +34,7 @@ void main() throws Exception {
 
 ## Locale constructors
 
-Local constructors such as `new Locale("sk", "SK")` are deprecated since Java 19.  
+Locale constructors such as `new Locale("sk", "SK")` are deprecated since Java 19.  
 We use `Locale.of("sk", "SK")` or a builder:  
 
 ```java
