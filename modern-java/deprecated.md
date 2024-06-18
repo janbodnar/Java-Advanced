@@ -62,5 +62,28 @@ void main() {
 }
 ```
 
+## new Integer
 
+'Integer(int)' is deprecated since version 9 and marked for removal.  
+
+We should either use `Integer.valueOf` or use autoboxing.  
+
+```java
+void main() {
+
+    Integer a = new Integer(5); 
+    Integer b = new Integer(5); 
+
+    System.out.println(a == b);
+    System.out.println(a.equals(b));
+    System.out.println(a.compareTo(b));
+
+    Integer c = 155;
+    Integer d = 155;
+
+    System.out.println(c == d);
+    System.out.println(c.equals(d));
+    System.out.println(c.compareTo(d));
+}
+```
 
