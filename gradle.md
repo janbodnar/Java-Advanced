@@ -1,9 +1,21 @@
 # Gradle 
 
 
-## Executable fat JAR
+## Executable JAR
 
 ```gradle
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.zetcode'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
 application {
     // Define the main class for the application.
     mainClass = 'com.example.Main'
