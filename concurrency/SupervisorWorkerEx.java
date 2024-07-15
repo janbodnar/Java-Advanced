@@ -10,6 +10,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -20,8 +22,7 @@ import java.util.concurrent.Executors;
 import static javax.swing.GroupLayout.Alignment.CENTER;
 
 /*
- * This program initiates a background search for
- * various image files in a user's home directory.
+ * This program creates a supervisor worker
  *
  */
 class MyLabel extends JLabel {
@@ -49,6 +50,7 @@ public class SupervisorWorkerEx extends JFrame {
     private final int NUMBER_OF_LABELS = 6;
     private ArrayList<MyLabel> labels;
     private JButton btn;
+    private ExecutorService executorService;
 
     public SupervisorWorkerEx() {
 
@@ -56,6 +58,8 @@ public class SupervisorWorkerEx extends JFrame {
     }
 
     private void initUI() {
+
+        executorService = Executors.newFixedThreadPool(NUMBER_OF_LABELS);
 
         labels = new ArrayList<>(NUMBER_OF_LABELS);
 
@@ -66,6 +70,17 @@ public class SupervisorWorkerEx extends JFrame {
 
         btn = new JButton("Start");
         btn.addActionListener(new StartAction());
+
+        var windowAdapter = new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent we)
+            {
+                System.out.println("shutting down");
+                executorService.shutdown();
+            }
+        };
+
+        addWindowListener(windowAdapter);
 
         createLayout();
 
@@ -83,7 +98,9 @@ public class SupervisorWorkerEx extends JFrame {
         gl.setAutoCreateContainerGaps(true);
 
         gl.setHorizontalGroup(gl.createParallelGroup(CENTER)
+
                 .addComponent(labels.get(0))
+                .addGap(40)
                 .addComponent(labels.get(1))
                 .addComponent(labels.get(2))
                 .addComponent(labels.get(3))
@@ -144,19 +161,20 @@ public class SupervisorWorkerEx extends JFrame {
             btn.setEnabled(false);
 
             var latch = new CountDownLatch(NUMBER_OF_LABELS);
-            ExecutorService executor
-                    = Executors.newFixedThreadPool(NUMBER_OF_LABELS);
+//            executorService = Executors.newFixedThreadPool(NUMBER_OF_LABELS);
 
             for (JLabel label : labels) {
 
                 label.setBackground(Color.white);
-                executor.execute(new Counter(label, latch));
+                executorService.execute(new Counter(label, latch));
             }
 
             var supervisor = new Supervisor(latch);
             supervisor.execute();
         }
     }
+
+
 
     private class Supervisor extends SwingWorker<Void, Void> {
 
@@ -169,7 +187,7 @@ public class SupervisorWorkerEx extends JFrame {
 
         @Override
         protected Void doInBackground() throws InterruptedException {
-            
+
             latch.await();
             return null;
         }
@@ -211,7 +229,7 @@ public class SupervisorWorkerEx extends JFrame {
 
         @Override
         protected void process(List<Integer> values) {
-            label.setText(values.get(values.size() - 1).toString());
+            label.setText(values.getLast().toString());
         }
 
         @Override
