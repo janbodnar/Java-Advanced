@@ -1,29 +1,24 @@
-package com.zetcode;
 
-public class NinetyNineBottles {
+void main() {
 
+    // 99 bottles of beer on the wall, 99 bottles of beer.
+    // Take one down, pass it around, 98 bottles of beer on the wall
 
-    public static void main(String[] args) {
+    int nOfbottles = 99;
 
-        // 99 bottles of beer on the wall, 99 bottles of beer.
-        // Take one down, pass it around, 98 bottles of beer on the wall
+    for (int i = nOfbottles; i >= 1; i--) {
 
-        int nOfbottles = 99;
+        if (i == 1) {
 
-        for (int i = nOfbottles; i >= 1; i--) {
+            System.out.printf("%d bottle of beer on the wall, %d bottle of beer.%n", i, i);
+            System.out.println("Take one down, pass it around, no bottles of beer on the wall.");
+            System.out.println();
 
-            if (i == 1) {
+        } else {
 
-                System.out.printf("%d bottle of beer on the wall, %d bottle of beer.%n", i, i);
-                System.out.println("Take one down, pass it around, no bottles of beer on the wall.");
-                System.out.println();
-
-            } else {
-
-                System.out.printf("%d bottles of beer on the wall, %d bottles of beer.%n", i, i);
-                System.out.printf("Take one down, pass it around, %d bottles of beer on the wall.%n", i - 1);
-                System.out.println();
-            }
+            System.out.printf("%d bottles of beer on the wall, %d bottles of beer.%n", i, i);
+            System.out.printf("Take one down, pass it around, %d bottles of beer on the wall.%n", i - 1);
+            System.out.println();
         }
     }
 }
