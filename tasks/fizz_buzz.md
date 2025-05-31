@@ -16,13 +16,13 @@ Using classic for loop and if/else statements.
 void main() {
 
     for (int i = 1; i <= 100; i++) {
-        
-        if (i % 3 == 0) {
+
+        if (i % 3 == 0 && i % 5 == 0) {
+            System.out.println("FizzBuzz");
+        } else if (i % 3 == 0) {
             System.out.println("Fizz");
         } else if (i % 5 == 0) {
             System.out.println("Buzz");
-        } else if (i % 3 == 0 && i % 5 == 5) {
-            System.out.println("FizzBuzz");
         } else {
             System.err.println(i);
         }
@@ -43,9 +43,9 @@ void main() {
 void doFizzBuzz(int e) {
 
     switch (e) {
+        case int n when n % 3 == 0 && n % 5 == 0 -> System.out.println("FizzBuzz");
         case int n when n % 3 == 0 -> System.out.println("Fizz");
         case int n when n % 5 == 0 -> System.out.println("Buzz");
-        case int n when n % 3 == 0 && n % 5 == 0 -> System.out.println("FizzBuzz");
         default -> System.out.println(e);
     }
 }
