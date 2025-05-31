@@ -40,12 +40,12 @@ void main() {
     IntStream.range(1, 101).forEach(this::doFizzBuzz);
 }
 
-void doFizzBuzz(Integer e) {
+void doFizzBuzz(int e) {
 
     switch (e) {
-        case Integer n when n % 3 == 0 -> System.out.println("Fizz");
-        case Integer n when n % 5 == 0 -> System.out.println("Buzz");
-        case Integer n when n % 3 == 0 && n % 5 == 0 -> System.out.println("FizzBuzz");
+        case int n when n % 3 == 0 -> System.out.println("Fizz");
+        case int n when n % 5 == 0 -> System.out.println("Buzz");
+        case int n when n % 3 == 0 && n % 5 == 0 -> System.out.println("FizzBuzz");
         default -> System.out.println(e);
     }
 }
