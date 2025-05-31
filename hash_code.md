@@ -11,14 +11,14 @@ combines requirements for both methods, primarily from the `Object.hashCode` and
 ## Reasons of the contract
 
 The hashCode/equals contract is needed because hash-based collections optimize  
-performance using hash tables, relying on hashCode for fast bucket placement and  
+performance using hash tables, relying on `hashCode` for fast bucket placement and  
 equals for collision resolution and duplicate checks. The contract ensures  
 consistency, equal objects sharing hash codes, and proper equality behavior,  
 enabling O(1) operations and preventing errors like duplicates or failed  
-lookups. In the Thing class, the mutable name field risks breaking this  
-contract, as changing it disrupts the hash table’s optimizations, potentially  
-causing duplicates or lookup failures in the HashSet. The contract is critical  
-to maintain the efficiency and correctness of these optimizations.  
+lookups. In the `Thing` class later in the example, the mutable name field risks  
+breaking this contract, as changing it disrupts the hash table’s optimizations,  
+potentially causing duplicates or lookup failures in the HashSet. The contract is  
+critical to maintain the efficiency and correctness of these optimizations.    
 
   
 ## HashCode/Equals Contract Rules  
