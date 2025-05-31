@@ -1,27 +1,40 @@
-package com.zetcode;
-
-import java.util.ArrayList;
 import java.util.List;
 
-public class UniqueNames {
+void main() {
 
-    public static void main(String[] args) {
+    List<String> names = List.of("Martin", "Lucy", "Peter",
+            "Martin", "Robert", "Peter");
 
-        List<String> names = List.of("Martin", "Lucy", "Peter",
-                "Martin", "Robert", "Peter");
+    System.out.println(unique(names));
+    System.out.println(unique2(names));
+    System.out.println(unique3(names));
+}
 
-        List<String> uniqueNames = new ArrayList<>();
+List<String> unique(List<String> names) {
 
-        names.forEach(e -> {
+    List<String> uniqueNames = new ArrayList<>();
 
-            if (!uniqueNames.contains(e)) {
+    names.forEach(e -> {
 
-                uniqueNames.add(e);
-            }
-        });
+        if (!uniqueNames.contains(e)) {
 
-        System.out.println(names);
-        System.out.println(uniqueNames);
+            uniqueNames.add(e);
+        }
+    });
 
-    }
+    return uniqueNames;
+}
+
+List<String> unique2(List<String> names) {
+
+    return names.stream().distinct().toList();
+
+}
+
+List<String> unique3(List<String> names) {
+
+    HashSet<String> uniqueNames = new HashSet<>(names);
+
+    return new ArrayList<String>(uniqueNames);
+
 }
