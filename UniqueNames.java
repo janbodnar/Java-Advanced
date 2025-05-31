@@ -1,5 +1,3 @@
-import java.util.List;
-
 void main() {
 
     List<String> names = List.of("Martin", "Lucy", "Peter",
