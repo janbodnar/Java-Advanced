@@ -7,8 +7,21 @@ class, to ensure consistent and correct behavior in hash-based collections like
 are used to determine object equality and hash-based storage. The contract  
 combines requirements for both methods, primarily from the `Object.hashCode` and  
 `Object.equals` documentation.  
+
+## Reasons of the contract
+
+The hashCode/equals contract is needed because hash-based collections optimize  
+performance using hash tables, relying on hashCode for fast bucket placement and  
+equals for collision resolution and duplicate checks. The contract ensures  
+consistency, equal objects sharing hash codes, and proper equality behavior,  
+enabling O(1) operations and preventing errors like duplicates or failed  
+lookups. In the Thing class, the mutable name field risks breaking this  
+contract, as changing it disrupts the hash table’s optimizations, potentially  
+causing duplicates or lookup failures in the HashSet. The contract is critical  
+to maintain the efficiency and correctness of these optimizations.  
+
   
-### HashCode/Equals Contract Rules  
+## HashCode/Equals Contract Rules  
   
 1. **Consistency**:  
    - The `hashCode` method must consistently return the same integer for an  
@@ -73,6 +86,7 @@ combines requirements for both methods, primarily from the `Object.hashCode` and
     equality and hash codes on object content (e.g., `name`).  
   
 ## Example from Provided Code  
+
 In the `Thing` class:  
   
 ```java  
@@ -88,7 +102,8 @@ public boolean equals(Object obj) {
     Thing other = (Thing) obj;  
     return Objects.equals(this.name, other.name);  
 }  
-```  
+```
+
 - **Consistency**: `hashCode` returns `name.hashCode()`, and `equals` compares  
   `name` fields, both consistent as long as `name` is unchanged.  
 - **Equality and Hash Code**: If two `Thing` objects have the same `name`,  
@@ -105,7 +120,7 @@ public boolean equals(Object obj) {
   hash code changes, but the object remains in its original hash bucket. This  
   violates consistency, potentially causing duplicates or lookup failures.  
   
-### Why the Contract Matters  
+## Why the Contract Matters  
   
 Violating the hashCode/equals contract can lead to serious issues in hash-based  
 collections:  
@@ -120,7 +135,6 @@ collections:
 - **Incorrect Equality**: An `equals` method that doesn’t satisfy reflexivity,  
   symmetry, or transitivity can lead to unpredictable behavior in collections or  
   other logic relying on equality checks.  
-  
 
 
 ```java
