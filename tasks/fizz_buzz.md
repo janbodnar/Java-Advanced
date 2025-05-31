@@ -32,12 +32,12 @@ void main() {
 
 ## Solution 2
 
-```java
+Using stream and switch expression. 
 
+```java
 void main() {
 
     IntStream.range(1, 101).forEach(this::doFizzBuzz);
-
 }
 
 void doFizzBuzz(Integer e) {
