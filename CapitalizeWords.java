@@ -1,28 +1,21 @@
-package com.zetcode;
 
-import java.util.ArrayList;
-import java.util.List;
+void main() {
 
-// latin characters only
+    // works for Latin, more complex languages need a different solution
 
-public class CapitalizeWords {
+    List<String> words = List.of("rock", "forest", "sky", "cloud", "water");
+    List<String> capitalized = new ArrayList<>();
 
-    public static void main(String[] args) {
+    for (var word : words) {
 
-        List<String> words = List.of("rock", "forest", "sky", "cloud", "water");
-        List<String> capitalized = new ArrayList<>();
+        var sb = new StringBuilder(word);
 
-        for (var word : words) {
+        char c = sb.charAt(0);
+        char upperCased = Character.toUpperCase(c);
+        sb.setCharAt(0, upperCased);
 
-            var sb = new StringBuilder(word);
-
-            char c = sb.charAt(0);
-            char upperCased = Character.toUpperCase(c);
-            sb.setCharAt(0, upperCased);
-
-            capitalized.add(sb.toString());
-        }
-
-        System.out.println(capitalized);
+        capitalized.add(sb.toString());
     }
+
+    System.out.println(capitalized);
 }
