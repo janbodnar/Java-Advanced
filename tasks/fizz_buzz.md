@@ -8,6 +8,10 @@ FizzBuzz Instructions
 - For numbers divisible by both 3 and 5, print "FizzBuzz".
 - Otherwise, print the number itself.
 
+## Solution 1
+
+Using classic for loop and if/else statements. 
+
 ```java
 void main() {
 
@@ -22,6 +26,27 @@ void main() {
         } else {
             System.err.println(i);
         }
+    }
+}
+```
+
+## Solution 2
+
+```java
+
+void main() {
+
+    IntStream.range(1, 101).forEach(this::doFizzBuzz);
+
+}
+
+void doFizzBuzz(Integer e) {
+
+    switch (e) {
+        case Integer n when n % 3 == 0 -> System.out.println("Fizz");
+        case Integer n when n % 5 == 0 -> System.out.println("Buzz");
+        case Integer n when n % 3 == 0 && n % 5 == 0 -> System.out.println("FizzBuzz");
+        default -> System.out.println(e);
     }
 }
 ```
