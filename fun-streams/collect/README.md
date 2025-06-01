@@ -73,3 +73,25 @@ void main() {
 }
 ```
 
+### Counting chars
+
+```java
+
+void main() {
+    List<String> words = List.of("one", "two", "three");
+
+    Collector<String, int[], Integer> lengthSumCollector =
+        Collector.of(
+            () -> new int[]{0},                    // Supplier
+            (arr, word) -> arr[0] += word.length(), // Accumulator
+            (arr1, arr2) -> {                      // Combiner
+                arr1[0] += arr2[0];
+                return arr1;
+            },
+            arr -> arr[0]                          // Finisher
+        );
+
+    Integer result = words.stream().collect(lengthSumCollector);
+    System.out.println(result); // Output: 11 (3 + 3 + 5)
+}
+```
