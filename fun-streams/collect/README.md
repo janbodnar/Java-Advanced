@@ -2,7 +2,7 @@
 
 
 
-## Collect.of
+## Collector.of
 
 ```java
 import java.util.List;
