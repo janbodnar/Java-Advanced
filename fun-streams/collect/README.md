@@ -4,6 +4,8 @@
 
 ## Collector.of
 
+## Concatenating list
+
 ```java
 import java.util.List;
 import java.util.stream.Collector;
@@ -26,6 +28,8 @@ void main() {
 }
 ```
 
+### Counting chars
+
 ```java
 void main() {
     List<String> words = List.of("cat", "dog", "elephant");
@@ -43,6 +47,29 @@ void main() {
 
     Map<String, Integer> result = words.stream().collect(charCountCollector);
     System.out.println(result); // Output: {cat=3, dog=3, elephant=8}
+}
+```
+
+### Uppercasing letters
+
+```java
+void main() {
+
+    List<String> words = List.of("hello", "there", "java");
+
+    Collector<String, ArrayList<String>, List<String>> uppercaseCollector =
+        Collector.of(
+            ArrayList::new,                        // Supplier
+            (list, word) -> list.add(word.toUpperCase()), // Accumulator
+            (list1, list2) -> {                    // Combiner
+                list1.addAll(list2);
+                return list1;
+            },
+            list -> list                           // Finisher (identity)
+        );
+
+    List<String> result = words.stream().collect(uppercaseCollector);
+    System.out.println(result); // Output: [HELLO, WORLD, JAVA]
 }
 ```
 
