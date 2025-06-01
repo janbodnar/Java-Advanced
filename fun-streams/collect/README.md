@@ -1,5 +1,38 @@
 # Collectors
 
+
+## Creating list of Integers with streams 
+
+```java
+void main() {
+
+    List<Integer> nums1 = IntStream.range(1, 4).boxed().toList();
+    List<Integer> nums2 = IntStream.range(1, 4)
+            .collect(ArrayList::new, List::add, List::addAll);
+    List<Integer> nums3 = Stream.iterate(1, x -> x + 1).limit(3).toList();
+    List<Integer> nums4 = Stream.of(1, 2, 3).toList();
+
+
+    System.out.println(nums1);
+    System.out.println(nums2);
+    System.out.println(nums3);
+    System.out.println(nums4);
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 The `Collector.of` method in Java's `java.util.stream.Collector` class is a factory method used to create a custom `Collector` for use in stream operations. It allows you to define how a stream's elements are collected into a final result by specifying the key components of the collection process.
 
 ### Definition
