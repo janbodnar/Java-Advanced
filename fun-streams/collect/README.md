@@ -25,3 +25,24 @@ void main() {
     System.out.println(result); // Output: Apple, Banana, Cherry
 }
 ```
+
+```java
+void main() {
+    List<String> words = List.of("cat", "dog", "elephant");
+
+    Collector<String, Map<String, Integer>, Map<String, Integer>> charCountCollector =
+        Collector.of(
+            HashMap::new,                          // Supplier
+            (map, word) -> map.put(word, word.length()), // Accumulator
+            (map1, map2) -> {                      // Combiner
+                map1.putAll(map2);
+                return map1;
+            },
+            map -> map                             // Finisher (identity)
+        );
+
+    Map<String, Integer> result = words.stream().collect(charCountCollector);
+    System.out.println(result); // Output: {cat=3, dog=3, elephant=8}
+}
+```
+
