@@ -29,6 +29,44 @@ Gatherer<Integer, int[], Integer> runningSumGatherer() {
 }
 ```
 
+## Counting negs/pos
+
+```java
+import java.util.List;
+import java.util.stream.Gatherers;
+
+class Count {
+
+    private int positive;
+    private int negative;
+
+    public Count() {
+
+    }
+
+    public Count(int pos, int neg) {
+        this.positive = pos;
+        this.negative = neg;
+    }
+}
+
+void main() {
+
+    var numbers = List.of(1, -2, 3, -4, 5, -3, 4, -9, 8);
+
+    // Count positive and negative elements
+    var count = numbers.stream()
+            .gather(Gatherers.scan(Count::new, (c, elem) -> {
+                c.positive += elem > 0 ? 1 : 0;
+                c.negative += elem < 0 ? 1 : 0;
+                return c;
+            })).reduce((c1, c2) -> new Count(c1.positive + c2.positive, c1.negative + c2.negative)).get();
+
+    System.out.println("Positive Count: " + count.positive);
+    System.out.println("Negative Count: " + count.negative);
+}
+```
+
 ## Creating a custom filter operation
 
 ```java
