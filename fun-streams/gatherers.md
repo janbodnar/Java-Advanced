@@ -1,5 +1,33 @@
 # Gatherers
 
+## Running sum
+
+```java
+import java.util.List;
+import java.util.stream.Stream;
+
+
+void main() {
+    // Example 1: Gatherer to calculate running sum
+    List<Integer> runningSums = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+            .gather(runningSumGatherer())
+            .toList();
+    System.out.println("Running Sums: " + runningSums);
+}
+
+Gatherer<Integer, int[], Integer> runningSumGatherer() {
+    return Gatherer.ofSequential(
+            () -> new int[] { 0 },
+            (state, element, downstream) -> {
+                state[0] += element;
+                downstream.push(state[0]);
+                return true;
+            },
+            Gatherer.defaultFinisher()
+    // (state, downstream) -> {}
+    );
+}
+```
 
 ## Creating a custom filter operation
 
