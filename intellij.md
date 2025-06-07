@@ -12,3 +12,6 @@
 - `Ctrl + Alt + L` - Reformat code
 - `Ctrl + Alt + O` - Organize imports
 - `Ctrl + Q` - Quick info
+- `Ctrl + Alt + G` - Add carets at the end of selection
+- `Ctrl + D` - Duplicate line
+- `Ctrl + Shift + Down` - Move statement down
