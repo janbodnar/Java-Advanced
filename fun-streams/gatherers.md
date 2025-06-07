@@ -1,5 +1,53 @@
 # Gatherers
 
+
+```java
+Gatherer<T, A, R>
+```
+
+Where:
+
+- **`T`** – The type of input elements (here, `String`).
+- **`A`** – The intermediate state type (represented as `?`, meaning it can be any type).
+- **`R`** – The type of output elements (here, `String`).
+
+### **What Does `?` Mean in `Gatherer<String, ?, String>`?**
+- The wildcard `?` in `Gatherer<String, ?, String>` means **the intermediate state type is unspecified**.
+- This allows flexibility in defining the state used during the transformation process.
+- The state could be **mutable or immutable**, depending on the specific gatherer implementation.
+
+```java
+import java.util.stream.Gatherer;
+import java.util.stream.Stream;
+
+public class GathererExample {
+
+    public static void main(String[] args) {
+        var words = Stream.of("apple", "banana", "cherry", "date", "fig", "grape", "kiwi");
+
+        var gatherer = Gatherer.of(
+            () -> null, // No explicit state needed
+            Gatherer.Integrator.ofGreedy((state, element, downstream) -> {
+                if (element.length() > 4) { // Example filtering logic
+                    downstream.accept(element.toUpperCase());
+                }
+            })
+        );
+
+        var result = words.gather(gatherer).toList();
+        System.out.println(result);
+    }
+}
+```
+
+
+
+
+
+
+
+
+
 ## Running sum
 
 ```java
