@@ -11,6 +11,27 @@ Where:
 - **`A`** – The intermediate state type (represented as `?`, meaning it can be any type).
 - **`R`** – The type of output elements (here, `String`).
 
+
+The `Gatherer<T, A, R>` interface in Java's Stream API (introduced in JDK 22) has three type parameters:  
+
+## Type Parameters
+
+1. **`T`** – The type of input elements to the gather operation.  
+2. **`A`** – The type of the gatherer's private state object (often mutable),  
+   used to track previously seen elements or influence later transformations.  
+4. **`R`** – The type of output elements from the gather operation.  
+
+### Core Functions of a Gatherer
+
+A **Gatherer** is defined by four key functions:
+
+1. **Initializer (`initializer()`)** – Creates a new state object (`A`).  
+2. **Integrator (`integrator()`)** – Processes each input element (`T`) and optionally emits output (`R`).  
+3. **Combiner (`combiner()`)** – Merges two state objects (`A`) for parallel execution.  
+4. **Finisher (`finisher()`)** – Performs a final action when the stream ends.  
+
+
+
 ### **What Does `?` Mean in `Gatherer<String, ?, String>`?**
 - The wildcard `?` in `Gatherer<String, ?, String>` means **the intermediate state type is unspecified**.
 - This allows flexibility in defining the state used during the transformation process.
