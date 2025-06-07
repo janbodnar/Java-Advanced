@@ -42,7 +42,29 @@ public class GathererExample {
 
 
 
+## Distinct ignore case
 
+
+```java
+// Distinct Ignore Case Gatherer
+Gatherer<String, ?, String> distinctIgnoreCase() {
+
+    return Gatherer.ofSequential(
+            () -> new HashSet<String>(),
+            (set, element, downstream) -> {
+                if (set.add(element.toLowerCase())) {
+                    return downstream.push(element);
+                }
+                return true;
+            });
+}
+
+void main() {
+    var stream = Stream.of("one", "One", "ONE", "Two", "two", "tWo");
+    var result = stream.gather(distinctIgnoreCase()).toList();
+    System.out.println("result = " + result);
+}
+```
 
 
 
