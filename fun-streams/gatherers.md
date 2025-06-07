@@ -41,6 +41,34 @@ public class GathererExample {
 ```
 
 
+## Limit operation
+
+```java
+
+// Limit Gatherer
+<T> Gatherer<T, ?, T> limit(long limit) {
+    return Gatherer.ofSequential(
+            () -> new Object() {
+                long counter = 0L;
+            },
+            (counter, element, downstream) -> {
+                if (counter.counter >= limit) {
+                    return false;
+                } else {
+                    counter.counter++;
+                    return downstream.push(element);
+                }
+            });
+}
+
+void main() {
+
+    var stream = Stream.of(1, 2, 3, 4, 5);
+    var result = stream.gather(limit(3L)).toList();
+    System.out.println("result = " + result);
+}
+```
+
 
 ## Distinct ignore case
 
