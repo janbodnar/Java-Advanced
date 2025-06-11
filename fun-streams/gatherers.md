@@ -292,7 +292,7 @@ void main() {
 ## Running averages & parsing CSV
 
 ```java
-public static void stockPriceAnalysis() {
+public void stockPriceAnalysis() {
     System.out.println("=== Stock Price Moving Average Analysis ===");
 
     List<Double> stockPrices = List.of(
