@@ -288,3 +288,93 @@ void main() {
     System.out.println(result); // Output: [a, b, c, a]
 }
 ```
+
+## Running averages & parsing CSV
+
+```java
+public static void stockPriceAnalysis() {
+    System.out.println("=== Stock Price Moving Average Analysis ===");
+
+    List<Double> stockPrices = List.of(
+            100.5, 102.3, 98.7, 105.2, 107.8, 103.4, 99.1, 101.6, 104.3, 108.9);
+
+    // Calculate 3-day moving average and track running total
+    var analysis = stockPrices.stream()
+            .gather(Gatherers.windowSliding(3))
+            .gather(Gatherers.scan(() -> new MovingAverageResult(0.0, 0.0),
+                    (acc, window) -> {
+                        double avg = window.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
+                        double runningTotal = acc.runningTotal() + avg;
+                        return new MovingAverageResult(avg, runningTotal);
+                    }))
+            .toList();
+
+    analysis.forEach(result -> System.out.printf("Moving Avg: %.2f, Cumulative: %.2f%n",
+            result.movingAverage(), result.runningTotal()));
+}
+
+record MovingAverageResult(double movingAverage, double runningTotal) {
+}
+
+void dataCleaningPipeline() {
+    System.out.println("\n=== Data Cleaning and Transformation Pipeline ===");
+
+    String csvData = """
+            ID,Name,Score,Category
+            1,Alice Johnson,85.5,A
+            2,,92.3,B
+            3,Bob Smith,-1,C
+            4,Carol Davis,78.9,A
+            5,David Wilson,105.2,B
+            6,,,-
+            7,Eve Brown,88.1,C
+            8,Frank Miller,67.4,A
+            """;
+
+    var lines = csvData.lines().skip(1); // Skip header
+
+    // Clean data: remove invalid entries, normalize scores, and group by category
+    var cleanedData = lines.map(line -> line.split(",")).filter(fields -> fields.length == 4)
+            .map(fields -> new StudentRecord(fields[0].trim(), fields[1].trim(), parseScore(fields[2].trim()),
+                    fields[3].trim()))
+            .filter(record -> !record.name().isEmpty() && record.score() >= 0 && record.score() <= 100
+                    && !record.category().equals("-"))
+            .gather(Gatherers.fold(() -> new HashMap<String, CategoryStats>(), (stats, record) -> {
+                stats.compute(record.category(), (key, existing) -> {
+                    if (existing == null) {
+                        return new CategoryStats(1, record.score(), record.score(), record.score());
+                    }
+                    return new CategoryStats(existing.count() + 1, existing.sum() + record.score(),
+                            Math.min(existing.min(), record.score()), Math.max(existing.max(), record.score()));
+                });
+                return stats;
+            })).findFirst().orElse(new HashMap<>());
+
+    cleanedData.entrySet().stream().sorted(Map.Entry.comparingByKey()).forEach(entry -> {
+        var category = entry.getKey();
+        var stats = entry.getValue();
+        double average = stats.sum() / stats.count();
+        System.out.printf("Category %s: Count=%d, Avg=%.1f, Min=%.1f, Max=%.1f%n", category, stats.count(), average,
+                stats.min(), stats.max());
+    });
+}
+
+record StudentRecord(String id, String name, double score, String category) {
+}
+
+record CategoryStats(int count, double sum, double min, double max) {
+}
+
+private static double parseScore(String scoreStr) {
+    try {
+        return Double.parseDouble(scoreStr);
+    } catch (NumberFormatException e) {
+        return -1; // Invalid score marker
+    }
+}
+
+void main() {
+    dataCleaningPipeline();
+    stockPriceAnalysis();
+}
+```
