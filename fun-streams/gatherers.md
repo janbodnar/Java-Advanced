@@ -27,9 +27,6 @@ A **Gatherer** is defined by four key functions:
 - The state could be **mutable or immutable**, depending on the specific gatherer implementation.
 
 ```java
-import java.util.stream.Gatherer;
-import java.util.stream.Stream;
-
 public class GathererExample {
 
     public static void main(String[] args) {
@@ -76,6 +73,57 @@ void main() {
     var stream = Stream.of(1, 2, 3, 4, 5);
     var result = stream.gather(limit(3L)).toList();
     System.out.println("result = " + result);
+}
+```
+
+## Gatherers.windowFixed
+
+```java
+void main() {
+
+    String text = """
+            Name      | price  | stock |
+            Product A |      3 | 2312  |
+            Product B |     12 | 120   |
+            Procuct C |     21 | 3450  |
+            Product D |     11 | 12300 |
+            """;
+
+    int res = Pattern.compile("\\d+")
+            .matcher(text)
+            .results()
+            .map(m -> Integer.parseInt(m.group()))
+            .gather(Gatherers.windowFixed(2))
+            .mapToInt(list -> list.get(0) * list.get(1))
+            .sum();
+
+    System.out.println(res);
+}
+```
+
+## Gatherers.windowFixed && Gatherers.fold
+
+```java
+void main() {
+
+    String text = """
+            Name      | price  | stock |
+            Product A |      3 | 2312  |
+            Product B |     12 | 120   |
+            Procuct C |     21 | 3450  |
+            Product D |     11 | 12300 |
+            """;
+
+    var pattern = Pattern.compile("\\d+");
+
+    var matcher = pattern.matcher(text);
+
+    int res = matcher.results().map(matchRes -> Integer.valueOf(matchRes.group()))
+            .gather(Gatherers.windowFixed(2))
+            .gather(Gatherers.fold(() -> 0, (product, list) -> product + (list.getFirst() * list.getLast())))
+            .findFirst().orElse(0);
+
+    System.out.println(res);
 }
 ```
 
