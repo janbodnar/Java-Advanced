@@ -1,50 +1,41 @@
-package com.zetcode;
-
-import java.util.ArrayList;
-import java.util.List;
-
 abstract class Shape {
 
-    abstract void draw();
+  abstract void draw();
 }
 
 class Rectangle extends Shape {
 
-    @Override
-    void draw() {
-        System.out.println("Drawing rectangle");
-    }
+  @Override
+  void draw() {
+    IO.println("Drawing rectangle");
+  }
 }
 
 class Circle extends Shape {
 
-    @Override
-    void draw() {
-        System.out.println("Drawing circle");
-    }
+  @Override
+  void draw() {
+    IO.println("Drawing circle");
+  }
 }
 
 // Generic wildcard example
+void main() {
 
-public class GenericWildcardEx {
+  List<Rectangle> shapes1 = new ArrayList<>();
+  shapes1.add(new Rectangle());
 
-    public static void main(String[] args) {
-        
-        List<Rectangle> list1 = new ArrayList<>();
-        list1.add(new Rectangle());
+  List<Circle> shapes2 = new ArrayList<>();
+  shapes2.add(new Circle());
+  shapes2.add(new Circle());
 
-        List<Circle> list2 = new ArrayList<>();
-        list2.add(new Circle());
-        list2.add(new Circle());
+  drawShapes(shapes1);
+  drawShapes(shapes2);
+}
 
-        drawShapes(list1);
-        drawShapes(list2);
-    }
+void drawShapes(List<? extends Shape> lists) {
 
-    private static void drawShapes(List<? extends Shape> lists) {
-        
-        for (Shape s : lists) {
-            s.draw();
-        }
-    }
+  for (Shape s : lists) {
+    s.draw();
+  }
 }
