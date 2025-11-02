@@ -1,27 +1,19 @@
-package com.zetcode;
+void main() {
 
-import java.util.List;
-import java.util.function.Consumer;
+  var data = List.of(1, 2, 3, 4, 5, 6, 7);
 
-public class ConsumerForEachEx {
+  // Consumer<Integer> consumer = (Integer x) -> IO::println(x);
+  Consumer<Integer> consumer = IO::println;
+  forEach(data, consumer);
 
-    public static void main(String[] args) {
+  IO.println("--------------------------");
 
-        var data = List.of(1, 2, 3, 4, 5, 6, 7);
+  forEach(data, IO::println);
+}
 
-//      Consumer<Integer> consumer = (Integer x) ->  System.out.println(x);
-        Consumer<Integer> consumer = System.out::println;
-        forEach(data, consumer);
+<T> void forEach(List<T> data, Consumer<T> consumer) {
 
-        System.out.println("--------------------------");
-
-        forEach(data, System.out::println);
-    }
-
-    static <T> void forEach(List<T> data, Consumer<T> consumer) {
-
-        for (T t : data) {
-            consumer.accept(t);
-        }
-    }
+  for (T t : data) {
+    consumer.accept(t);
+  }
 }
