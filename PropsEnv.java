@@ -14,10 +14,12 @@ void main() {
       directories.length));
 
   String os_version = System.getProperty("os.name");
+  String user_name = System.getProperty("user.name");
   String java_version = System.getProperty("java.version");
   String java_home = System.getProperty("java.home");
 
   IO.println(os_version);
+  IO.println(user_name);
   IO.println(java_version);
   IO.println(java_home);
 }
