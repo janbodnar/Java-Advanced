@@ -1,21 +1,17 @@
-package com.zetcode;
 
-public class AutoboxingEx {
-    
-    private static int cube(int x) {
-        
-        return x * x * x;
-    }
+int cube(int x) {
 
-    public static void main(String[] args) {
-        
-        Integer i = 10;
-        int j = i;
-        
-        System.out.println(i);
-        System.out.println(j);        
-        
-        Integer a = cube(i);
-        System.out.println(a);    
-    }
+  return x * x * x;
+}
+
+void main() {
+
+  Integer i = 10;
+  int j = i;
+
+  IO.println(i);
+  IO.println(j);
+
+  Integer a = cube(i);
+  IO.println(a);
 }
