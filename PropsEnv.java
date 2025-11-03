@@ -1,26 +1,23 @@
-package com.zetcode;
+void main() {
 
-public class PropsEnv {
+  var path = System.getenv("PATH");
 
-    public static void main(String[] args) {
+  // Split using the system-specific path separator
+  String[] directories = path.split(System.getProperty("path.separator"));
 
-        var path = System.getenv("PATH");
+  for (var directory : directories) {
 
-        String[] directories = path.split(";");
+    System.out.println(directory);
+  }
 
-        for (var directory : directories) {
+  System.out.printf("There are %d items in the PATH variable%n",
+      directories.length);
 
-            System.out.println(directory);
-        }
+  String os_version = System.getProperty("os.name");
+  String java_version = System.getProperty("java.version");
+  String java_home = System.getProperty("java.home");
 
-        System.out.printf("There are %d items in the PATH variable%n", directories.length);
-
-        String os_version = System.getProperty("os.name");
-        String java_version = System.getProperty("java.version");
-        String java_home = System.getProperty("java.home");
-
-        System.out.println(os_version);
-        System.out.println(java_version);
-        System.out.println(java_home);
-    }
+  System.out.println(os_version);
+  System.out.println(java_version);
+  System.out.println(java_home);
 }
