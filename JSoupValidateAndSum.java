@@ -1,52 +1,46 @@
-package com.zetcode;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-
-import java.io.IOException;
 
 // the program reads data from a web page, validates it and 
 // calculates sum from them
 // uses custom validation method
 
-public class JSoupValidateAndSum {
+void main(String[] args) throws IOException {
 
-    public static void main(String[] args) throws IOException {
+  String url = "https://test.webcode.me/data.txt";
 
-        String url = "http://test.webcode.me/data.txt";
+  Document doc = Jsoup.connect(url).get();
 
-        Document doc = Jsoup.connect(url).get();
+  String content = doc.body().text();
+  System.out.println(content);
 
-        String content = doc.body().text();
-        System.out.println(content);
+  String[] vals = content.split(",\\s+");
 
-        String[] vals = content.split(",\\s+");
+  int sum = 0;
 
-        int sum = 0;
+  for (String val : vals) {
 
-        for (String val : vals) {
+    if (isNumeric(val)) {
 
-            if (isNumeric(val)) {
-
-                sum += Integer.parseInt(val);
-            }
-        }
-
-        System.out.println(sum);
+      sum += Integer.parseInt(val);
     }
+  }
 
-    public static boolean isNumeric(String val) {
+  System.out.println(sum);
+}
 
-        int len = val.length();
+boolean isNumeric(String val) {
 
-        for (int i = 0; i < len; i++) {
+  int len = val.length();
 
-            if (!Character.isDigit(val.charAt(i))) {
+  for (int i = 0; i < len; i++) {
 
-                return false;
-            }
-        }
+    if (!Character.isDigit(val.charAt(i))) {
 
-        return true;
+      return false;
     }
+  }
+
+  return true;
 }
