@@ -16,3 +16,60 @@
 | **PECS Mnemonic** | **P**roducer **E**xtends | **C**onsumer **S**uper |
 | **Primary Use Case** | When you are **reading** items *from* a generic structure (it *produces* items for you). | When you are **writing** items *to* a generic structure (it *consumes* items from you). |
 
+
+
+## Wildcards with upper bounds
+
+This example shows using wildcard types with upper bounds to accept lists of  
+subclasses.  
+
+```java
+abstract class Shape {
+
+  abstract void draw();
+}
+
+class Rectangle extends Shape {
+
+  @Override
+  void draw() {
+    IO.println("Drawing rectangle");
+  }
+}
+
+class Circle extends Shape {
+
+  @Override
+  void draw() {
+    IO.println("Drawing circle");
+  }
+}
+
+// Generic wildcard example
+void main() {
+
+  List<Rectangle> shapes1 = new ArrayList<>();
+  shapes1.add(new Rectangle());
+
+  List<Circle> shapes2 = new ArrayList<>();
+  shapes2.add(new Circle());
+  shapes2.add(new Circle());
+
+  drawShapes(shapes1);
+  drawShapes(shapes2);
+}
+
+void drawShapes(List<? extends Shape> lists) {
+
+  for (Shape s : lists) {
+    s.draw();
+  }
+}
+```
+
+The `drawShapes` method uses a bounded wildcard `? extends Shape` to accept  
+lists of any type that extends `Shape`. This demonstrates covariance - the  
+method can accept `List<Rectangle>`, `List<Circle>`, or `List<Shape>`. The  
+wildcard makes the method more flexible than `List<Shape>` alone, which would  
+not accept lists of subtypes. This is useful for read-only operations where  
+you need to process elements polymorphically without adding new elements.  
