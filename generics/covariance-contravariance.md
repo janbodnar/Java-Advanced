@@ -478,8 +478,13 @@ with wildcards.
 ```java
 void main() {
 
-  List<Integer> integers = List.of(1, 2, 3);
+  List<Integer> integers = new ArrayList<>();
+  integers.add(1);
+  integers.add(2);
+  integers.add(3);
+
   reverse(integers);
+  
   IO.println("Reversed: " + integers);
 }
 
