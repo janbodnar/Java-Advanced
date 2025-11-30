@@ -1935,7 +1935,7 @@ void main() throws Exception {
 
 class ConnectionPool {
     private final Semaphore semaphore;
-    private int connectionId = 0;
+    private final java.util.concurrent.atomic.AtomicInteger connectionId = new java.util.concurrent.atomic.AtomicInteger(0);
 
     ConnectionPool(int size) {
         this.semaphore = new Semaphore(size);
@@ -1943,7 +1943,7 @@ class ConnectionPool {
 
     Connection acquire() throws InterruptedException {
         semaphore.acquire();
-        return new Connection(++connectionId, this);
+        return new Connection(connectionId.incrementAndGet(), this);
     }
 
     void release() {
