@@ -198,8 +198,10 @@ numerical code.
 ```java
 void main() {
 
-    double[] values = {1.0, Double.NaN, Double.POSITIVE_INFINITY, 
-                       Double.NEGATIVE_INFINITY, 0.0, -0.0};
+    double[] values = {
+        1.0, Double.NaN, Double.POSITIVE_INFINITY, 
+        Double.NEGATIVE_INFINITY, 0.0, -0.0
+    };
 
     for (double v : values) {
         IO.println(v + " -> isNaN: " + Double.isNaN(v) + 
