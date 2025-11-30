@@ -1092,7 +1092,15 @@ void main() {
 
     println("Encrypted Class Loader Demonstration\n");
 
-    var key = "MySuperSecretKey";  // 16 bytes for AES-128
+    // In production, retrieve key from secure storage (e.g., environment variable,
+    // key management service, or hardware security module)
+    var key = System.getenv("CLASS_ENCRYPTION_KEY");
+    if (key == null || key.length() < 16) {
+        // Fallback for demonstration only - never use hardcoded keys in production
+        key = "DemoKeyOnly16byt";
+        println("WARNING: Using demo key - set CLASS_ENCRYPTION_KEY env var in production\n");
+    }
+
     var loader = new EncryptedClassLoader(key, ClassLoader.getSystemClassLoader());
 
     println("Created encrypted class loader");
@@ -1125,6 +1133,7 @@ void main() {
     println("- Protecting proprietary algorithms");
     println("- License enforcement");
     println("- Code obfuscation");
+    println("\nSecurity Note: Always use secure key management in production!");
 }
 ```
 
@@ -1132,6 +1141,8 @@ An encrypted class loader decrypts bytecode before passing it to `defineClass`.
 This technique can protect proprietary code from reverse engineering. However,  
 it's not foolproof since the decryption key must be available at runtime, and  
 determined attackers can still extract the decrypted bytecode from memory.  
+Always use secure key management (environment variables, key management services,  
+or hardware security modules) rather than hardcoding keys in source code.  
 
 
 ## Parallel class loading
