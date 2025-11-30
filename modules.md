@@ -417,11 +417,12 @@ Modular applications are compiled using the `--module-source-path` option.
 #     module-info.java
 #     com/example/app/Main.java
 
-# Compile all modules
-javac -d out --module-source-path src $(find src -name "*.java")
-
-# Or compile specific modules
+# Compile specific modules (recommended)
 javac -d out --module-source-path src -m com.example.greeting,com.example.app
+
+# Or compile all modules using find (for small projects)
+javac -d out --module-source-path src @sources.txt
+# where sources.txt contains: find src -name "*.java" > sources.txt
 ```
 
 The `--module-source-path` option specifies the root directory containing  
@@ -1012,9 +1013,7 @@ Resolution process:
 
 ```bash
 # Show module resolution
-java --module-path mods \
-     --show-module-resolution \
-     -m com.example.app/com.example.app.Main
+java --module-path mods --show-module-resolution -m com.example.app/com.example.app.Main
 ```
 
 Module resolution is deterministic and happens at startup. The  
@@ -1254,7 +1253,7 @@ Advantages:
 
 ```bash
 # Step 1: Analyze with jdeps
-jdeps --jdk-internals --multi-release 21 myapp.jar
+jdeps --jdk-internals myapp.jar
 
 # Step 2: Check library status
 jdeps --module-path libs --check libs/dependency.jar
