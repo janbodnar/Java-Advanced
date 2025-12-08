@@ -1,22 +1,14 @@
-package com.zetcode;
-
-import java.util.Arrays;
-
 // the program throws a NullPointerException
 // we should swap the sides: "rock".equals(word)
+void main() {
 
-public class StringEqual {
+    var words = Arrays.asList("wood", "forest", "falcon", null, "sky", "rock");
 
-    public static void main(String[] args) {
+    for (var word : words) {
 
-        var words = Arrays.asList("wood", "forest", "falcon", null, "sky", "rock");
+        if (word.equals("rock")) {
 
-        for (var word : words) {
-
-            if (word.equals("rock")) {
-
-                System.out.println("The list contains rock");
-            }
+            System.out.println("The list contains rock");
         }
     }
 }
