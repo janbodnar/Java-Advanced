@@ -1,4 +1,4 @@
-void main(String[] args) {
+void main() {
 
     // left-to-right associativity
     int val = 9 / 3 * 3;
