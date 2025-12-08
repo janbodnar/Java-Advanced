@@ -1,19 +1,15 @@
-package com.zetcode;
+void main(String[] args) {
 
-public class Associativity {
+    // left-to-right associativity
+    int val = 9 / 3 * 3;
 
-    public static void main(String[] args) {
+    IO.println(val);
 
-        // left-to-right associativity
-        int val = 9 / 3 * 3;
+    int val2 = 0;
 
-        System.out.println(val);
+    // right-to-left associativity
+    val2 *= 3 + 1;
 
-        int val2 = 0;
-
-        // right-to-left associativity
-        val2 *= 3 + 1;
-
-        System.out.println(val2);
-    }
+    IO.println(val2);
 }
+
