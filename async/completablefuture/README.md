@@ -1,9 +1,8 @@
 # CompletableFuture
 
-## Blocking 
+## The get method
 
-The `get` method blocks the `main` thread until the asynchronous task  
-finishes (i.e., until the 3-second sleep ends).
+The `get` method waits if necessary for a future to complete, and then returns its result.  
 
 The execution flow is:
 
@@ -56,7 +55,8 @@ public class RunBlocking {
     }
 }
 ```
-
+The `get` method blocks the `main` thread until the asynchronous task  
+finishes (i.e., until the 3-second sleep ends).
 
 ## Async addition
 
