@@ -104,6 +104,94 @@ void main() {
 }
 ```
 
+## runAfterEitherAsync
+
+
+The `runAfterEitherAsync` method returns a new `CompletableFuture` that runs  
+a given action as soon as either of two supplied stages completes, without  
+waiting for the other. This is useful when two computations race to produce  
+some effect and only the first to finish matters — for example, querying a  
+cache and a database in parallel and reacting the moment either responds.  
+
+
+```java
+package com.zetcode;
+
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
+
+// runAfterEitherAsync returns a future which runs an async task
+// when either of the supplied futures completes
+
+public class RunAfterEitherAsync {
+
+    @SuppressWarnings("java:S4507")
+    public static void main(String[] args) throws InterruptedException {
+
+        List<String> results = new CopyOnWriteArrayList<>();
+
+        CompletableFuture<Void> future1 = CompletableFuture.runAsync(() -> {
+
+            int randTimeout = ThreadLocalRandom.current().nextInt(1, 6);
+
+            try {
+                TimeUnit.SECONDS.sleep(randTimeout);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                e.printStackTrace();
+            }
+            results.add("future 1 finished with A");
+        });
+
+        CompletableFuture<Void> future2 = CompletableFuture.runAsync(() -> {
+
+            int randTimeout = ThreadLocalRandom.current().nextInt(1, 6);
+
+            try {
+                TimeUnit.SECONDS.sleep(randTimeout);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                e.printStackTrace();
+            }
+            results.add("future 2 finished with B");
+        });
+
+        CompletableFuture<Void> finisher = future1.runAfterEitherAsync(future2,
+                () -> System.out.println(results));
+
+        System.out.println(finisher.isDone());
+
+        TimeUnit.SECONDS.sleep(8);
+
+        System.out.println(finisher.isDone());
+    }
+}
+```
+
+In the example, two futures each sleep for a random duration between one  
+and five seconds before appending a message to a shared  
+`CopyOnWriteArrayList`. The `finisher` future prints that list as soon as  
+either future completes. Since the delays are random, either one may win,  
+and the output would seem to contain only the winning future's message.  
+
+Running the program repeatedly shows otherwise: sometimes both messages  
+appear. This happens because `runAfterEitherAsync` only guarantees that its  
+action is *triggered* by the first completing future — not that the action  
+runs instantly or that the second future is paused meanwhile. The "Async"  
+variant schedules the callback onto a thread pool, introducing a small  
+delay before it actually executes. If the losing future finishes during  
+that window, it adds its own message before the callback runs, and both  
+entries show up.  
+
+This illustrates that `runAfterEitherAsync` guarantees *when* its action is  
+triggered, not the state of any shared data the action reads. The race  
+isn't a flaw in the method — it's a consequence of pairing a  
+fire-on-first-completion trigger with mutable state that isn't scoped to  
+the winning future alone.
+
 ## Website status
 
 Asynchronously checks status of multiple websites.
