@@ -192,6 +192,142 @@ isn't a flaw in the method — it's a consequence of pairing a
 fire-on-first-completion trigger with mutable state that isn't scoped to  
 the winning future alone.
 
+## acceptEitherAsync
+
+
+```java
+package com.zetcode;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
+
+// acceptEitherAsync returns a future which consumes the result
+// of whichever of the two supplied futures completes first
+
+public class AcceptEitherAsync {
+
+    public static void main(String[] args) {
+
+        CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> {
+
+            int randTimeout = ThreadLocalRandom.current().nextInt(1, 6);
+            sleep(randTimeout);
+
+            return "future 1 finished with A";
+        });
+
+        CompletableFuture<String> future2 = CompletableFuture.supplyAsync(() -> {
+
+            int randTimeout = ThreadLocalRandom.current().nextInt(1, 6);
+            sleep(randTimeout);
+
+            return "future 2 finished with B";
+        });
+
+        CompletableFuture<Void> finisher = future1.acceptEitherAsync(future2,
+                winner -> System.out.println("Winner: " + winner));
+
+        finisher.join();
+
+        System.out.println("finisher.isDone(): " + finisher.isDone());
+    }
+
+    private static void sleep(int seconds) {
+        try {
+            TimeUnit.SECONDS.sleep(seconds);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException(e);
+        }
+    }
+}
+```
+
+## acceptEitherAsync
+
+The `acceptEitherAsync` method returns a new `CompletableFuture` that  
+consumes the result of whichever of two supplied stages completes first,  
+passing that result directly into a `Consumer`. Unlike `runAfterEitherAsync`,  
+which only signals that *something* completed, `acceptEitherAsync` hands  
+the callback the actual winning value, with no need to inspect shared  
+state afterward.  
+
+```java
+package com.zetcode;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
+
+// acceptEitherAsync returns a future which consumes the result
+// of whichever of the two supplied futures completes first
+
+public class AcceptEitherAsync {
+
+    public static void main(String[] args) {
+
+        CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> {
+
+            int randTimeout = ThreadLocalRandom.current().nextInt(1, 6);
+            sleep(randTimeout);
+
+            return "future 1 finished with A";
+        });
+
+        CompletableFuture<String> future2 = CompletableFuture.supplyAsync(() -> {
+
+            int randTimeout = ThreadLocalRandom.current().nextInt(1, 6);
+            sleep(randTimeout);
+
+            return "future 2 finished with B";
+        });
+
+        CompletableFuture<Void> finisher = future1.acceptEitherAsync(future2,
+                winner -> System.out.println("Winner: " + winner));
+
+        finisher.join();
+
+        System.out.println("finisher.isDone(): " + finisher.isDone());
+    }
+
+    private static void sleep(int seconds) {
+        try {
+            TimeUnit.SECONDS.sleep(seconds);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException(e);
+        }
+    }
+}
+```
+
+Sample output:
+
+```
+Winner: future 2 finished with B
+finisher.isDone(): true
+```
+
+
+
+In the example, two futures each sleep for a random duration between one  
+and five seconds before returning a string identifying themselves. The  
+`finisher` future is triggered by whichever one finishes first, and its  
+callback simply prints the value it received — there's no shared list, and  
+no way for the losing future to interfere with what gets printed.  
+
+This removes the race condition seen with `runAfterEitherAsync`. Because  
+the winning value is captured as a method argument at the moment the  
+future completes, the callback's output is fully determined by the race  
+outcome itself and cannot be affected by anything the losing future does  
+afterward, no matter how the callback's scheduling onto the thread pool  
+is delayed.  
+
+This makes `acceptEitherAsync` a better fit than `runAfterEitherAsync`  
+whenever the action actually needs to use the result of whichever future  
+won, rather than just needing to know that one of them did.
+
 ## Website status
 
 Asynchronously checks status of multiple websites.
