@@ -1,5 +1,66 @@
 # CompletableFuture
 
+## Blocking 
+
+The `get` method blocks the `main` thread until the asynchronous task  
+finishes (i.e., until the 3-second sleep ends).
+
+The execution flow is:
+
+```
+main: "Program started"
+main: calls runAsync → task starts on pool thread
+main: registers whenComplete callback (non-blocking)
+main: calls future.get() → BLOCKS here
+                     ↓
+    (3 seconds later)
+                     ↓
+pool thread: "Task run in: ForkJoinPool..."
+pool thread: "completed"
+main: unblocks, "Program finished"
+```
+
+```java
+package com.zetcode;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+
+public class RunBlocking {
+
+    public static void main(String[] args)
+            throws ExecutionException, InterruptedException {
+
+        System.out.println("Program started");
+
+        CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+
+            // Simulate a long-running job
+            try {
+                TimeUnit.SECONDS.sleep(3);
+            } catch (InterruptedException e) {
+                throw new IllegalStateException(e);
+            }
+
+            System.out.printf("Task run in: %s %n",
+                    Thread.currentThread().getName());
+        });
+
+        future.whenComplete(
+                (aVoid, throwable) -> System.out.println("completed"));
+
+        future.get();
+
+        System.out.println("Program finished");
+    }
+}
+```
+
+
+## Async addition
+
+```java
 
 ## Async addition
 
