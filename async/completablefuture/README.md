@@ -58,9 +58,6 @@ public class RunBlocking {
 The `get` method blocks the `main` thread until the asynchronous task  
 finishes (i.e., until the 3-second sleep ends).
 
-## Async addition
-
-```java
 
 ## Async addition
 
@@ -192,57 +189,6 @@ isn't a flaw in the method — it's a consequence of pairing a
 fire-on-first-completion trigger with mutable state that isn't scoped to  
 the winning future alone.
 
-## acceptEitherAsync
-
-
-```java
-package com.zetcode;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
-
-// acceptEitherAsync returns a future which consumes the result
-// of whichever of the two supplied futures completes first
-
-public class AcceptEitherAsync {
-
-    public static void main(String[] args) {
-
-        CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> {
-
-            int randTimeout = ThreadLocalRandom.current().nextInt(1, 6);
-            sleep(randTimeout);
-
-            return "future 1 finished with A";
-        });
-
-        CompletableFuture<String> future2 = CompletableFuture.supplyAsync(() -> {
-
-            int randTimeout = ThreadLocalRandom.current().nextInt(1, 6);
-            sleep(randTimeout);
-
-            return "future 2 finished with B";
-        });
-
-        CompletableFuture<Void> finisher = future1.acceptEitherAsync(future2,
-                winner -> System.out.println("Winner: " + winner));
-
-        finisher.join();
-
-        System.out.println("finisher.isDone(): " + finisher.isDone());
-    }
-
-    private static void sleep(int seconds) {
-        try {
-            TimeUnit.SECONDS.sleep(seconds);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new RuntimeException(e);
-        }
-    }
-}
-```
 
 ## acceptEitherAsync
 
